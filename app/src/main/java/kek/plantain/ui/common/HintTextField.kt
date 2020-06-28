@@ -1,4 +1,4 @@
-package kek.plantain.home
+package kek.plantain.ui.common
 
 import androidx.compose.Composable
 import androidx.ui.core.Modifier
@@ -18,8 +18,8 @@ import androidx.ui.text.TextStyle
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
-import kek.plantain.ui.fira
-import kek.plantain.ui.textFieldBackground
+import kek.plantain.ui.theme.fira
+import kek.plantain.ui.theme.textFieldBackground
 
 @Composable
 fun HintTextField(

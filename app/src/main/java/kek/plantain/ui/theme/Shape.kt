@@ -1,4 +1,4 @@
-package kek.plantain.ui
+package kek.plantain.ui.theme
 
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.material.Shapes

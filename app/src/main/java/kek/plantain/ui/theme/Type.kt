@@ -1,4 +1,4 @@
-package kek.plantain.ui
+package kek.plantain.ui.theme
 
 import androidx.ui.material.Typography
 import androidx.ui.text.font.FontStyle

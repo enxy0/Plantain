@@ -1,4 +1,4 @@
-package kek.plantain.ui
+package kek.plantain.ui.theme
 
 import androidx.ui.graphics.Color
 

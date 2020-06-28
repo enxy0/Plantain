@@ -1,4 +1,4 @@
-package kek.plantain.ui
+package kek.plantain.ui.home
 
 import androidx.compose.Composable
 import androidx.ui.core.Modifier
@@ -20,8 +20,9 @@ import androidx.ui.res.vectorResource
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import kek.plantain.R
-import kek.plantain.home.DetailsBox
-import kek.plantain.home.HintTextField
+import kek.plantain.ui.common.DetailsBox
+import kek.plantain.ui.common.HintTextField
+import kek.plantain.ui.theme.PlantainTheme
 
 @Composable
 fun PlantainApp() {
@@ -58,8 +59,16 @@ fun Body() {
         Spacer(modifier = Modifier.preferredHeight(20.dp))
         Text(text = "Card information", style = MaterialTheme.typography.h6)
         Row(modifier = Modifier.padding(top = 8.dp)) {
-            DetailsBox(asset = Icons.Outlined.DateRange, title = "Last used:", summary = "27.06.20")
-            DetailsBox(asset = Icons.Outlined.Info, title = "Last payed:", summary = "31₽")
+            DetailsBox(
+                asset = Icons.Outlined.DateRange,
+                title = "Last used:",
+                summary = "27.06.20"
+            )
+            DetailsBox(
+                asset = Icons.Outlined.Info,
+                title = "Last payed:",
+                summary = "31₽"
+            )
         }
         Spacer(modifier = Modifier.preferredHeight(20.dp))
         Text(text = "Trips in June", style = MaterialTheme.typography.h6)

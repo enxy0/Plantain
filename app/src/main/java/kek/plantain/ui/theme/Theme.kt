@@ -1,4 +1,4 @@
-package kek.plantain.ui
+package kek.plantain.ui.theme
 
 import androidx.compose.Composable
 import androidx.ui.foundation.isSystemInDarkTheme

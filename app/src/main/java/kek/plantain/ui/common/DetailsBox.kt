@@ -1,4 +1,4 @@
-package kek.plantain.home
+package kek.plantain.ui.common
 
 import androidx.compose.Composable
 import androidx.ui.core.ContentScale
