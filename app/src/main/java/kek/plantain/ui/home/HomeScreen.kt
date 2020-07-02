@@ -4,6 +4,7 @@ import androidx.compose.Composable
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.core.clip
+import androidx.ui.core.drawShadow
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
@@ -46,6 +47,7 @@ fun Body() {
             Image(
                 imageResource(id = R.drawable.plantain_card),
                 modifier = Modifier
+                    .drawShadow(4.dp, RoundedCornerShape(24.dp))
                     .gravity(Alignment.CenterHorizontally)
                     .preferredWidth(300.dp)
                     .preferredHeight(190.dp)
