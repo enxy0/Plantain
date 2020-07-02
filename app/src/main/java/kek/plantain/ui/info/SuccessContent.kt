@@ -35,11 +35,10 @@ fun SuccessContent(dump: Dump) {
             )
             DetailsBox(
                 asset = Icons.Outlined.Info,
-                title = "Списано:",
+                title = "Сумма:",
                 summary = "${dump.lastPayedCost() / 100},${dump.lastPayedCost() % 100}₽"
             )
         }
-        Spacer(modifier = Modifier.preferredHeight(20.dp))
         Text(text = "Поездки", style = MaterialTheme.typography.h6)
         Row(modifier = Modifier.padding(top = 8.dp)) {
             DetailsBox(
@@ -53,17 +52,16 @@ fun SuccessContent(dump: Dump) {
                 summary = dump.groundTravelCount().toString()
             )
         }
-        Spacer(modifier = Modifier.preferredHeight(20.dp))
-        Text(text = "Пополнение карты", style = MaterialTheme.typography.h6)
+        Text(text = "Последнее пополнение карты", style = MaterialTheme.typography.h6)
         Row(modifier = Modifier.padding(top = 8.dp)) {
             DetailsBox(
                 asset = Icons.Outlined.Info,
-                title = "Дата пополнения:",
+                title = "Дата:",
                 summary = dump.lastPaymentDate()
             )
             DetailsBox(
                 asset = Icons.Outlined.Info,
-                title = "Сумма пополнения:",
+                title = "Сумма:",
                 summary = "${dump.lastPaymentAmount() / 100},${dump.lastPaymentAmount() % 100}₽"
             )
         }
