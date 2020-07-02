@@ -1,25 +1,44 @@
 package kek.plantain.utils
 
-import java.util.*
+fun Array<ByteArray>.pretty() = this.joinToString(prefix = "(", postfix = "\n)") {
+    "\n${it.joinToString(
+        prefix = "(",
+        postfix = ")"
+    )}"
+}
 
-internal fun String.hexToInt() = this
-    .chunked(2)
-    .reversed()
-    .joinToString(separator = "")
-    .toInt(16)
+val hexArray = "0123456789ABCDEF".toCharArray()
 
-@OptIn(ExperimentalUnsignedTypes::class)
-internal fun ByteArray.toHex() =
-    this.joinToString(separator = "") { it.toUByte().toString(16) }
-        .toUpperCase(Locale.getDefault())
+fun ByteArray.toHex(): String {
+    val hexChars = CharArray(this.size * 2)
+    for (i in this.indices) {
+        val v: Int = this[i].toInt() and 0xFF
+        hexChars[i * 2] = hexArray[v ushr 4]
+        hexChars[i * 2 + 1] = hexArray[v and 0x0F]
+    }
+    return String(hexChars)
+}
 
-@OptIn(ExperimentalUnsignedTypes::class)
-internal fun UByteArray.extractNumber(radix: Int) = this
-    .joinToString("") { it.toString(radix) }
-    .toInt(radix)
+fun String.hexToBytes(): ByteArray {
+    val len = this.length
+    val data = ByteArray(len / 2)
+    var i = 0
+    while (i < len) {
+        data[i / 2] = ((Character.digit(this[i], 16) shl 4)
+            + Character.digit(this[i + 1], 16)).toByte()
+        i += 2
+    }
+    return data
+}
 
-@OptIn(ExperimentalUnsignedTypes::class)
-internal fun arrayTwoDimOfUBytes(sizeOuter: Int, sizeInner: Int): Array<UByteArray> =
-    Array(sizeOuter) { UByteArray(sizeInner) }
+fun ByteArray.extractValue(): Int {
+    var result = 0
+    for (i in this.indices) {
+        val shift = if (i == 0) 0 else 2 shl i + 1
+        result += this[i].toInt() and 0xFF shl shift
+    }
+    return result
+}
 
-fun<T> Array<T>.pretty() = this.joinToString { "\n$it" }
+fun Array<ByteArray>.slice(block: Int, from: Int, to: Int) =
+    this[block].copyOfRange(from, to + 1)
