@@ -57,7 +57,7 @@ fun SuccessContent(dump: Dump) {
             Text(text = "Последнее пополнение карты", style = MaterialTheme.typography.h6)
             Row(modifier = Modifier.padding(top = 8.dp)) {
                 DetailsBox(
-                    asset = Icons.Outlined.Info,
+                    asset = Icons.Outlined.DateRange,
                     title = "Дата:",
                     summary = dump.lastPaymentDate()
                 )
