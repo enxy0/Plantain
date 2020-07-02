@@ -40,8 +40,7 @@ fun HomeScreen() {
 fun Body() {
     Stack(modifier = Modifier.fillMaxSize()) {
         Column(
-            modifier = Modifier
-                .padding(16.dp)
+            modifier = Modifier.padding(16.dp)
         ) {
             Spacer(modifier = Modifier.preferredHeight(10.dp))
             Image(

@@ -4,6 +4,7 @@ import androidx.compose.Composable
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Box
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.VerticalScroller
 import androidx.ui.layout.*
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.icons.Icons
@@ -21,49 +22,51 @@ import kek.plantain.utils.getFakeDump
 
 @Composable
 fun SuccessContent(dump: Dump) {
-    Column(modifier = Modifier.padding(16.dp)) {
-        Box(children = { HintTextField(hint = "${dump.balance() / 100},${dump.balance() % 100}₽") })
-        Spacer(modifier = Modifier.preferredHeight(4.dp))
-        Text("Баланс карты", style = MaterialTheme.typography.body2)
-        Spacer(modifier = Modifier.preferredHeight(20.dp))
-        Text(text = "Последнее использование", style = MaterialTheme.typography.h6)
-        Row(modifier = Modifier.padding(top = 8.dp)) {
-            DetailsBox(
-                asset = Icons.Outlined.DateRange,
-                title = "Дата:",
-                summary = dump.lastUsedDate()
-            )
-            DetailsBox(
-                asset = Icons.Outlined.Info,
-                title = "Сумма:",
-                summary = "${dump.lastPayedCost() / 100},${dump.lastPayedCost() % 100}₽"
-            )
-        }
-        Text(text = "Поездки", style = MaterialTheme.typography.h6)
-        Row(modifier = Modifier.padding(top = 8.dp)) {
-            DetailsBox(
-                asset = vectorResource(id = R.drawable.ic_metro),
-                title = "Метро:",
-                summary = dump.subwayTravelCount().toString()
-            )
-            DetailsBox(
-                asset = vectorResource(id = R.drawable.ic_bus),
-                title = "Автобусы и др.:",
-                summary = dump.groundTravelCount().toString()
-            )
-        }
-        Text(text = "Последнее пополнение карты", style = MaterialTheme.typography.h6)
-        Row(modifier = Modifier.padding(top = 8.dp)) {
-            DetailsBox(
-                asset = Icons.Outlined.Info,
-                title = "Дата:",
-                summary = dump.lastPaymentDate()
-            )
-            DetailsBox(
-                asset = Icons.Outlined.Info,
-                title = "Сумма:",
-                summary = "${dump.lastPaymentAmount() / 100},${dump.lastPaymentAmount() % 100}₽"
-            )
+    VerticalScroller(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Box(children = { HintTextField(hint = "${dump.balance() / 100},${dump.balance() % 100}₽") })
+            Spacer(modifier = Modifier.preferredHeight(4.dp))
+            Text("Баланс карты", style = MaterialTheme.typography.body2)
+            Spacer(modifier = Modifier.preferredHeight(20.dp))
+            Text(text = "Последнее использование", style = MaterialTheme.typography.h6)
+            Row(modifier = Modifier.padding(top = 8.dp)) {
+                DetailsBox(
+                    asset = Icons.Outlined.DateRange,
+                    title = "Дата:",
+                    summary = dump.lastUsedDate()
+                )
+                DetailsBox(
+                    asset = Icons.Outlined.Info,
+                    title = "Сумма:",
+                    summary = "${dump.lastPayedCost() / 100},${dump.lastPayedCost() % 100}₽"
+                )
+            }
+            Text(text = "Поездки", style = MaterialTheme.typography.h6)
+            Row(modifier = Modifier.padding(top = 8.dp)) {
+                DetailsBox(
+                    asset = vectorResource(id = R.drawable.ic_metro),
+                    title = "Метро:",
+                    summary = dump.subwayTravelCount().toString()
+                )
+                DetailsBox(
+                    asset = vectorResource(id = R.drawable.ic_bus),
+                    title = "Автобусы и др.:",
+                    summary = dump.groundTravelCount().toString()
+                )
+            }
+            Text(text = "Последнее пополнение карты", style = MaterialTheme.typography.h6)
+            Row(modifier = Modifier.padding(top = 8.dp)) {
+                DetailsBox(
+                    asset = Icons.Outlined.Info,
+                    title = "Дата:",
+                    summary = dump.lastPaymentDate()
+                )
+                DetailsBox(
+                    asset = Icons.Outlined.Info,
+                    title = "Сумма:",
+                    summary = "${dump.lastPaymentAmount() / 100},${dump.lastPaymentAmount() % 100}₽"
+                )
+            }
         }
     }
 }

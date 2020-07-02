@@ -3,7 +3,6 @@ package kek.plantain.ui.info
 import androidx.compose.Composable
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
-import androidx.ui.foundation.Box
 import androidx.ui.foundation.Text
 import androidx.ui.layout.*
 import androidx.ui.material.MaterialTheme
@@ -15,24 +14,28 @@ import kek.plantain.ui.theme.PlantainTheme
 
 @Composable
 fun FailureContent() {
-    Stack(modifier = Modifier.fillMaxSize().padding(24.dp)) {
-        Box(Modifier.gravity(Alignment.Center)) {
-            Column {
-                Text(
-                    text = "\uD83D\uDE14",
-                    style = MaterialTheme.typography.h6,
-                    fontSize = 80.sp,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.gravity(Alignment.CenterHorizontally)
-                )
-                Spacer(modifier = Modifier.preferredHeight(6.dp))
-                Text(
-                    text = "Не удалось прочитать подорожник, попробуйте еще раз!",
-                    textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.body1
-                )
-            }
-        }
+    Column(modifier = Modifier.padding(16.dp).fillMaxSize()) {
+        Spacer(modifier = Modifier.preferredHeight(20.dp))
+        Text(
+            text = "\uD83D\uDE14",
+            style = MaterialTheme.typography.h6,
+            fontSize = 80.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.gravity(Alignment.CenterHorizontally)
+        )
+        Spacer(modifier = Modifier.preferredHeight(6.dp))
+        Text(
+            text = "Произошла ошибка",
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.h6,
+            modifier = Modifier.gravity(Alignment.CenterHorizontally)
+        )
+        Text(
+            text = "Не удалось прочитать карту, попробуйте еще раз!",
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.body1,
+            modifier = Modifier.gravity(Alignment.CenterHorizontally)
+        )
     }
 }
 

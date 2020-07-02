@@ -38,10 +38,10 @@ object CardReader {
         runUsing(mifareTag) {
             val dump = Dump(tagId.toHex())
             if (!authenticateSectorWithKeyA(4, KEY_4A))
-                throw WrongSectorKeyThrowable("Sector 4, Key 4A")
+                throw WrongSectorKeyThrowable()
             dump.readSector(mifareTag, 4)
             if (!authenticateSectorWithKeyA(5, KEY_5A))
-                throw WrongSectorKeyThrowable("Sector 5, Key 5A")
+                throw WrongSectorKeyThrowable()
             dump.readSector(mifareTag, 5)
             Log.d(TAG, "readNfcTag: dump=$dump")
             Log.d(TAG, "readNfcTag: dump.sector4=${dump.sector4.data.pretty()}")
