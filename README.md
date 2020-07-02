@@ -11,7 +11,7 @@ Plantain - это Android приложение для чтения информ�
 -   [x] Отображение ошибки при неверном ключе сектора
 -   [ ] Чтение карт из диалога (Открыть с помощью ...)
 
-## Библеотеки
+## Библиотеки
 *   [Jetpack Compose](https://developer.android.com/jetpack/compose) -- Android’s modern toolkit for building native UI.
 *   [Android Architecture Components: LiveData, ViewModel](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help design robust, testable, and maintainable apps.
 *   [Android KTX](https://developer.android.com/kotlin/ktx) - KTX extensions provide concise, idiomatic Kotlin to Jetpack, Android platform, and other APIs.
