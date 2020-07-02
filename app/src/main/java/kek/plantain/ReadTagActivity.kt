@@ -17,7 +17,8 @@ class ReadTagActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.readNfcTag(intent)
+        if (savedInstanceState == null)
+            viewModel.readNfcTag(intent)
         setContent {
             PlantainTheme {
                 InfoScreen(dumpLiveData = viewModel.dump)
