@@ -1,3 +1,3 @@
 package kek.plantain.utils
 
-class WrongSectorKeyThrowable() : Exception()
+class WrongSectorKeyException() : Exception()

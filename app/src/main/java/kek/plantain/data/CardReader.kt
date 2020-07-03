@@ -6,8 +6,9 @@ import android.nfc.tech.MifareClassic
 import android.util.Log
 import com.github.kittinunf.result.Result
 import kek.plantain.data.entity.Dump
-import kek.plantain.utils.WrongSectorKeyThrowable
+import kek.plantain.utils.WrongSectorKeyException
 import kek.plantain.utils.pretty
+import kek.plantain.utils.runUsing
 import kek.plantain.utils.toHex
 import java.io.IOException
 
@@ -34,14 +35,18 @@ object CardReader {
     fun readNfcTag(intent: Intent): Result<Dump, Exception> = Result.of {
         val tag: Tag = intent.getParcelableExtra(NFC_TAG)!!
         val tagId: ByteArray = intent.getByteArrayExtra(NFC_TAG_ID)!!
-        val mifareTag: MifareClassic = MifareClassic.get(tag)
+        val mifareTag: MifareClassic = try {
+            MifareClassic.get(tag)
+        } catch (e: Exception) {
+            MifareClassic.get(MifareClassicHelper.patchTag(tag))
+        }
         runUsing(mifareTag) {
             val dump = Dump(tagId.toHex())
             if (!authenticateSectorWithKeyA(4, KEY_4A))
-                throw WrongSectorKeyThrowable()
+                throw WrongSectorKeyException()
             dump.readSector(mifareTag, 4)
             if (!authenticateSectorWithKeyA(5, KEY_5A))
-                throw WrongSectorKeyThrowable()
+                throw WrongSectorKeyException()
             dump.readSector(mifareTag, 5)
             Log.d(TAG, "readNfcTag: dump=$dump")
             Log.d(TAG, "readNfcTag: dump.sector4=${dump.sector4.data.pretty()}")
@@ -49,14 +54,4 @@ object CardReader {
             dump
         }
     }
-}
-
-/**
- * Connects to the given [tag], invokes [fn] in context of [tag], closes [tag] and returns the result.
- */
-inline fun <T> runUsing(tag: MifareClassic, fn: MifareClassic.() -> T): T {
-    tag.connect()
-    val result = fn.invoke(tag)
-    tag.close()
-    return result
 }

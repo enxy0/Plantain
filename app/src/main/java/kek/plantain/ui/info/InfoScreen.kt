@@ -1,5 +1,6 @@
 package kek.plantain.ui.info
 
+import android.util.Log
 import androidx.compose.Composable
 import androidx.compose.getValue
 import androidx.lifecycle.LiveData
@@ -37,10 +38,12 @@ fun InfoScreen(dumpLiveData: LiveData<Result<Dump, Exception>>) {
 fun LiveDataComponent(dumpLiveData: LiveData<Result<Dump, Exception>>) {
     val dump: Result<Dump, Exception>? by dumpLiveData.observeAsState()
     if (dump != null) {
-        if (dump is Success)
+        if (dump is Success) {
             SuccessContent(dump = dump!!.get())
-        if (dump is Failure) {
-            FailureContent()
+        } else if (dump is Failure) {
+            val error = (dump as Failure).error
+            Log.i("StackTrace", "Error happened: ", error)
+            FailureContent(error)
         }
     } else {
 //        LoadingContent()

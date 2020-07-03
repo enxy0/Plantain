@@ -1,5 +1,7 @@
 package kek.plantain.utils
 
+import android.nfc.tech.MifareClassic
+
 fun Array<ByteArray>.pretty() = this.joinToString(prefix = "(", postfix = "\n)") {
     "\n${it.joinToString(
         prefix = "(",
@@ -42,3 +44,13 @@ fun ByteArray.extractValue(): Int {
 
 fun Array<ByteArray>.slice(block: Int, from: Int, to: Int) =
     this[block].copyOfRange(from, to + 1)
+
+/**
+ * Connects to the given [tag], invokes [fn] in context of [tag], closes [tag] and returns the result.
+ */
+inline fun <T> runUsing(tag: MifareClassic, fn: MifareClassic.() -> T): T {
+    tag.connect()
+    val result = fn.invoke(tag)
+    tag.close()
+    return result
+}

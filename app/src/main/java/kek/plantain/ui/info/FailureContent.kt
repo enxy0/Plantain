@@ -1,9 +1,15 @@
 package kek.plantain.ui.info
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import androidx.compose.Composable
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.ui.core.Alignment
+import androidx.ui.core.ContextAmbient
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.clickable
 import androidx.ui.layout.*
 import androidx.ui.material.MaterialTheme
 import androidx.ui.text.style.TextAlign
@@ -11,9 +17,12 @@ import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
 import kek.plantain.ui.theme.PlantainTheme
+import kek.plantain.utils.WrongSectorKeyException
+
 
 @Composable
-fun FailureContent() {
+fun FailureContent(exception: Exception) {
+    val context = ContextAmbient.current
     Column(modifier = Modifier.padding(16.dp).fillMaxSize()) {
         Spacer(modifier = Modifier.preferredHeight(20.dp))
         Text(
@@ -25,10 +34,13 @@ fun FailureContent() {
         )
         Spacer(modifier = Modifier.preferredHeight(6.dp))
         Text(
-            text = "Произошла ошибка",
+            text = "Произошла ошибка: $exception",
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.h6,
-            modifier = Modifier.gravity(Alignment.CenterHorizontally)
+            modifier = Modifier.gravity(Alignment.CenterHorizontally).clickable(onClick = {
+                val stackTrace = exception.stackTrace.joinToString(separator = "\n")
+                copyToClipBoard(context, "StackTrace", stackTrace)
+            })
         )
         Text(
             text = "Не удалось прочитать карту, попробуйте еще раз!",
@@ -43,6 +55,12 @@ fun FailureContent() {
 @Composable
 fun FailurePreview() {
     PlantainTheme {
-        FailureContent()
+        FailureContent(WrongSectorKeyException())
     }
+}
+
+fun copyToClipBoard(context: Context, label: String, text: String) {
+    val clipboard: ClipboardManager? = getSystemService(context, ClipboardManager::class.java)
+    val clip = ClipData.newPlainText(label, text)
+    clipboard?.setPrimaryClip(clip)
 }
