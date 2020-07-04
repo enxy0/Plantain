@@ -6,6 +6,7 @@ import androidx.ui.foundation.Box
 import androidx.ui.foundation.Text
 import androidx.ui.foundation.VerticalScroller
 import androidx.ui.layout.*
+import androidx.ui.material.Divider
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.icons.Icons
 import androidx.ui.material.icons.outlined.DateRange
@@ -31,40 +32,45 @@ fun SuccessContent(dump: Dump) {
             Text(text = "Последнее использование", style = MaterialTheme.typography.h6)
             Row(modifier = Modifier.padding(top = 8.dp)) {
                 DetailsBox(
-                    asset = Icons.Outlined.DateRange,
-                    title = "Дата:",
-                    summary = dump.lastUsedDate()
+                        asset = Icons.Outlined.Info,
+                        title = "Сумма:",
+                        summary = "${dump.lastPayedCost() / 100},${dump.lastPayedCost() % 100}₽"
                 )
+                Divider(modifier = Modifier.height(90.dp).width(1.dp))
                 DetailsBox(
-                    asset = Icons.Outlined.Info,
-                    title = "Сумма:",
-                    summary = "${dump.lastPayedCost() / 100},${dump.lastPayedCost() % 100}₽"
+                        asset = Icons.Outlined.DateRange,
+                        title = "Дата:",
+                        summary = dump.lastUsedDate()
                 )
             }
-            Text(text = "Поездки", style = MaterialTheme.typography.h6)
+            Spacer(modifier = Modifier.preferredHeight(8.dp))
+            Text(text = "Количество поездок", style = MaterialTheme.typography.h6)
             Row(modifier = Modifier.padding(top = 8.dp)) {
                 DetailsBox(
                     asset = vectorResource(id = R.drawable.ic_metro),
                     title = "Метро:",
                     summary = dump.subwayTravelCount().toString()
                 )
+                Divider(modifier = Modifier.height(90.dp).width(1.dp))
                 DetailsBox(
                     asset = vectorResource(id = R.drawable.ic_bus),
-                    title = "Автобусы и др.:",
+                    title = "Наземка:",
                     summary = dump.groundTravelCount().toString()
                 )
             }
-            Text(text = "Последнее пополнение карты", style = MaterialTheme.typography.h6)
+            Spacer(modifier = Modifier.preferredHeight(8.dp))
+            Text(text = "Последнее пополнение", style = MaterialTheme.typography.h6)
             Row(modifier = Modifier.padding(top = 8.dp)) {
                 DetailsBox(
-                    asset = Icons.Outlined.DateRange,
-                    title = "Дата:",
-                    summary = dump.lastPaymentDate()
+                        asset = Icons.Outlined.Info,
+                        title = "Сумма:",
+                        summary = "${dump.lastPaymentAmount() / 100},${dump.lastPaymentAmount() % 100}₽"
                 )
+                Divider(modifier = Modifier.height(90.dp).width(1.dp))
                 DetailsBox(
-                    asset = Icons.Outlined.Info,
-                    title = "Сумма:",
-                    summary = "${dump.lastPaymentAmount() / 100},${dump.lastPaymentAmount() % 100}₽"
+                        asset = Icons.Outlined.DateRange,
+                        title = "Дата:",
+                        summary = dump.lastPaymentDate()
                 )
             }
         }

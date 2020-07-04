@@ -9,7 +9,9 @@ import androidx.ui.foundation.Text
 import androidx.ui.graphics.ColorFilter
 import androidx.ui.graphics.vector.VectorAsset
 import androidx.ui.layout.RowScope.weight
+import androidx.ui.layout.Spacer
 import androidx.ui.layout.padding
+import androidx.ui.layout.preferredHeight
 import androidx.ui.layout.size
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.icons.Icons
@@ -31,6 +33,7 @@ fun DetailsBox(asset: VectorAsset, title: String, summary: String) {
             colorFilter = ColorFilter.tint(MaterialTheme.colors.onSurface)
         )
         Text(title, style = MaterialTheme.typography.body1, modifier = Modifier.padding(top = 5.dp))
+        Spacer(modifier = Modifier.preferredHeight(1.dp))
         Text(summary, style = MaterialTheme.typography.body2)
     }
 }
