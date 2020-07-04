@@ -78,6 +78,6 @@ data class Dump(val tagId: String) {
         val calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+3"))
         calendar[2010, 0, 1, 0, 0] = 0
         calendar.add(Calendar.MINUTE, timeDiff)
-        return SimpleDateFormat("dd.MM.YYYY HH:mm", Locale.getDefault()).format(calendar.time)
+        return SimpleDateFormat("dd.MM.YY (HH:mm)", Locale.getDefault()).format(calendar.time)
     }
 }
