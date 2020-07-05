@@ -20,9 +20,9 @@ import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 
 @Composable
-fun DetailsBox(asset: VectorAsset, title: String, summary: String) {
+fun DetailsBox(asset: VectorAsset, title: String, summary: String, modifier: Modifier = Modifier) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .padding(top = 8.dp, bottom = 8.dp, start = 16.dp, end = 16.dp)
             .weight(1f)
     ) {
