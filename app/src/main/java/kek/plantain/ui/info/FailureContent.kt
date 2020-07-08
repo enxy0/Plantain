@@ -16,7 +16,7 @@ import androidx.ui.text.style.TextAlign
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
-import kek.plantain.ui.theme.PlantainTheme
+import kek.plantain.ui.theme.ThemedPreview
 import kek.plantain.utils.WrongSectorKeyException
 
 
@@ -51,10 +51,18 @@ fun FailureContent(exception: Exception) {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(name = "Default Failure")
 @Composable
-fun FailurePreview() {
-    PlantainTheme {
+fun DefaultFailurePreview() {
+    ThemedPreview {
+        FailureContent(WrongSectorKeyException())
+    }
+}
+
+@Preview(name = "Dark Failure")
+@Composable
+fun DarkFailurePreview() {
+    ThemedPreview(darkTheme = true) {
         FailureContent(WrongSectorKeyException())
     }
 }

@@ -18,6 +18,7 @@ import androidx.ui.text.TextStyle
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
+import kek.plantain.ui.theme.ThemedPreview
 import kek.plantain.ui.theme.textFieldBackground
 
 @Composable
@@ -47,8 +48,18 @@ fun HintTextField(
     }
 }
 
-@Preview(name = "HintTextField", showBackground = true)
+@Preview(name = "Default Preview")
 @Composable
-fun HintTextFieldPreview() {
-    HintTextField(hint = "Enter something")
+fun DefaultHintTextFieldPreview() {
+    ThemedPreview {
+        HintTextField(hint = "Enter something")
+    }
+}
+
+@Preview(name = "Dark Preview")
+@Composable
+fun DarkHintTextFieldPreview() {
+    ThemedPreview(darkTheme = true) {
+        HintTextField(hint = "Enter something")
+    }
 }

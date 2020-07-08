@@ -17,7 +17,7 @@ import androidx.ui.text.style.TextAlign
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import kek.plantain.R
-import kek.plantain.ui.theme.PlantainTheme
+import kek.plantain.ui.theme.ThemedPreview
 
 @Composable
 fun HomeScreen() {
@@ -69,10 +69,18 @@ fun Body() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(name = "Default Home Screen")
 @Composable
-fun HomeScreenPreview() {
-    PlantainTheme {
+fun DefaultHomeScreenPreview() {
+    ThemedPreview {
+        HomeScreen()
+    }
+}
+
+@Preview(name = "Dark Home Screen")
+@Composable
+fun DarkHomeScreenPreview() {
+    ThemedPreview(darkTheme = true) {
         HomeScreen()
     }
 }

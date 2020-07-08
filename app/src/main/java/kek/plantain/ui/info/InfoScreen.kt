@@ -8,12 +8,9 @@ import androidx.ui.livedata.observeAsState
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Scaffold
 import androidx.ui.material.TopAppBar
-import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import com.github.kittinunf.result.Result
 import kek.plantain.data.entity.Dump
-import kek.plantain.ui.theme.PlantainTheme
-import kek.plantain.utils.getFakeLiveDataDump
 
 @Composable
 fun InfoScreen(dumpLiveData: LiveData<Result<Dump, Exception>>) {
@@ -38,12 +35,4 @@ fun LiveDataComponent(dumpLiveData: LiveData<Result<Dump, Exception>>) {
         success = { SuccessContent(dump = it) },
         failure = { FailureContent(exception = it) }
     )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun InfoScreenPreview() {
-    PlantainTheme {
-        InfoScreen(dumpLiveData = getFakeLiveDataDump())
-    }
 }

@@ -18,6 +18,7 @@ import androidx.ui.material.icons.Icons
 import androidx.ui.material.icons.outlined.Info
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
+import kek.plantain.ui.theme.ThemedPreview
 
 @Composable
 fun DetailsBox(asset: VectorAsset, title: String, summary: String, modifier: Modifier = Modifier) {
@@ -38,8 +39,18 @@ fun DetailsBox(asset: VectorAsset, title: String, summary: String, modifier: Mod
     }
 }
 
-@Preview("Tile", showBackground = true)
+@Preview("Default Preview", showBackground = true)
 @Composable
-fun TilePreview() {
-    DetailsBox(Icons.Outlined.Info, "Last used:", "29.06.20")
+fun DefaultDetailsBoxPreview() {
+    ThemedPreview(darkTheme = false) {
+        DetailsBox(Icons.Outlined.Info, "Last used:", "29.06.20")
+    }
+}
+
+@Preview("Dark Preview", showBackground = true)
+@Composable
+fun DarkDetailsBoxPreview() {
+    ThemedPreview(darkTheme = true) {
+        DetailsBox(Icons.Outlined.Info, "Last used:", "29.06.20")
+    }
 }
