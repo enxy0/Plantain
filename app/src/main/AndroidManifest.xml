@@ -3,7 +3,9 @@
     package="kek.plantain">
 
     <uses-permission android:name="android.permission.NFC" />
-    <uses-feature android:name="android.hardware.nfc" />
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -24,9 +26,10 @@
         <activity
             android:name=".ReadTagActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:theme="@style/Theme.Plantain.NoActionBar">
             <intent-filter>
-                <action android:name="android.nfc.action.TAG_DISCOVERED" />
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data
