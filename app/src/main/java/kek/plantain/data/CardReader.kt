@@ -6,8 +6,8 @@ import android.nfc.tech.MifareClassic
 import android.util.Log
 import com.github.kittinunf.result.Result
 import kek.plantain.data.entity.Dump
+import kek.plantain.data.entity.Sector
 import kek.plantain.utils.WrongSectorKeyException
-import kek.plantain.utils.pretty
 import kek.plantain.utils.runUsing
 import kek.plantain.utils.toHex
 import java.io.IOException
@@ -41,17 +41,15 @@ object CardReader {
             MifareClassic.get(MifareClassicHelper.patchTag(tag))
         }
         runUsing(mifareTag) {
-            val dump = Dump(tagId.toHex())
             if (!authenticateSectorWithKeyA(4, KEY_4A))
                 throw WrongSectorKeyException()
-            dump.readSector(mifareTag, 4)
+            val sector4 = Sector().apply { read(mifareTag, 4) }
             if (!authenticateSectorWithKeyA(5, KEY_5A))
                 throw WrongSectorKeyException()
-            dump.readSector(mifareTag, 5)
-            Log.d(TAG, "readNfcTag: dump=$dump")
-            Log.d(TAG, "readNfcTag: dump.sector4=${dump.sector4.data.pretty()}")
-            Log.d(TAG, "readNfcTag: dump.sector5=${dump.sector5.data.pretty()}")
-            dump
+            val sector5 = Sector().apply { read(mifareTag, 5) }
+            Dump(tagId.toHex(), sector4, sector5).also {
+                Log.d(TAG, "readNfcTag: dump=$it")
+            }
         }
     }
 }

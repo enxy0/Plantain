@@ -2,9 +2,7 @@ package kek.plantain.data.entity
 
 import android.nfc.tech.MifareClassic
 import java.io.IOException
-
 class Sector {
-    @OptIn(ExperimentalUnsignedTypes::class)
     var data: Array<ByteArray> = Array(SECTOR_SIZE) { ByteArray(BLOCK_SIZE) }
 
     companion object {
@@ -14,9 +12,18 @@ class Sector {
     }
 
     @Throws(IOException::class)
-    fun read(mifareTag: MifareClassic, block: Int) {
+    fun read(mifareTag: MifareClassic, sectorId: Int) {
+        val block = mifareTag.sectorToBlock(sectorId)
         for (i in 0 until SECTOR_SIZE) {
             data[i] = mifareTag.readBlock(block + i)
         }
     }
+
+    override fun toString(): String {
+        val indention = "    "
+        return data.joinToString(separator = "\n", prefix = "(\n", postfix = "\n)") {
+            indention + it.joinToString(prefix = "(", postfix = ")")
+        }
+    }
 }
+

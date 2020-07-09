@@ -24,7 +24,7 @@ import kek.plantain.utils.getFakeDump
 @Composable
 fun SuccessContent(dump: Dump) {
     VerticalScroller(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        HintTextField(hint = "${dump.balance() / 100},${dump.balance() % 100}₽")
+        HintTextField(hint = dump.balance.toString())
         Spacer(modifier = Modifier.preferredHeight(4.dp))
         Text("Баланс карты", style = MaterialTheme.typography.body2)
         Spacer(modifier = Modifier.preferredHeight(20.dp))
@@ -34,7 +34,7 @@ fun SuccessContent(dump: Dump) {
             DetailsBox(
                 asset = Icons.Outlined.Info,
                 title = "Сумма:",
-                summary = "${dump.lastPayedCost() / 100},${dump.lastPayedCost() % 100}₽",
+                summary = dump.lastPayedCost.toString(),
                 modifier = Modifier.gravity(Alignment.CenterVertically)
             )
             Divider(
@@ -46,7 +46,7 @@ fun SuccessContent(dump: Dump) {
             DetailsBox(
                 asset = Icons.Outlined.DateRange,
                 title = "Дата:",
-                summary = dump.lastUsedDate(),
+                summary = dump.lastUsedDate,
                 modifier = Modifier.gravity(Alignment.CenterVertically)
             )
         }
@@ -57,7 +57,7 @@ fun SuccessContent(dump: Dump) {
             DetailsBox(
                 asset = vectorResource(id = R.drawable.ic_metro),
                 title = "Метро:",
-                summary = dump.subwayTravelCount().toString(),
+                summary = dump.subwayTravelCount.toString(),
                 modifier = Modifier.gravity(Alignment.CenterVertically)
             )
             Divider(
@@ -69,7 +69,7 @@ fun SuccessContent(dump: Dump) {
             DetailsBox(
                 asset = vectorResource(id = R.drawable.ic_bus),
                 title = "Наземка:",
-                summary = dump.groundTravelCount().toString(),
+                summary = dump.groundTravelCount.toString(),
                 modifier = Modifier.gravity(Alignment.CenterVertically)
             )
         }
@@ -80,7 +80,7 @@ fun SuccessContent(dump: Dump) {
             DetailsBox(
                 asset = Icons.Outlined.Info,
                 title = "Сумма:",
-                summary = "${dump.lastPaymentAmount() / 100},${dump.lastPaymentAmount() % 100}₽",
+                summary = dump.lastPaymentAmount.toString(),
                 modifier = Modifier.gravity(Alignment.CenterVertically)
             )
             Divider(
@@ -92,7 +92,7 @@ fun SuccessContent(dump: Dump) {
             DetailsBox(
                 asset = Icons.Outlined.DateRange,
                 title = "Дата:",
-                summary = dump.lastPaymentDate(),
+                summary = dump.lastPaymentDate,
                 modifier = Modifier.gravity(Alignment.CenterVertically)
             )
         }

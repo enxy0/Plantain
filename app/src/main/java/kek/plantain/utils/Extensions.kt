@@ -1,13 +1,7 @@
 package kek.plantain.utils
 
 import android.nfc.tech.MifareClassic
-
-fun Array<ByteArray>.pretty() = this.joinToString(prefix = "(", postfix = "\n)") {
-    "\n${it.joinToString(
-        prefix = "(",
-        postfix = ")"
-    )}"
-}
+import kek.plantain.data.entity.Rubles
 
 val hexArray = "0123456789ABCDEF".toCharArray()
 
@@ -32,6 +26,8 @@ fun String.hexToBytes(): ByteArray {
     }
     return data
 }
+
+fun Int.toRubles() = Rubles(this)
 
 fun ByteArray.extractValue(): Int {
     var result = 0
