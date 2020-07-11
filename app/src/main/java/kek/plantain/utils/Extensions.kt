@@ -2,6 +2,7 @@ package kek.plantain.utils
 
 import android.nfc.tech.MifareClassic
 import kek.plantain.data.entity.Rubles
+import java.nio.ByteBuffer
 
 val hexArray = "0123456789ABCDEF".toCharArray()
 
@@ -29,13 +30,18 @@ fun String.hexToBytes(): ByteArray {
 
 fun Int.toRubles() = Rubles(this)
 
-fun ByteArray.extractValue(): Int {
-    var result = 0
-    for (i in this.indices) {
-        val shift = if (i == 0) 0 else 2 shl i + 1
-        result += this[i].toInt() and 0xFF shl shift
+fun ByteArray.extractValue(): Int = this.foldIndexed(0) { index, acc, byte ->
+    val shift = if (index == 0) 0 else 2 shl index + 1
+    acc + ((byte.toInt() and 0xFF) shl shift)
+}
+
+fun Int.writeValue(to: ByteArray) {
+    val bytes = ByteBuffer.allocate(4)
+        .putInt(Integer.reverseBytes(this))
+        .array()
+    for (i in bytes.indices) {
+        to[i] = bytes[i]
     }
-    return result
 }
 
 fun Array<ByteArray>.slice(block: Int, from: Int, to: Int) =
