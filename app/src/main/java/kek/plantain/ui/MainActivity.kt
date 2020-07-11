@@ -1,4 +1,4 @@
-package kek.plantain
+package kek.plantain.ui
 
 import android.app.PendingIntent
 import android.content.Intent

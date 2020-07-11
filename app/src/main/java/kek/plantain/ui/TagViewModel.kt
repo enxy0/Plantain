@@ -1,4 +1,4 @@
-package kek.plantain
+package kek.plantain.ui
 
 import android.content.Intent
 import androidx.lifecycle.LiveData

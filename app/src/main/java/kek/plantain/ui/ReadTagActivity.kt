@@ -1,4 +1,4 @@
-package kek.plantain
+package kek.plantain.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
