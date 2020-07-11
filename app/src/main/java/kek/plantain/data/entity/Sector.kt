@@ -1,6 +1,7 @@
 package kek.plantain.data.entity
 
 import android.nfc.tech.MifareClassic
+import android.nfc.tech.MifareClassic.BLOCK_SIZE
 import java.io.IOException
 class Sector {
     var data: Array<ByteArray> = Array(SECTOR_SIZE) { ByteArray(BLOCK_SIZE) }
@@ -8,7 +9,6 @@ class Sector {
     companion object {
         private const val TAG = "Sector"
         const val SECTOR_SIZE = 4
-        const val BLOCK_SIZE = MifareClassic.BLOCK_SIZE
     }
 
     @Throws(IOException::class)
@@ -16,6 +16,14 @@ class Sector {
         val block = mifareTag.sectorToBlock(sectorId)
         for (i in 0 until SECTOR_SIZE) {
             data[i] = mifareTag.readBlock(block + i)
+        }
+    }
+
+    @Throws(IOException::class)
+    fun write(mifareTag: MifareClassic, sectorId: Int) {
+        val block = mifareTag.sectorToBlock(sectorId)
+        for (i in 0 until SECTOR_SIZE - 1) {
+            mifareTag.writeBlock(block + i, data[i])
         }
     }
 

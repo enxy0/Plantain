@@ -3,6 +3,8 @@ package kek.plantain.utils
 import android.nfc.tech.MifareClassic
 import kek.plantain.data.entity.Rubles
 import java.nio.ByteBuffer
+import java.text.SimpleDateFormat
+import java.util.*
 
 val hexArray = "0123456789ABCDEF".toCharArray()
 
@@ -35,6 +37,14 @@ fun ByteArray.extractValue(): Int = this.foldIndexed(0) { index, acc, byte ->
     acc + ((byte.toInt() and 0xFF) shl shift)
 }
 
+fun ByteArray.extractDate(): String {
+    val timeDiff = this.extractValue()
+    val calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+3"))
+    calendar[2010, 0, 1, 0, 0] = 0
+    calendar.add(Calendar.MINUTE, timeDiff)
+    return SimpleDateFormat("dd.MM.yy (HH:mm)", Locale.getDefault()).format(calendar.time)
+}
+
 fun Int.writeValue(to: ByteArray) {
     val bytes = ByteBuffer.allocate(4)
         .putInt(Integer.reverseBytes(this))
@@ -44,8 +54,8 @@ fun Int.writeValue(to: ByteArray) {
     }
 }
 
-fun Array<ByteArray>.slice(block: Int, from: Int, to: Int) =
-    this[block].copyOfRange(from, to + 1)
+fun Array<ByteArray>.slice(block: Int, range: IntRange) =
+    this[block].copyOfRange(range.first, range.last)
 
 /**
  * Connects to the given [tag], invokes [fn] in context of [tag], closes [tag] and returns the result.
