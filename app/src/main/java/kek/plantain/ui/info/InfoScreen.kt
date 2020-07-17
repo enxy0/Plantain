@@ -18,7 +18,7 @@ import kek.plantain.R
 import kek.plantain.ui.NavigationViewModel
 import kek.plantain.ui.TagViewModel
 import kek.plantain.ui.edit.EditAlertDialog
-import kek.plantain.utils.toast
+import kek.plantain.utils.extensions.toast
 
 @Composable fun InfoScreen(
     navigation: NavigationViewModel,

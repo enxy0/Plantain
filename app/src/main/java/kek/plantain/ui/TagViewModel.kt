@@ -9,9 +9,8 @@ import com.github.kittinunf.result.Result
 import com.github.kittinunf.result.success
 import kek.plantain.data.CardReader
 import kek.plantain.data.entity.Dump
-import kek.plantain.utils.update
+import kek.plantain.utils.extensions.update
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.invoke
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 

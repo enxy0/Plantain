@@ -8,9 +8,8 @@ import com.github.kittinunf.result.Result
 import kek.plantain.data.entity.Dump
 import kek.plantain.data.entity.Sector
 import kek.plantain.utils.WrongSectorKeyException
-import kek.plantain.utils.runUsing
-import kek.plantain.utils.toHex
-import java.io.IOException
+import kek.plantain.utils.extensions.toHex
+import kek.plantain.utils.extensions.using
 
 object CardReader {
     private const val TAG = "CardReader"
@@ -38,7 +37,7 @@ object CardReader {
         } catch (e: Exception) {
             MifareClassic.get(MifareClassicHelper.patchTag(tag))
         }
-        runUsing(mifareTag) {
+        mifareTag.using {
             if (!authenticateSectorWithKeyA(4, KEY_4A))
                 throw WrongSectorKeyException()
             val sector4 = Sector().apply { read(mifareTag, 4) }
@@ -58,7 +57,7 @@ object CardReader {
         } catch (e: Exception) {
             MifareClassic.get(MifareClassicHelper.patchTag(tag))
         }
-        runUsing(mifareTag) {
+        mifareTag.using {
             dump.updateEqualBlocks()
             if (!authenticateSectorWithKeyB(4, KEY_4B))
                 throw WrongSectorKeyException()

@@ -2,7 +2,10 @@ package kek.plantain.data.delegate
 
 import kek.plantain.data.entity.Count
 import kek.plantain.data.entity.Sector
-import kek.plantain.utils.*
+import kek.plantain.utils.extensions.extractValue
+import kek.plantain.utils.extensions.writeValue
+import kek.plantain.utils.slice
+import kek.plantain.utils.toCount
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
