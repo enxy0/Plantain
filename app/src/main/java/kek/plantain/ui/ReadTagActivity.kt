@@ -8,21 +8,21 @@ import kek.plantain.ui.info.InfoScreen
 import kek.plantain.ui.theme.PlantainTheme
 
 class ReadTagActivity : AppCompatActivity() {
-
-    companion object {
-        private const val TAG = "ReadTagActivity"
-    }
-
-    private val viewModel: TagViewModel by viewModels()
+    private val tagViewModel: TagViewModel by viewModels()
+    private val navigationViewModel: NavigationViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
-            viewModel.readNfcTag(intent)
+            tagViewModel.readNfcTag(intent)
         }
         setContent {
             PlantainTheme {
-                InfoScreen(dumpLiveData = viewModel.dump)
+                InfoScreen(
+                    navigation = navigationViewModel,
+                    tagViewModel = tagViewModel,
+                    intent = intent
+                )
             }
         }
     }

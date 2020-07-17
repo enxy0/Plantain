@@ -1,10 +1,11 @@
 package kek.plantain.data.entity
 
-class Rubles(val raw: Int) {
-    val rubles: Int = raw / 100
-    val pennies: Int = raw % 100
+data class Rubles(val raw: Int) {
+    private val rubles: Int = (raw / 100)
 
-    override fun toString(): String {
-        return "$rubles,$pennies₽"
+    companion object {
+        fun isValid(input: String): Boolean = input.matches("^\\d+$".toRegex())
     }
+
+    override fun toString(): String = rubles.toString()
 }

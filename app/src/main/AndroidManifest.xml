@@ -26,6 +26,7 @@
         <activity
             android:name=".ui.ReadTagActivity"
             android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize"
             android:launchMode="singleTop"
             android:theme="@style/Theme.Plantain.NoActionBar">
             <intent-filter>

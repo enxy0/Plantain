@@ -6,6 +6,8 @@ import androidx.ui.core.Modifier
 import androidx.ui.foundation.Box
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.clickable
+import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.ColorFilter
 import androidx.ui.graphics.vector.VectorAsset
 import androidx.ui.layout.RowScope.weight
@@ -19,13 +21,20 @@ import androidx.ui.material.icons.outlined.Info
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import kek.plantain.ui.theme.ThemedPreview
+import kek.plantain.ui.theme.onSurfaceTwice
 
-@Composable
-fun DetailsBox(asset: VectorAsset, title: String, summary: String, modifier: Modifier = Modifier) {
+@Composable fun DetailsBox(
+    asset: VectorAsset,
+    title: String,
+    summary: String,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {}
+) {
     Box(
         modifier = modifier
             .padding(top = 8.dp, bottom = 8.dp, start = 16.dp, end = 16.dp)
             .weight(1f)
+            .clickable(onClick = onClick)
     ) {
         Image(
             asset = asset,

@@ -30,7 +30,6 @@ object CardReader {
     private const val NFC_TAG = "android.nfc.extra.TAG"
     private const val NFC_TAG_ID = "android.nfc.extra.ID"
 
-    @Throws(IOException::class)
     fun readNfcTag(intent: Intent): Result<Dump, Exception> = Result.of {
         val tag: Tag = intent.getParcelableExtra(NFC_TAG)!!
         val tagId: ByteArray = intent.getByteArrayExtra(NFC_TAG_ID)!!
@@ -60,12 +59,13 @@ object CardReader {
             MifareClassic.get(MifareClassicHelper.patchTag(tag))
         }
         runUsing(mifareTag) {
-            if (!authenticateSectorWithKeyA(4, KEY_4B))
+            dump.updateEqualBlocks()
+            if (!authenticateSectorWithKeyB(4, KEY_4B))
                 throw WrongSectorKeyException()
-            dump.sector4.write(mifareTag, 4)
-            if (!authenticateSectorWithKeyA(5, KEY_5B))
+            dump.sector4.write(this, 4)
+            if (!authenticateSectorWithKeyB(5, KEY_5B))
                 throw WrongSectorKeyException()
-            dump.sector5.write(mifareTag, 5)
+            dump.sector5.write(this, 5)
             true
         }
     }

@@ -19,8 +19,7 @@ import androidx.ui.unit.dp
 import kek.plantain.R
 import kek.plantain.ui.theme.ThemedPreview
 
-@Composable
-fun HomeScreen() {
+@Composable fun HomeScreen() {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -36,8 +35,7 @@ fun HomeScreen() {
 }
 
 
-@Composable
-fun Body() {
+@Composable fun Body() {
     Stack(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier.padding(16.dp)

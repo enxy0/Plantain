@@ -22,8 +22,7 @@ import kek.plantain.utils.WrongSectorKeyException
 import java.io.IOException
 
 
-@Composable
-fun FailureContent(exception: Exception) {
+@Composable fun FailureContent(exception: Exception) {
     val errorText = when (exception) {
         is IOException -> "Не удалось прочитать карту, возможно вы убрали ее слишком рано!"
         is WrongSectorKeyException -> "Не удалось прочитать карту, возможно это не Подорожник!"

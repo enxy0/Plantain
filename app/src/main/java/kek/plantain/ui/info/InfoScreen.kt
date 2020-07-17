@@ -1,19 +1,30 @@
 package kek.plantain.ui.info
 
+import android.content.Intent
 import androidx.compose.Composable
 import androidx.compose.getValue
-import androidx.lifecycle.LiveData
+import androidx.ui.core.Alignment
+import androidx.ui.core.ContextAmbient
+import androidx.ui.core.Modifier
+import androidx.ui.foundation.Icon
 import androidx.ui.foundation.Text
+import androidx.ui.layout.RowScope.gravity
+import androidx.ui.layout.Stack
 import androidx.ui.livedata.observeAsState
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.Scaffold
-import androidx.ui.material.TopAppBar
+import androidx.ui.material.*
+import androidx.ui.res.vectorResource
 import androidx.ui.unit.dp
-import com.github.kittinunf.result.Result
-import kek.plantain.data.entity.Dump
+import kek.plantain.R
+import kek.plantain.ui.NavigationViewModel
+import kek.plantain.ui.TagViewModel
+import kek.plantain.ui.edit.EditAlertDialog
+import kek.plantain.utils.toast
 
-@Composable
-fun InfoScreen(dumpLiveData: LiveData<Result<Dump, Exception>>) {
+@Composable fun InfoScreen(
+    navigation: NavigationViewModel,
+    tagViewModel: TagViewModel,
+    intent: Intent
+) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -23,16 +34,43 @@ fun InfoScreen(dumpLiveData: LiveData<Result<Dump, Exception>>) {
             )
         },
         bodyContent = {
-            LiveDataComponent(dumpLiveData)
+            LiveDataComponent(
+                navigation = navigation,
+                tagViewModel = tagViewModel
+            )
+        },
+        floatingActionButton = {
+            ExtendedFloatingActionButton(
+                text = { Text("Записать") },
+                onClick = { tagViewModel.writeNfcTag(intent) },
+                icon = { Icon(asset = vectorResource(id = R.drawable.ic_write)) })
         }
     )
 }
 
-@Composable
-fun LiveDataComponent(dumpLiveData: LiveData<Result<Dump, Exception>>) {
-    val dump: Result<Dump, Exception>? by dumpLiveData.observeAsState()
-    dump?.fold(
-        success = { SuccessContent(dump = it) },
-        failure = { FailureContent(exception = it) }
-    )
+@Composable fun LiveDataComponent(
+    navigation: NavigationViewModel,
+    tagViewModel: TagViewModel
+) {
+    Stack {
+        val dump by tagViewModel.dump.observeAsState()
+        val isWriteSuccessful by tagViewModel.isWriteSuccessful.observeAsState()
+        val context = ContextAmbient.current
+        dump?.fold(
+            success = {
+                SuccessContent(dump = it, navigateTo = navigation::navigateTo)
+                EditAlertDialog(
+                    onDumpChange = tagViewModel::overwriteDumpValue,
+                    navigation = navigation
+                )
+            },
+            failure = {
+                FailureContent(exception = it)
+            }
+        )
+        isWriteSuccessful?.fold(
+            success = { toast(context = context, text = "Запись прошла успешно!") },
+            failure = { toast(context = context, text = "При записи произошла ошибка. Попробуйте еще раз!") }
+        )
+    }
 }
