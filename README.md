@@ -4,7 +4,7 @@ Plantain - это Android приложение для чтения информ�
 Использует алгоритмы и наработки из оригинального приложения [Plantain-Reader](https://github.com/krikunts/plantainreader).
 
 ## Скриншоты
-<img  src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/home.jpg?raw=true"  width=25% /> <img  src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/info.jpg?raw=true"  width=25% />
+<img  src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/home.jpg?raw=true"  width=25% /> <img  src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/info.jpg?raw=true"  width=25% /> <img  src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/edit.jpg?raw=true"  width=25% />
 
 ## Планы
 -   [x] Чтение информации с Подорожника
