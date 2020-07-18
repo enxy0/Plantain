@@ -6,14 +6,10 @@ import android.nfc.tech.MifareClassic
 import android.util.Log
 import com.github.kittinunf.result.Result
 import kek.plantain.data.entity.Dump
-import kek.plantain.data.entity.Sector
 import kek.plantain.utils.WrongSectorKeyException
-import kek.plantain.utils.extensions.toHex
-import kek.plantain.utils.extensions.using
+import kek.plantain.utils.extensions.*
 
 object CardReader {
-    private const val TAG = "CardReader"
-
     // SECTOR: 4, KEY: A
     private val KEY_4A = byteArrayOf(0, 0, 0, 0, 0, 0)
 
@@ -32,39 +28,35 @@ object CardReader {
     fun readNfcTag(intent: Intent): Result<Dump, Exception> = Result.of {
         val tag: Tag = intent.getParcelableExtra(NFC_TAG)!!
         val tagId: ByteArray = intent.getByteArrayExtra(NFC_TAG_ID)!!
-        val mifareTag: MifareClassic = try {
-            MifareClassic.get(tag)
-        } catch (e: Exception) {
-            MifareClassic.get(MifareClassicHelper.patchTag(tag))
+        val mifareTag: MifareClassic = tag.getMifareTagOr {
+            MifareClassicHelper.patchTag(it)
         }
         mifareTag.using {
             if (!authenticateSectorWithKeyA(4, KEY_4A))
                 throw WrongSectorKeyException()
-            val sector4 = Sector().apply { read(mifareTag, 4) }
+            val sector4 = getSector(4)
             if (!authenticateSectorWithKeyA(5, KEY_5A))
                 throw WrongSectorKeyException()
-            val sector5 = Sector().apply { read(mifareTag, 5) }
+            val sector5 = getSector(5)
             Dump(tagId.toHex(), sector4, sector5).also {
-                Log.d(TAG, "readNfcTag: dump=$it")
+                Log.d("CardReader", "readNfcTag: dump=$it")
             }
         }
     }
 
     fun writeNfcTag(intent: Intent, dump: Dump): Result<Boolean, Exception> = Result.of {
         val tag: Tag = intent.getParcelableExtra(NFC_TAG)!!
-        val mifareTag: MifareClassic = try {
-            MifareClassic.get(tag)
-        } catch (e: Exception) {
-            MifareClassic.get(MifareClassicHelper.patchTag(tag))
+        val mifareTag: MifareClassic = tag.getMifareTagOr {
+            MifareClassicHelper.patchTag(it)
         }
+        dump.updateEqualBlocks()
         mifareTag.using {
-            dump.updateEqualBlocks()
             if (!authenticateSectorWithKeyB(4, KEY_4B))
                 throw WrongSectorKeyException()
-            dump.sector4.write(this, 4)
+            writeFrom(dump.sector4)
             if (!authenticateSectorWithKeyB(5, KEY_5B))
                 throw WrongSectorKeyException()
-            dump.sector5.write(this, 5)
+            writeFrom(dump.sector5)
             true
         }
     }
