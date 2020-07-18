@@ -6,9 +6,6 @@ import kek.plantain.data.delegate.DateExtract
 import kek.plantain.data.delegate.RublesExtract
 import kek.plantain.ui.EditScreenType
 import kek.plantain.ui.EditScreenType.*
-import kek.plantain.utils.toCountOr
-import kek.plantain.utils.toDateOr
-import kek.plantain.utils.toRublesOr
 
 data class Dump(val tagId: String, val sector4: Sector, val sector5: Sector) {
     /**

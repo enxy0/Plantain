@@ -7,13 +7,13 @@ import androidx.ui.material.icons.Icons
 import androidx.ui.material.icons.outlined.DateRange
 import androidx.ui.tooling.preview.Preview
 import kek.plantain.data.entity.Date
+import kek.plantain.data.entity.toDate
 import kek.plantain.ui.EditScreen
 import kek.plantain.ui.EditScreen.DateScreen
 import kek.plantain.ui.EditScreenType
 import kek.plantain.ui.EditScreenType.LAST_USED_DATE
 import kek.plantain.ui.common.DetailsBox
 import kek.plantain.ui.theme.ThemedPreview
-import kek.plantain.utils.toDate
 
 @Composable fun DateBox(
     asset: VectorAsset = Icons.Outlined.DateRange,

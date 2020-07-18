@@ -2,10 +2,10 @@ package kek.plantain.data.delegate
 
 import kek.plantain.data.entity.Rubles
 import kek.plantain.data.entity.Sector
+import kek.plantain.data.entity.toRubles
 import kek.plantain.utils.extensions.extractValue
+import kek.plantain.utils.extensions.slice
 import kek.plantain.utils.extensions.writeValue
-import kek.plantain.utils.slice
-import kek.plantain.utils.toRubles
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 

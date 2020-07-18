@@ -8,3 +8,9 @@ data class Count (val raw: Int) {
 
     override fun toString(): String = raw.toString()
 }
+
+fun Int.toCount() = Count(this)
+
+fun String.toCount() = Count(this.toInt())
+
+fun String.toCountOr(default: Count) = if (Count.isValid(this)) toCount() else default

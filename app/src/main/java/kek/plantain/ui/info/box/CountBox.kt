@@ -7,13 +7,13 @@ import androidx.ui.res.vectorResource
 import androidx.ui.tooling.preview.Preview
 import kek.plantain.R
 import kek.plantain.data.entity.Count
+import kek.plantain.data.entity.toCount
 import kek.plantain.ui.EditScreen
 import kek.plantain.ui.EditScreen.CountScreen
 import kek.plantain.ui.EditScreenType
 import kek.plantain.ui.EditScreenType.GROUND_TRAVEL_COUNT
 import kek.plantain.ui.common.DetailsBox
 import kek.plantain.ui.theme.ThemedPreview
-import kek.plantain.utils.toCount
 
 @Composable fun CountBox(
     asset: VectorAsset,

@@ -2,10 +2,10 @@ package kek.plantain.data.delegate
 
 import kek.plantain.data.entity.Date
 import kek.plantain.data.entity.Sector
+import kek.plantain.data.entity.toDate
 import kek.plantain.utils.extensions.extractValue
+import kek.plantain.utils.extensions.slice
 import kek.plantain.utils.extensions.writeValue
-import kek.plantain.utils.slice
-import kek.plantain.utils.toDate
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 

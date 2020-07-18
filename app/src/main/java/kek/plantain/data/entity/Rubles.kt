@@ -9,3 +9,12 @@ data class Rubles(val raw: Int) {
 
     override fun toString(): String = rubles.toString()
 }
+
+private fun String.toRubles(): Rubles {
+    return (toInt() * 100).toRubles()
+}
+
+fun String.toRublesOr(default: Rubles): Rubles =
+    if (Rubles.isValid(this)) toRubles() else default
+
+fun Int.toRubles() = Rubles(this)

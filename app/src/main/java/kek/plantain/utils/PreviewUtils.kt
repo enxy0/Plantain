@@ -6,6 +6,7 @@ import androidx.lifecycle.liveData
 import com.github.kittinunf.result.Result
 import kek.plantain.data.entity.Dump
 import kek.plantain.data.entity.Sector
+import kek.plantain.data.entity.toRubles
 import kek.plantain.ui.EditScreen.MoneyScreen
 import kek.plantain.ui.EditScreenType.BALANCE
 import kek.plantain.ui.NavigationViewModel

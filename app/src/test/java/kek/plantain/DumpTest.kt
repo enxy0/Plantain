@@ -1,9 +1,9 @@
 package kek.plantain
 
+import kek.plantain.data.entity.toCount
+import kek.plantain.data.entity.toDate
+import kek.plantain.data.entity.toRubles
 import kek.plantain.utils.getFakeDump
-import kek.plantain.utils.toCount
-import kek.plantain.utils.toDate
-import kek.plantain.utils.toRubles
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
