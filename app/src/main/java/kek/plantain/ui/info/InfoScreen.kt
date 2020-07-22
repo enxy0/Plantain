@@ -43,7 +43,9 @@ import kek.plantain.utils.extensions.toast
             ExtendedFloatingActionButton(
                 text = { Text("Записать") },
                 onClick = { tagViewModel.writeNfcTag(intent) },
-                icon = { Icon(asset = vectorResource(id = R.drawable.ic_write)) })
+                backgroundColor = MaterialTheme.colors.primary,
+                icon = { Icon(asset = vectorResource(id = R.drawable.ic_write)) }
+            )
         }
     )
 }
