@@ -11,8 +11,8 @@ android {
         applicationId "kek.plantain"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 5
-        versionName "1.4"
+        versionCode 6
+        versionName "1.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
