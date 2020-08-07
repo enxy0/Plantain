@@ -5,6 +5,8 @@ Plantain - это Android приложение для чтения и запис
 
 Помни, товарищ! Записывание данных на карту незаконно и к тому же не практично - карта блокируется в течение 4-5 дней (а в метро вообще после первого использования).
 
+:arrow_down: Скачать: [Plantain v1.5](https://github.com/enxy0/Plantain/releases/tag/v1.5). Другие версии доступны во вкладке [Releases](https://github.com/enxy0/Plantain/releases).
+
 ## Скриншоты
 <img  src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/home.jpg?raw=true"  width=25% /> <img  src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/info.jpg?raw=true"  width=25% /> <img  src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/edit.jpg?raw=true"  width=25% />
 
@@ -21,8 +23,7 @@ Plantain - это Android приложение для чтения и запис
 -   [Android Architecture Components: LiveData, ViewModel](https://developer.android.com/topic/libraries/architecture) — Collection of libraries that help design robust, testable, and maintainable apps.
 -   [Android KTX](https://developer.android.com/kotlin/ktx) — KTX extensions provide concise, idiomatic Kotlin to Jetpack, Android platform, and other APIs.
 
-## Сборка и запуск
-Готовый APK файл можно найти во вкладке [Releases](https://github.com/enxy0/Plantain/releases). Последняя версия: [v1.5](https://github.com/enxy0/Plantain/releases/tag/v1.5)
+## Сборка проекта
 
 Для сборки требуется [Android Studio 4.2](https://developer.android.com/studio/preview/index.html) и выше (для поддержки Jetpack Compose).
 -   В Android Studio `New` → `Project from Version Control...` → `CLONE`.
