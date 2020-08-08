@@ -4,7 +4,7 @@ data class Rubles(val raw: Int) {
     private val rubles: Int = (raw / 100)
 
     companion object {
-        fun isValid(input: String): Boolean = input.matches("^\\d+$".toRegex())
+        fun isValid(input: String): Boolean = input.matches("^\\d{1,6}$".toRegex())
     }
 
     override fun toString(): String = rubles.toString()
