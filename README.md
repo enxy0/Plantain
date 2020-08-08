@@ -5,7 +5,7 @@ Plantain - это Android приложение для чтения и запис
 
 Помни, товарищ! Записывание данных на карту незаконно и к тому же не практично - карта блокируется в течение 4-5 дней (а в метро вообще после первого использования).
 
-:arrow_down: Скачать: [Plantain v1.5](https://github.com/enxy0/Plantain/releases/tag/v1.5). Другие версии доступны во вкладке [Releases](https://github.com/enxy0/Plantain/releases).
+:arrow_down: Скачать: [Plantain v1.6](https://github.com/enxy0/Plantain/releases/tag/v1.6). Другие версии доступны во вкладке [Releases](https://github.com/enxy0/Plantain/releases).
 
 ## Скриншоты
 <img  src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/home.jpg?raw=true"  width=25% /> <img  src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/info.jpg?raw=true"  width=25% /> <img  src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/edit.jpg?raw=true"  width=25% />
