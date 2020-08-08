@@ -3,6 +3,7 @@ package kek.plantain.ui.info
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.nfc.TagLostException
 import android.util.Log
 import androidx.compose.Composable
 import androidx.core.content.ContextCompat.getSystemService
@@ -24,7 +25,8 @@ import java.io.IOException
 
 @Composable fun FailureContent(exception: Exception) {
     val errorText = when (exception) {
-        is IOException -> "Не удалось прочитать карту, возможно вы убрали ее слишком рано!"
+        is TagLostException -> "Не удалось прочитать карту, возможно вы убрали ее слишком рано!"
+        is IOException -> "Во время чтении/записи карты произошла ошибка!"
         is WrongSectorKeyException -> "Не удалось прочитать карту, возможно это не Подорожник!"
         else -> "Не удалось прочитать карту, попробуйте еще раз!"
     }
