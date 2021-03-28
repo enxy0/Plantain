@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="surfaceColor" format="color" />
+    <attr name="dividerColor" format="color" />
+
+    <declare-styleable name="AppToolbar">
+        <attr name="at_title" format="string" />
+        <attr name="at_startIcon" format="reference" />
+        <attr name="at_endIcon" format="reference" />
+    </declare-styleable>
+</resources>

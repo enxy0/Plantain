@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_smallest">8dp</dimen>
+    <dimen name="margin_small">12dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_big">20dp</dimen>
+    <dimen name="margin_bigger">24dp</dimen>
+
+    <dimen name="write_button_height">64dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="default_radius">12dp</dimen>
+</resources>

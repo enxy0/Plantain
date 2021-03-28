@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/drawable/bg_log.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/drawable/bg_tag_details.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.215625" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/drawable/ic_outline_settings_24.xml" value="0.21510416666666668" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/drawable/ripple_circle.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/font/open_sans.xml" value="0.3848958333333333" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/layout/activity_settings.xml" value="0.33" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/layout/toolbar_main.xml" value="0.33" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/layout/toolbar_settings.xml" value="0.3546875" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/layout/view_tag_details.xml" value="0.584672435105068" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/layout/view_toolbar.xml" value="0.3546875" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/xml/filter_nfc.xml" value="0.3546875" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

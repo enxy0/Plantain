@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Plantain</string>
+    <string name="app_description">Приложение позволяет записать дамп с балансом в 828₽ на БСК «Подорожник».</string>
+    <string name="app_author">by enxy0</string>
+    <string name="main_tag_found">Карта «Подорожник» обнаружена</string>
+    <string name="main_write_data">Записать данные</string>
+    <string name="main_scan_tag_title">Отсканируйте «Подорожник»</string>
+    <string name="main_scan_tag_description">Приложите бесконтактную карту «Подорожник» с задней стороны телефона.</string>
+    <string name="main_log_hint">Лог:</string>
+    <string name="main_write_success">Запись: успешно</string>
+    <string name="main_write_failure">Запись: ошибка</string>
+    <string name="main_read_success">Чтение: успешно</string>
+    <string name="main_read_failure">Чтение: ошибка</string>
+    <string name="settings_title">Настройки</string>
+    <string name="settings_version">Сборка %s-%d</string>
+    <string name="main_tag_balance">Баланс: %d₽</string>
+    <string name="main_tag_uid">UID: %s</string>
+    <string name="main_tag_error">Произошла ошибка чтения: %s</string>
 </resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:layout_height="@dimen/toolbar_height"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <ImageView
+        android:id="@+id/imgStart"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/ripple_circle"
+        android:padding="@dimen/margin_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="?android:attr/textColorPrimary"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/ic_baseline_arrow_back_24" />
+
+    <TextView
+        android:id="@+id/textTitle"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="1dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/margin_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/imgEnd"
+        app:layout_constraintStart_toEndOf="@id/imgStart"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Title" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="?dividerColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgEnd"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/ripple_circle"
+        android:padding="@dimen/margin_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="?android:attr/textColorPrimary"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/ic_outline_settings_24" />
+</merge>

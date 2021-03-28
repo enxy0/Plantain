@@ -1,2 +1,11 @@
-rootProject.name = "Plantain"
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "PlantWriter"
 include ':app'
+include ':domain'
+include ':data'

@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        all {
+            Properties properties = new Properties()
+            properties.load(project.rootProject.file("local.properties").newDataInputStream())
+            def KEY_4A = properties.getProperty("KEY_4A", "")
+            def KEY_4B = properties.getProperty("KEY_4B", "")
+            def KEY_5A = properties.getProperty("KEY_5A", "")
+            def KEY_5B = properties.getProperty("KEY_5B", "")
+            it.buildConfigField "String", "KEY_4A", "\"$KEY_4A\""
+            it.buildConfigField "String", "KEY_4B", "\"$KEY_4B\""
+            it.buildConfigField "String", "KEY_5A", "\"$KEY_5A\""
+            it.buildConfigField "String", "KEY_5B", "\"$KEY_5B\""
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        freeCompilerArgs = ['-Xinline-classes']
+    }
+}
+
+dependencies {
+    api libs.coroutines
+    api libs.livedataKtx
+    api libs.logger
+}

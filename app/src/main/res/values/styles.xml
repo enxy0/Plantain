@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Text.Primary" parent="">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text.Secondary" parent="">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text.Secondary.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Header" parent="">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text.Mono" parent="Text.Secondary">
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">16dp</item>
+        <item name="fontFamily">sans-serif-condensed-medium</item>
+    </style>
+
+    <style name="Text.Mono.Small">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AppButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="cornerRadius">@dimen/default_radius</item>
+        <item name="rippleColor">?attr/colorControlHighlight</item>
+        <item name="icon">@drawable/ic_arrow_forward_24</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconSize">16dp</item>
+    </style>
+</resources>

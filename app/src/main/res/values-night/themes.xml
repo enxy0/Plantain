@@ -1,16 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Plantain" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.PlantWriter" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/dark_800</item>
+        <item name="colorPrimary">@color/green_700</item>
+        <item name="colorPrimaryVariant">@color/green_700</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/green_400</item>
-        <item name="colorSecondaryVariant">@color/green_400</item>
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?android:attr/windowBackground</item>
+        <!-- Ripple color -->
+        <item name="colorControlHighlight">#22FFFFFF</item>
+        <!-- Text colors -->
+        <item name="android:textColorPrimary">@color/gray_300</item>
+        <item name="android:textColorSecondary">@color/gray_500</item>
+        <item name="surfaceColor">@color/gray_900</item>
+        <item name="dividerColor">@color/gray_900</item>
+        <item name="android:windowBackground">@color/black</item>
     </style>
 </resources>
