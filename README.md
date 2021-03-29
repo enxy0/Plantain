@@ -17,7 +17,7 @@ Plantain - это Android приложение для чтения и запис
 ## Скриншоты
 | Home | Read/Write | Settings |
 | ---- | ---------- | -------- |
-| <img  src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/home.jpg?raw=true"/> | <img src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/read-write.jpg?raw=true"/> | <img src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/settings.jpg?raw=true"/> |
+| <img  src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/home.jpg"/> | <img src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/read-write.jpg"/> | <img src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/settings.jpg"/> |
 
 ## Библиотеки
 - [ConstraintLayout](https://developer.android.com/training/constraint-layout) - allows you to create large and complex layouts with a flat view hierarchy (no nested view groups).
