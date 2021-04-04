@@ -16,7 +16,7 @@
         <!-- Text colors -->
         <item name="android:textColorPrimary">@color/gray_300</item>
         <item name="android:textColorSecondary">@color/gray_500</item>
-        <item name="surfaceColor">@color/gray_900</item>
+        <item name="colorSurface">@color/colorSurfaceDark</item>
         <item name="dividerColor">@color/gray_900</item>
         <item name="android:windowBackground">@color/black</item>
     </style>

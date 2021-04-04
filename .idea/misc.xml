@@ -16,8 +16,16 @@
         <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/layout/view_tag_details.xml" value="0.584672435105068" />
         <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/layout/view_toolbar.xml" value="0.3546875" />
         <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/xml/filter_nfc.xml" value="0.3546875" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/Plantain/app/src/main/res/drawable/bg_card.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/Plantain/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/Plantain/app/src/main/res/layout/view_tag_details.xml" value="0.25" />
       </map>
     </option>
+  </component>
+  <component name="EntryPointsManager">
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="androidx.lifecycle.OnLifecycleEvent" />
+    </list>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">

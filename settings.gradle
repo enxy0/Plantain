@@ -1,3 +1,10 @@
+pluginManagement {
+    plugins {
+        apply from: "dependencies.gradle"
+        id "com.github.ben-manes.versions" version "${versions.dependencyUpdate}"
+        id "org.jlleitschuh.gradle.ktlint" version "${versions.ktlint}"
+    }
+}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {

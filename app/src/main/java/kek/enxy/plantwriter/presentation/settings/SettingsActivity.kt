@@ -3,14 +3,14 @@ package kek.enxy.plantwriter.presentation.settings
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import kek.enxy.plantwriter.BuildConfig
 import kek.enxy.plantwriter.R
 import kek.enxy.plantwriter.databinding.ActivitySettingsBinding
 import kek.enxy.plantwriter.presentation.common.Constants
 import kek.enxy.plantwriter.presentation.common.IntentUtils
+import kek.enxy.plantwriter.presentation.common.base.BaseActivity
 
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : BaseActivity() {
 
     companion object {
         private fun newIntent(context: Context) = Intent(context, SettingsActivity::class.java)

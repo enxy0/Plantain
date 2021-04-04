@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="64dp"
-    app:cardBackgroundColor="?attr/surfaceColor"
+    app:cardBackgroundColor="?attr/colorSurface"
     app:cardCornerRadius="@dimen/default_radius"
     tools:parentTag="com.google.android.material.card.MaterialCardView">
 

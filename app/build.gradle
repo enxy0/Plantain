@@ -1,7 +1,8 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
-    id "com.github.ben-manes.versions" version "0.38.0"
+    id "com.github.ben-manes.versions"
+    id "org.jlleitschuh.gradle.ktlint"
 }
 
 android {
@@ -9,7 +10,7 @@ android {
     buildToolsVersion versions.buildTools
 
     defaultConfig {
-        applicationId versions.applicationId
+        applicationId constants.applicationId
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
         versionCode versions.versionCode
@@ -22,6 +23,11 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+        applicationVariants.all { variant ->
+            variant.outputs.all {
+                outputFileName = "${constants.applicationName}-${defaultConfig.versionName}-${defaultConfig.versionCode}.apk"
+            }
         }
     }
     compileOptions {
