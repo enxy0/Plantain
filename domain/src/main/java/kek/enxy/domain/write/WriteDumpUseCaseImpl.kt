@@ -10,10 +10,7 @@ import kek.enxy.data.mifare.MifareDataProviderImpl.Companion.SECTOR_5
 import kek.enxy.data.readwrite.ReadWriteDataSource
 import kek.enxy.domain.write.model.WrongSectorKeyException
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.*
 
 class WriteDumpUseCaseImpl(
     private val mifareDataProvider: MifareDataProvider,
@@ -22,17 +19,7 @@ class WriteDumpUseCaseImpl(
 
     override fun dispatcher() = Dispatchers.IO
 
-    override fun execute(parameters: Tag) = flow {
-        var result = getWriteDataFlow(parameters).first()
-        for (attempt in 1..15) {
-            if (result.isSuccess) {
-                emit(result)
-                return@flow
-            }
-            result = getWriteDataFlow(parameters).first()
-        }
-        emit(result)
-    }
+    override fun execute(parameters: Tag) = getWriteDataFlow(parameters).retry(retries = 15)
 
     @Suppress("BlockingMethodInNonBlockingContext") // doing IO operations on IO dispatcher, everything is OK
     private fun getWriteDataFlow(parameters: Tag) = flow {
@@ -47,16 +34,15 @@ class WriteDumpUseCaseImpl(
             if (tag.authenticateSectorWithKeyB(SECTOR_4, KEY_4B)) {
                 readWriteDataSource.writeSector(tag, mifareDataProvider.getSector4())
             } else {
-                throw WrongSectorKeyException("KEY_4B is not applicable to sector 4")
+                throw WrongSectorKeyException("KEY_4B")
             }
             if (tag.authenticateSectorWithKeyB(SECTOR_5, KEY_5B)) {
                 readWriteDataSource.writeSector(tag, mifareDataProvider.getSector5())
             } else {
-                throw WrongSectorKeyException("KEY_5B is not applicable to sector 5")
+                throw WrongSectorKeyException("KEY_5B")
             }
             emit(Result.success(Unit))
         }
     }
         .flowOn(dispatcher())
-        .catch { e -> emit(Result.failure(e)) }
 }

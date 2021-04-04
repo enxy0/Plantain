@@ -16,4 +16,6 @@
     <string name="main_tag_balance">Баланс: %d₽</string>
     <string name="main_tag_uid">UID: %s</string>
     <string name="main_tag_error">Произошла ошибка чтения: %s</string>
+    <string name="main_tag_error_connection_lost">Соединение с картой потеряно</string>
+    <string name="main_tag_error_auth">Не удалось аутентифицировать с помощью ключа %s</string>
 </resources>
