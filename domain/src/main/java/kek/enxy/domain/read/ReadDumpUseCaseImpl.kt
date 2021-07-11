@@ -11,7 +11,6 @@ import kek.enxy.domain.write.MifareClassicPatcher
 import kek.enxy.domain.write.model.WrongSectorKeyException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.retry
 
 class ReadDumpUseCaseImpl(
@@ -46,5 +45,4 @@ class ReadDumpUseCaseImpl(
             emit(Result.success(dump))
         }
     }
-        .flowOn(dispatcher())
 }

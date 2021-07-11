@@ -1,5 +1,9 @@
 package kek.enxy.data.readwrite.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Dump(
     val balance: Rubles,           // Баланс
     val lastUseAmount: Rubles,     // Сумма за последнее использование
@@ -7,5 +11,5 @@ data class Dump(
     val lastPaymentAmount: Rubles, // Сумма последнего пополнения
     val lastPaymentDate: AppDate,  // Дата последнего пополнения
     val groundTravelTotal: Count,  // Количество поездок на наземном транспорте
-    val subwayTravelTotal: Count   // Количество поездок в метро
-)
+    val undergroundTravelTotal: Count   // Количество поездок в метро
+) : Parcelable

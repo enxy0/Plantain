@@ -1,9 +1,13 @@
 package kek.enxy.data.readwrite.model
 
-data class Rubles(
-    private val raw: Int
-) {
-    val value: Int = raw / 100
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-    override fun toString() = (raw / 100).toString()
+@Parcelize
+data class Rubles(
+    private val raw: Int,
+    val value: Int = raw / 100
+) : Parcelable {
+
+    override fun toString() = value.toString()
 }

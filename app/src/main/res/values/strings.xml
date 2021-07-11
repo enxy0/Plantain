@@ -18,4 +18,17 @@
     <string name="main_tag_error">Произошла ошибка чтения: %s</string>
     <string name="main_tag_error_connection_lost">Соединение с картой потеряно</string>
     <string name="main_tag_error_auth">Не удалось аутентифицировать с помощью ключа %s</string>
+
+    <string name="detail_balance">Сумма:</string>
+    <string name="detail_count">Количество:</string>
+    <string name="detail_date">Дата:</string>
+    <string name="detail_title_underground">Метро:</string>
+    <string name="detail_title_ground">Наземка:</string>
+
+    <string name="details_title">Подробности</string>
+    <string name="details_balance">Баланс карты</string>
+    <string name="details_last_payment">Последнее пополнение</string>
+    <string name="details_last_use">Последнее использование</string>
+    <string name="details_travel">Количество поездок</string>
+    <string name="details_rub">%d ₽</string>
 </resources>

@@ -14,7 +14,7 @@ import androidx.lifecycle.OnLifecycleEvent
 class MifareClassicListener private constructor(activity: AppCompatActivity) {
 
     companion object {
-        fun initialize(activity: AppCompatActivity) = MifareClassicListener(activity)
+        fun listenIn(activity: AppCompatActivity) = MifareClassicListener(activity)
     }
 
     private val nfcTechLists by lazy { arrayOf(arrayOf(MifareClassic::class.java.name)) }

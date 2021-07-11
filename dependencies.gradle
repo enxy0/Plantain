@@ -23,6 +23,8 @@ ext.versions = [
         livedataKtx     : "2.4.0-alpha02",
         logger          : "2.2.0",
         material        : "1.5.0-alpha01",
+        navArgs         : "2.3.5",
+        navigation      : "2.3.5",
         scopeKtx        : "2.4.0-alpha01",
 
         // Plugins
@@ -32,16 +34,19 @@ ext.versions = [
 ]
 
 ext.libs = [
-        appcompat       : "androidx.appcompat:appcompat:$versions.appcompat",
-        constraintlayout: "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
-        coroutines      : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
-        desugaring      : "com.android.tools:desugar_jdk_libs:$versions.desugaring",
-        ktxCore         : "androidx.core:core-ktx:$versions.ktxCore",
-        koinCore        : "io.insert-koin:koin-android:$versions.koin",
-        kotlinStdLib    : "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin",
-        livedataKtx     : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.livedataKtx",
-        logger          : "com.orhanobut:logger:$versions.logger",
-        material        : "com.google.android.material:material:$versions.material",
-        viewModelKtx    : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.scopeKtx",
-        lifecycleKtx    : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.scopeKtx"
+        appcompat            : "androidx.appcompat:appcompat:$versions.appcompat",
+        constraintlayout     : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
+        coroutines           : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
+        desugaring           : "com.android.tools:desugar_jdk_libs:$versions.desugaring",
+        ktxCore              : "androidx.core:core-ktx:$versions.ktxCore",
+        koinCore             : "io.insert-koin:koin-android:$versions.koin",
+        kotlinStdLib         : "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin",
+        livedataKtx          : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.livedataKtx",
+        logger               : "com.orhanobut:logger:$versions.logger",
+        material             : "com.google.android.material:material:$versions.material",
+        navigationRuntimeKtx : "androidx.navigation:navigation-runtime-ktx:$versions.navigation",
+        navigationUiKtx      : "androidx.navigation:navigation-ui-ktx:$versions.navigation",
+        navigationFragmentKtx: "androidx.navigation:navigation-fragment-ktx:$versions.navigation",
+        viewModelKtx         : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.scopeKtx",
+        lifecycleKtx         : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.scopeKtx"
 ]

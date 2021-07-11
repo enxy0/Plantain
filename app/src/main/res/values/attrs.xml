@@ -7,4 +7,24 @@
         <attr name="at_startIcon" format="reference" />
         <attr name="at_endIcon" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="DetailsItemView">
+        <attr name="div_title" format="string" />
+        <attr name="div_first_text" format="string" />
+        <attr name="div_first_icon" format="reference" />
+        <attr name="div_second_text" format="string" />
+        <attr name="div_second_icon" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="DetailView">
+        <attr name="dv_title" format="string" />
+        <attr name="dv_value" format="string" />
+        <attr name="dv_icon" format="reference" />
+        <attr name="dv_type" format="enum">
+            <enum name="money" value="0" />
+            <enum name="date" value="1" />
+            <enum name="ground_count" value="2" />
+            <enum name="underground_count" value="3" />
+        </attr>
+    </declare-styleable>
 </resources>

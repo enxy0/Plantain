@@ -32,10 +32,10 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Title" />
 
-    <View
+    <com.google.android.material.divider.MaterialDivider
         android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="?dividerColor"
+        android:layout_height="wrap_content"
+        app:dividerColor="?dividerColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

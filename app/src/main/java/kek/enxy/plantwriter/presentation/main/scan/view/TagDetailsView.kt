@@ -1,4 +1,4 @@
-package kek.enxy.plantwriter.presentation.main.view
+package kek.enxy.plantwriter.presentation.main.scan.view
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -49,6 +49,7 @@ class TagDetailsView @JvmOverloads constructor(
         }
         imgInfo.fadeIn()
         imgInfo.imageTintList = ColorStateList.valueOf(grayColor)
+        imgNext.fadeIn()
         progress.fadeOut()
     }
 
@@ -67,6 +68,7 @@ class TagDetailsView @JvmOverloads constructor(
         textUID.fadeOut()
         imgInfo.fadeIn()
         imgInfo.imageTintList = ColorStateList.valueOf(redColor)
+        imgNext.fadeOut()
         progress.fadeOut()
     }
 
@@ -75,6 +77,7 @@ class TagDetailsView @JvmOverloads constructor(
         textUID.fadeOut()
         textError.fadeOut()
         imgInfo.fadeOut()
+        imgNext.fadeOut()
         progress.fadeIn()
     }
 

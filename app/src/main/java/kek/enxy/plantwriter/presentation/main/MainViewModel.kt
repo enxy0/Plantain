@@ -1,47 +1,24 @@
 package kek.enxy.plantwriter.presentation.main
 
-import android.nfc.Tag
+import android.content.Intent
+import android.nfc.NfcAdapter
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.orhanobut.logger.Logger
 import kek.enxy.domain.model.Event
-import kek.enxy.domain.read.ReadDumpUseCase
-import kek.enxy.domain.write.WriteDumpUseCase
 import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 
-class MainViewModel(
-    private val writeDumpUseCase: WriteDumpUseCase,
-    private val readDumpUseCase: ReadDumpUseCase
-) : ViewModel() {
+class MainViewModel : ViewModel() {
 
-    private val _writeResultFlow =
-        MutableSharedFlow<Event<Boolean>>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
-    val writeResultFlow: SharedFlow<Event<Boolean>> = _writeResultFlow.asSharedFlow()
+    private val _resolveIntentFlow = MutableSharedFlow<Event<Intent>>(
+        replay = 1,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST
+    )
+    val resolveIntentFlow: SharedFlow<Event<Intent>> = _resolveIntentFlow.asSharedFlow()
 
-    private val _dumpStateFlow = MutableStateFlow<DumpState>(DumpState.Initial)
-    val dumpStateFlow: StateFlow<DumpState> = _dumpStateFlow.asStateFlow()
-
-    fun writeDumpData(tag: Tag) {
-        writeDumpUseCase(tag)
-            .onEach { result ->
-                _writeResultFlow.emit(Event(result.isSuccess))
-            }
-            .launchIn(viewModelScope)
-    }
-
-    fun readDumpData(tag: Tag) {
-        _dumpStateFlow.tryEmit(DumpState.Loading)
-        readDumpUseCase(tag)
-            .onEach { result ->
-                result
-                    .onSuccess { dump ->
-                        _dumpStateFlow.emit(DumpState.Content(dump))
-                    }
-                    .onFailure { exception ->
-                        _dumpStateFlow.emit(DumpState.Error(exception))
-                        Logger.e(exception, exception.message.orEmpty())
-                    }
-            }.launchIn(viewModelScope)
+    fun createIntentEvent(intent: Intent?) {
+        if (intent == null || intent.action != NfcAdapter.ACTION_TECH_DISCOVERED) return
+        _resolveIntentFlow.tryEmit(Event(intent))
     }
 }

@@ -44,5 +44,4 @@ class WriteDumpUseCaseImpl(
             emit(Result.success(Unit))
         }
     }
-        .flowOn(dispatcher())
 }

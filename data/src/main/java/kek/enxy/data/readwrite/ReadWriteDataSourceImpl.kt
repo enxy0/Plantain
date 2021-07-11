@@ -31,7 +31,7 @@ class ReadWriteDataSourceImpl : ReadWriteDataSource{
             lastPaymentAmount = getLastPaymentAmount(sector4),
             lastPaymentDate = getLastPaymentDate(sector4),
             groundTravelTotal = getGroundTravelTotal(sector5),
-            subwayTravelTotal = getSubwayTravelTotal(sector5)
+            undergroundTravelTotal = getSubwayTravelTotal(sector5)
         )
 
     private fun getBalanceFromSector(sector4: Sector): Rubles {
