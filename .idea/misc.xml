@@ -17,8 +17,18 @@
         <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/layout/view_toolbar.xml" value="0.3546875" />
         <entry key="..\:/Users/alcat/AndroidStudioProjects/PlantWriter/app/src/main/res/xml/filter_nfc.xml" value="0.3546875" />
         <entry key="..\:/Users/alcat/AndroidStudioProjects/Plantain/app/src/main/res/drawable/bg_card.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/Plantain/app/src/main/res/drawable/ic_baseline_error_outline_16.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/Plantain/app/src/main/res/drawable/ic_bus.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/Plantain/app/src/main/res/drawable/ic_metro.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/Plantain/app/src/main/res/drawable/ic_outline_info_24.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/Plantain/app/src/main/res/drawable/ic_subway.xml" value="0.37083333333333335" />
         <entry key="..\:/Users/alcat/AndroidStudioProjects/Plantain/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/alcat/AndroidStudioProjects/Plantain/app/src/main/res/layout/view_tag_details.xml" value="0.25" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/Plantain/app/src/main/res/layout/view_details_item.xml" value="0.3546875" />
+        <entry key="..\:/Users/alcat/AndroidStudioProjects/Plantain/app/src/main/res/layout/view_tag_details.xml" value="0.33" />
+        <entry key="..\:/Users/enxy/AndroidStudioProjects/Plantain/app/src/main/res/drawable/ic_baseline_error_outline_16.xml" value="0.219" />
+        <entry key="..\:/Users/enxy/AndroidStudioProjects/Plantain/app/src/main/res/drawable/ic_bus.xml" value="0.219" />
+        <entry key="..\:/Users/enxy/AndroidStudioProjects/Plantain/app/src/main/res/layout/view_details_item.xml" value="0.21467391304347827" />
+        <entry key="..\:/Users/enxy/AndroidStudioProjects/Plantain/app/src/main/res/layout/view_tag_details.xml" value="0.28940217391304346" />
       </map>
     </option>
   </component>
@@ -28,7 +38,7 @@
     </list>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -10,8 +10,6 @@ android {
     defaultConfig {
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
-        versionCode versions.versionCode
-        versionName versions.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -29,13 +27,22 @@ android {
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
-        freeCompilerArgs = ['-Xinline-classes']
+        freeCompilerArgs += [
+                "-Xinline-classes",
+                "-Xallow-result-return-type",
+                "-Xuse-experimental=" +
+                        "kotlin.Experimental," +
+                        "kotlinx.coroutines.ExperimentalCoroutinesApi," +
+                        "kotlinx.coroutines.InternalCoroutinesApi," +
+                        "kotlinx.coroutines.FlowPreview"
+        ]
     }
 }
 
 dependencies {
     api project(path: ":data")
     api libs.coroutines
+    api libs.kotlinStdLib
     api libs.livedataKtx
     api libs.logger
 }

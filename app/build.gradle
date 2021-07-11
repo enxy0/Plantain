@@ -37,8 +37,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
-        useIR = true
         freeCompilerArgs += [
+                "-Xinline-classes",
+                "-Xallow-result-return-type",
                 "-Xuse-experimental=" +
                         "kotlin.Experimental," +
                         "kotlinx.coroutines.ExperimentalCoroutinesApi," +
@@ -59,7 +60,7 @@ dependencies {
     implementation libs.coroutines
     implementation libs.ktxCore
     implementation libs.koinCore
-    implementation libs.koinExt
+    implementation libs.kotlinStdLib
     implementation libs.livedataKtx
     implementation libs.logger
     implementation libs.material

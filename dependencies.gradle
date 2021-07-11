@@ -1,6 +1,6 @@
 ext.constants = [
-    applicationId   : "kek.enxy.plantwriter",
-    applicationName : "plantain"
+        applicationId  : "kek.enxy.plantwriter",
+        applicationName: "plantain"
 ]
 
 ext.versions = [
@@ -13,20 +13,22 @@ ext.versions = [
         versionName     : "2.2",
 
         // Dependencies
-        appcompat       : "1.3.0-rc01",
-        constraintlayout: "2.1.0-beta01",
+        appcompat       : "1.4.0-alpha03",
+        constraintlayout: "2.1.0-beta02",
         coroutines      : "1.4.3",
         desugaring      : "1.0.9",
-        ktxCore         : "1.6.0-alpha01",
-        koin            : "3.0.1-beta-2",
-        livedataKtx     : "2.4.0-alpha01",
+        ktxCore         : "1.7.0-alpha01",
+        koin            : "3.1.2",
+        kotlin          : "1.4.32",
+        livedataKtx     : "2.4.0-alpha02",
         logger          : "2.2.0",
-        material        : "1.4.0-alpha02",
+        material        : "1.5.0-alpha01",
         scopeKtx        : "2.4.0-alpha01",
 
         // Plugins
-        dependencyUpdate: "0.38.0",
-        ktlint          : "10.0.0",
+        dependencyUpdate: "0.39.0",
+        ktlint          : "10.1.0",
+        kotlinPlugin    : "1.4.32"
 ]
 
 ext.libs = [
@@ -36,7 +38,7 @@ ext.libs = [
         desugaring      : "com.android.tools:desugar_jdk_libs:$versions.desugaring",
         ktxCore         : "androidx.core:core-ktx:$versions.ktxCore",
         koinCore        : "io.insert-koin:koin-android:$versions.koin",
-        koinExt         : "io.insert-koin:koin-android-ext:$versions.koin",
+        kotlinStdLib    : "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin",
         livedataKtx     : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.livedataKtx",
         logger          : "com.orhanobut:logger:$versions.logger",
         material        : "com.google.android.material:material:$versions.material",
