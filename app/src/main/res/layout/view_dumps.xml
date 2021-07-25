@@ -2,7 +2,7 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:layout_height="64dp"
+    tools:layout_height="wrap_content"
     tools:layout_width="match_parent"
     tools:parentTag="com.google.android.material.card.MaterialCardView"
     tools:style="@style/AppCardView">
@@ -14,48 +14,38 @@
         android:paddingVertical="@dimen/margin_normal">
 
         <ImageView
-            android:id="@+id/imgInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_outline_info_24"
+            android:id="@+id/imgWrite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_write_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="?android:attr/textColorSecondary"
             tools:ignore="ContentDescription" />
 
-        <ProgressBar
-            android:id="@+id/progress"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:indeterminate="true"
-            android:indeterminateTint="?colorPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
-            android:id="@+id/textBalance"
+            android:id="@+id/textDumps"
             style="@style/Text.Mono.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_smallest"
-            app:layout_constraintBottom_toTopOf="@id/textUID"
-            app:layout_constraintStart_toEndOf="@id/imgInfo"
+            android:text="@string/main_tag_dumps"
+            app:layout_constraintBottom_toTopOf="@id/textDumpHint"
+            app:layout_constraintStart_toEndOf="@id/imgWrite"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="spread"
-            tools:text="Баланс: 315₽" />
+            app:layout_constraintVertical_chainStyle="spread" />
 
         <TextView
-            android:id="@+id/textUID"
+            android:id="@+id/textDumpHint"
             style="@style/Text.Mono.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_smallest"
+            android:text="@string/main_tag_dumps_hint"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imgInfo"
-            app:layout_constraintTop_toBottomOf="@id/textBalance"
-            tools:text="UID: 042B5D22F86280" />
+            app:layout_constraintStart_toEndOf="@id/imgWrite"
+            app:layout_constraintTop_toBottomOf="@id/textDumps" />
 
         <ImageView
             android:id="@+id/imgNext"
@@ -67,23 +57,5 @@
             app:layout_constraintTop_toTopOf="parent"
             app:tint="?android:attr/textColorSecondary"
             tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/textError"
-            style="@style/Text.Mono.Small"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_smallest"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxLines="2"
-            android:minLines="2"
-            android:textColor="@color/red_500"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imgInfo"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Произошла ошибка" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </merge>

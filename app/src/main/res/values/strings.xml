@@ -17,7 +17,9 @@
     <string name="main_tag_uid">UID: %s</string>
     <string name="main_tag_error">Произошла ошибка чтения: %s</string>
     <string name="main_tag_error_connection_lost">Соединение с картой потеряно</string>
-    <string name="main_tag_error_auth">Не удалось аутентифицировать с помощью ключа %s</string>
+    <string name="main_tag_error_auth">Не удалось аутентифицировать сектор ключом %s</string>
+    <string name="main_tag_dumps">Сохраненные дампы</string>
+    <string name="main_tag_dumps_hint">Дампы можно записывать на карту</string>
 
     <string name="detail_balance">Сумма:</string>
     <string name="detail_count">Количество:</string>
@@ -31,4 +33,5 @@
     <string name="details_last_use">Последнее использование</string>
     <string name="details_travel">Количество поездок</string>
     <string name="details_rub">%d ₽</string>
+    <string name="details_save_dump">Сохранить дамп</string>
 </resources>

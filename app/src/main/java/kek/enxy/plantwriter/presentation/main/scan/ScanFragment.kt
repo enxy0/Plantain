@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.orhanobut.logger.Logger
-import kek.enxy.plantwriter.R
 import kek.enxy.plantwriter.databinding.FragmentScanBinding
 import kek.enxy.plantwriter.presentation.common.extensions.getParentAsListener
 import kek.enxy.plantwriter.presentation.main.MainRoute
@@ -64,14 +63,14 @@ class ScanFragment : Fragment() {
                 when (dumpState) {
                     is DumpState.Content -> {
                         showContentWithAnimation()
-                        binding.tagDetails.setDetails(dumpState.tagId, dumpState.dump)
+                        binding.viewCurrentDump.setDetails(dumpState.tagId, dumpState.dump)
                     }
                     is DumpState.Loading -> {
                         showContentWithAnimation()
-                        binding.tagDetails.setLoading()
+                        binding.viewCurrentDump.setLoading()
                     }
                     is DumpState.Error -> {
-                        binding.tagDetails.setError(dumpState.exception)
+                        binding.viewCurrentDump.setError(dumpState.exception)
                     }
                     else -> Unit
                 }
@@ -87,17 +86,17 @@ class ScanFragment : Fragment() {
     }
 
     private fun showContentWithAnimation() = with(binding) {
-        if (textLog.isGone && btnWrite.isGone && tagDetails.isGone) {
+        if (textLog.isGone && btnWrite.isGone && viewCurrentDump.isGone) {
             val logAnimator = ObjectAnimator.ofFloat(textLog, View.ALPHA, 0.0f, 1.0f)
             val buttonAnimator = ObjectAnimator.ofFloat(btnWrite, View.ALPHA, 0.0f, 1.0f)
-            val tagDetailsAnimator = ObjectAnimator.ofFloat(tagDetails, View.ALPHA, 0.0f, 1.0f)
+            val viewCurrentDumpAnimator = ObjectAnimator.ofFloat(viewCurrentDump, View.ALPHA, 0.0f, 1.0f)
             val animatorSet = AnimatorSet().apply {
                 duration = 300L
-                playTogether(logAnimator, buttonAnimator, tagDetailsAnimator)
+                playTogether(logAnimator, buttonAnimator, viewCurrentDumpAnimator)
                 doOnStart {
                     textLog.isVisible = true
                     btnWrite.isVisible = true
-                    tagDetails.isVisible = true
+                    viewCurrentDump.isVisible = true
                 }
             }
             animatorSet.start()
@@ -112,9 +111,12 @@ class ScanFragment : Fragment() {
     private fun initViews() = with(binding) {
         btnWrite.setOnClickListener { viewModel.writeDumpData() }
         toolbar.onEndBtnClicked { SettingsActivity.start(requireContext()) }
-        tagDetails.setOnClickListener {
+        viewCurrentDump.setOnClickListener {
             val dump = viewModel.dump ?: return@setOnClickListener
-            router.openTagDetails(dump)
+            router.openDumpDetails(dump)
+        }
+        viewDumps.setOnClickListener {
+            router.openDumps()
         }
     }
 }

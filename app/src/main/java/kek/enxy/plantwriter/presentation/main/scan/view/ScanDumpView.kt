@@ -16,7 +16,7 @@ import kek.enxy.plantwriter.presentation.common.extensions.fillWhenHasData
 import kek.enxy.plantwriter.presentation.common.extensions.getColorFromAttr
 import java.util.Locale
 
-class TagDetailsView @JvmOverloads constructor(
+class ScanDumpView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0

@@ -1,151 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-    <kek.enxy.plantwriter.presentation.common.view.AppToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:at_startIcon="@drawable/ic_baseline_arrow_back_24"
-        app:at_title="@string/details_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textBalance"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_normal"
-        android:layout_marginTop="@dimen/margin_bigger"
-        android:background="@drawable/bg_detail"
-        android:padding="@dimen/margin_normal"
-        android:textAppearance="@style/Text.Primary"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        tools:text="1337 ₽" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/default_btn_bottom_margin">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textBalanceHint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/details_balance"
-        app:layout_constraintStart_toStartOf="@id/textBalance"
-        app:layout_constraintTop_toBottomOf="@id/textBalance" />
+            <kek.enxy.plantwriter.presentation.common.view.AppToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:at_startIcon="@drawable/ic_baseline_arrow_back_24"
+                app:at_title="@string/details_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textLastUseTitle"
-        style="@style/Text.Header"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_normal"
-        android:layout_marginTop="@dimen/margin_bigger"
-        android:text="@string/details_last_use"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textBalanceHint" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textBalance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_bigger"
+                android:background="@drawable/bg_detail"
+                android:padding="@dimen/margin_normal"
+                android:textAppearance="@style/Text.Primary"
+                android:textSize="32sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                tools:text="1337 ₽" />
 
-    <kek.enxy.plantwriter.presentation.main.details.view.DetailView
-        android:id="@+id/viewLastUseAmount"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_normal"
-        android:layout_marginTop="@dimen/margin_smallest"
-        android:layout_marginEnd="4dp"
-        app:dv_type="money"
-        app:layout_constraintEnd_toStartOf="@id/viewLastUseDate"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textLastUseTitle" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textBalanceHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/details_balance"
+                app:layout_constraintStart_toStartOf="@id/textBalance"
+                app:layout_constraintTop_toBottomOf="@id/textBalance" />
 
-    <kek.enxy.plantwriter.presentation.main.details.view.DetailView
-        android:id="@+id/viewLastUseDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="@dimen/margin_smallest"
-        android:layout_marginEnd="@dimen/margin_normal"
-        app:dv_type="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/viewLastUseAmount"
-        app:layout_constraintTop_toBottomOf="@id/textLastUseTitle" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textLastUseTitle"
+                style="@style/Text.Header"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_bigger"
+                android:text="@string/details_last_use"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textBalanceHint" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTravelTitle"
-        style="@style/Text.Header"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_normal"
-        android:layout_marginTop="@dimen/margin_bigger"
-        android:text="@string/details_travel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewLastUseAmount" />
+            <kek.enxy.plantwriter.presentation.main.details.view.DetailView
+                android:id="@+id/viewLastUseAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_smallest"
+                android:layout_marginEnd="4dp"
+                app:dv_type="money"
+                app:layout_constraintEnd_toStartOf="@id/viewLastUseDate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textLastUseTitle" />
 
-    <kek.enxy.plantwriter.presentation.main.details.view.DetailView
-        android:id="@+id/viewGroundTravel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_normal"
-        android:layout_marginTop="@dimen/margin_smallest"
-        android:layout_marginEnd="4dp"
-        app:dv_title="@string/detail_title_ground"
-        app:dv_type="ground_count"
-        app:layout_constraintEnd_toStartOf="@id/viewUndergroundTravel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textTravelTitle" />
+            <kek.enxy.plantwriter.presentation.main.details.view.DetailView
+                android:id="@+id/viewLastUseDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="@dimen/margin_smallest"
+                android:layout_marginEnd="@dimen/margin_normal"
+                app:dv_type="date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/viewLastUseAmount"
+                app:layout_constraintTop_toBottomOf="@id/textLastUseTitle" />
 
-    <kek.enxy.plantwriter.presentation.main.details.view.DetailView
-        android:id="@+id/viewUndergroundTravel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="@dimen/margin_smallest"
-        android:layout_marginEnd="@dimen/margin_normal"
-        app:dv_title="@string/detail_title_underground"
-        app:dv_type="underground_count"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/viewGroundTravel"
-        app:layout_constraintTop_toBottomOf="@id/textTravelTitle" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textTravelTitle"
+                style="@style/Text.Header"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_bigger"
+                android:text="@string/details_travel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewLastUseAmount" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textLastPaymentTitle"
-        style="@style/Text.Header"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_normal"
-        android:layout_marginTop="@dimen/margin_bigger"
-        android:text="@string/details_last_payment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewGroundTravel" />
+            <kek.enxy.plantwriter.presentation.main.details.view.DetailView
+                android:id="@+id/viewGroundTravel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_smallest"
+                android:layout_marginEnd="4dp"
+                app:dv_title="@string/detail_title_ground"
+                app:dv_type="ground_count"
+                app:layout_constraintEnd_toStartOf="@id/viewUndergroundTravel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textTravelTitle" />
 
-    <kek.enxy.plantwriter.presentation.main.details.view.DetailView
-        android:id="@+id/viewLastPaymentAmount"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_normal"
-        android:layout_marginTop="@dimen/margin_smallest"
-        android:layout_marginEnd="4dp"
-        app:dv_type="money"
-        app:layout_constraintEnd_toStartOf="@id/viewLastPaymentDate"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textLastPaymentTitle" />
+            <kek.enxy.plantwriter.presentation.main.details.view.DetailView
+                android:id="@+id/viewUndergroundTravel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="@dimen/margin_smallest"
+                android:layout_marginEnd="@dimen/margin_normal"
+                app:dv_title="@string/detail_title_underground"
+                app:dv_type="underground_count"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/viewGroundTravel"
+                app:layout_constraintTop_toBottomOf="@id/textTravelTitle" />
 
-    <kek.enxy.plantwriter.presentation.main.details.view.DetailView
-        android:id="@+id/viewLastPaymentDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="@dimen/margin_smallest"
-        android:layout_marginEnd="@dimen/margin_normal"
-        app:dv_type="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/viewLastPaymentAmount"
-        app:layout_constraintTop_toBottomOf="@id/textLastPaymentTitle" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textLastPaymentTitle"
+                style="@style/Text.Header"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_bigger"
+                android:text="@string/details_last_payment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewGroundTravel" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <kek.enxy.plantwriter.presentation.main.details.view.DetailView
+                android:id="@+id/viewLastPaymentAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_smallest"
+                android:layout_marginEnd="4dp"
+                app:dv_type="money"
+                app:layout_constraintEnd_toStartOf="@id/viewLastPaymentDate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textLastPaymentTitle" />
+
+            <kek.enxy.plantwriter.presentation.main.details.view.DetailView
+                android:id="@+id/viewLastPaymentDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="@dimen/margin_smallest"
+                android:layout_marginEnd="@dimen/margin_normal"
+                app:dv_type="date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/viewLastPaymentAmount"
+                app:layout_constraintTop_toBottomOf="@id/textLastPaymentTitle" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveDump"
+            style="@style/AppButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/write_button_height"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:text="@string/details_save_dump" />
+    </FrameLayout>
+</androidx.core.widget.NestedScrollView>

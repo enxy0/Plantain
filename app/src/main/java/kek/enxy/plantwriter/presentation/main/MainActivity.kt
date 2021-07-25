@@ -34,8 +34,12 @@ class MainActivity : BaseActivity(), ScanContract, MainRoute {
         viewModel.createIntentEvent(intent)
     }
 
-    override fun openTagDetails(dump: Dump) {
+    override fun openDumpDetails(dump: Dump) {
         navController.navigate(ScanFragmentDirections.actionScanToDetails(dump))
+    }
+
+    override fun openDumps() {
+        // navController.navigate(ScanFragmentDirections.actionScanToDumps())
     }
 
     override fun onReturn() {

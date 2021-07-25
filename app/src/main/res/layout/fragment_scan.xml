@@ -34,20 +34,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingHorizontal="@dimen/margin_normal"
-            android:paddingBottom="94dp">
+            android:paddingBottom="@dimen/default_btn_bottom_margin">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardPlantain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardElevation="0dp"
-                app:strokeColor="?dividerColor"
-                app:strokeWidth="1dp"
-                app:cardCornerRadius="@dimen/default_radius"
                 android:layout_marginTop="32dp"
+                app:cardCornerRadius="@dimen/default_radius"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeColor="?dividerColor"
+                app:strokeWidth="1dp">
 
                 <ImageView
                     android:id="@+id/imagePlantain"
@@ -82,18 +82,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textTitle" />
 
-            <kek.enxy.plantwriter.presentation.main.scan.view.TagDetailsView
-                android:id="@+id/tagDetails"
+            <kek.enxy.plantwriter.presentation.main.scan.view.DumpsView
+                android:id="@+id/viewDumps"
+                style="@style/AppCardView"
                 android:layout_width="0dp"
                 android:layout_height="64dp"
                 android:layout_marginTop="@dimen/margin_big"
-                android:visibility="gone"
-                app:cardBackgroundColor="?attr/colorSurface"
-                app:cardCornerRadius="@dimen/default_radius"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textDescription"
+                app:layout_constraintTop_toBottomOf="@id/textDescription" />
+
+            <kek.enxy.plantwriter.presentation.main.scan.view.ScanDumpView
+                android:id="@+id/viewCurrentDump"
+                style="@style/AppCardView"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewDumps"
                 tools:visibility="visible" />
 
             <TextView
@@ -108,7 +116,7 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tagDetails"
+                app:layout_constraintTop_toBottomOf="@id/viewCurrentDump"
                 tools:visibility="visible" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
@@ -123,5 +131,6 @@
         android:layout_marginBottom="@dimen/margin_normal"
         android:text="@string/main_write_data"
         android:visibility="gone"
+        app:icon="@drawable/ic_arrow_forward_16"
         tools:visibility="visible" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
