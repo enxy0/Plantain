@@ -8,24 +8,20 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.orhanobut.logger.Logger
 import kek.enxy.data.readwrite.model.Dump
-import kek.enxy.domain.model.Event
 import kek.enxy.domain.read.ReadDumpUseCase
-import kek.enxy.domain.write.WriteDumpUseCase
+import kek.enxy.domain.read.ReadTagParams
 import kek.enxy.plantwriter.R
 import kek.enxy.plantwriter.presentation.common.extensions.getString
 import kek.enxy.plantwriter.presentation.common.extensions.nfcTag
 import kek.enxy.plantwriter.presentation.common.extensions.nfcTagId
 import kek.enxy.plantwriter.presentation.main.model.DumpState
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
 class ScanViewModel(
     application: Application,
-    private val writeDumpUseCase: WriteDumpUseCase,
     private val readDumpUseCase: ReadDumpUseCase
 ) : AndroidViewModel(application) {
 
@@ -50,22 +46,9 @@ class ScanViewModel(
         }
     }
 
-    fun writeDumpData() {
-        viewModelScope.launch {
-            val tag = nfcIntent?.nfcTag ?: return@launch
-            writeDumpUseCase(tag).collect { result ->
-                _logStateFlow.value += if (result.isSuccess) {
-                    createLogMessage(R.string.main_write_success)
-                } else {
-                    createLogMessage(R.string.main_write_failure)
-                }
-            }
-        }
-    }
-
     private fun readDumpData(tagId: String, tag: Tag) {
         job?.cancel()
-        job = readDumpUseCase(tag)
+        job = readDumpUseCase(ReadTagParams(tagId, tag))
             .onStart {
                 _logStateFlow.value += createLogMessage(R.string.main_tag_found)
                 _dumpStateFlow.emit(DumpState.Loading)
@@ -74,7 +57,7 @@ class ScanViewModel(
                 result
                     .onSuccess { dump ->
                         _logStateFlow.value += createLogMessage(R.string.main_read_success)
-                        _dumpStateFlow.emit(DumpState.Content(tagId, dump))
+                        _dumpStateFlow.emit(DumpState.Content(dump))
                     }
                     .onFailure { exception ->
                         _logStateFlow.value += createLogMessage(R.string.main_read_failure)

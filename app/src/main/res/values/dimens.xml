@@ -6,7 +6,7 @@
     <dimen name="margin_big">20dp</dimen>
     <dimen name="margin_bigger">24dp</dimen>
 
-    <dimen name="write_button_height">64dp</dimen>
+    <dimen name="write_button_height">56dp</dimen>
     <dimen name="toolbar_height">56dp</dimen>
     <dimen name="default_radius">12dp</dimen>
     <dimen name="default_btn_bottom_margin">94dp</dimen>

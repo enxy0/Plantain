@@ -1,6 +1,5 @@
 package kek.enxy.domain.read
 
-import android.nfc.Tag
 import android.nfc.tech.MifareClassic
 import kek.enxy.data.mifare.MifareDataProviderImpl.Companion.KEY_4A
 import kek.enxy.data.mifare.MifareDataProviderImpl.Companion.KEY_5A
@@ -19,14 +18,14 @@ class ReadDumpUseCaseImpl(
 
     override fun dispatcher() = Dispatchers.IO
 
-    override fun execute(parameters: Tag) = getReadDataFlow(parameters).retry(retries = 15)
+    override fun execute(parameter: ReadTagParams) = getReadDataFlow(parameter).retry(retries = 15)
 
     @Suppress("BlockingMethodInNonBlockingContext") // doing IO operations on IO dispatcher, everything is OK
-    private fun getReadDataFlow(parameters: Tag) = flow {
+    private fun getReadDataFlow(parameters: ReadTagParams) = flow {
         val mifareTag: MifareClassic = try {
-            MifareClassic.get(parameters)
+            MifareClassic.get(parameters.tag)
         } catch (e: Exception) {
-            val patchedNfcTag = MifareClassicPatcher.patchTag(parameters)
+            val patchedNfcTag = MifareClassicPatcher.patchTag(parameters.tag)
             MifareClassic.get(patchedNfcTag)
         }
         mifareTag.connect()
@@ -41,7 +40,7 @@ class ReadDumpUseCaseImpl(
             } else {
                 throw WrongSectorKeyException("KEY_5A")
             }
-            val dump = readWriteDataSource.getDumpFromSectors(sector4, sector5)
+            val dump = readWriteDataSource.getDumpFromSectors(parameters.uid, sector4, sector5)
             emit(Result.success(dump))
         }
     }

@@ -4,7 +4,7 @@ import android.nfc.tech.MifareClassic
 import kek.enxy.data.model.Sector
 import kek.enxy.data.readwrite.model.*
 
-class ReadWriteDataSourceImpl : ReadWriteDataSource{
+class ReadWriteDataSourceImpl : ReadWriteDataSource {
     override fun writeSector(mifareClassic: MifareClassic, sector: Sector) {
         val block = mifareClassic.sectorToBlock(sector.index)
         val blocksCount = mifareClassic.getBlockCountInSector(sector.index)
@@ -23,8 +23,9 @@ class ReadWriteDataSourceImpl : ReadWriteDataSource{
         return Sector(sectorId, data)
     }
 
-    override fun getDumpFromSectors(sector4: Sector, sector5: Sector): Dump =
+    override fun getDumpFromSectors(uid: String, sector4: Sector, sector5: Sector): Dump =
         Dump(
+            uid = uid,
             balance = getBalanceFromSector(sector4),
             lastUseAmount = getLastUseAmount(sector5),
             lastUseDate = getLastUseDate(sector5),

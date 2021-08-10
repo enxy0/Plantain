@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import kek.enxy.plantwriter.R
 import kek.enxy.plantwriter.databinding.FragmentDetailsBinding
 import kek.enxy.plantwriter.presentation.common.extensions.getParentAsListener
-import kek.enxy.plantwriter.presentation.main.MainRoute
+import kek.enxy.plantwriter.presentation.main.DetailsContract
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -18,7 +19,7 @@ class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
 
-    private val router: MainRoute by lazy { getParentAsListener() }
+    private val contract: DetailsContract by lazy { getParentAsListener() }
     private val navArgs: DetailsFragmentArgs by navArgs()
     private val viewModel: DetailsViewModel by viewModel {
         parametersOf(navArgs.dump)
@@ -35,10 +36,11 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        setObservers()
     }
 
     private fun initViews() = with(binding) {
-        toolbar.onStartBtnClicked { router.onReturn() }
+        toolbar.onStartBtnClicked { contract.onReturn() }
         textBalance.text = getString(R.string.details_rub, viewModel.dump.balance.value)
         viewLastUseAmount.setDetails(
             value = getString(R.string.details_rub, viewModel.dump.lastUseAmount.value)
@@ -60,6 +62,17 @@ class DetailsFragment : Fragment() {
         viewLastPaymentDate.setDetails(
             value = viewModel.dump.lastPaymentDate.toString()
         )
+        btnSaveDump.setOnClickListener { viewModel.save() }
+    }
+
+    private fun setObservers() = with(viewModel) {
+        saveResultLiveData.observe(viewLifecycleOwner) { isSuccessfull ->
+            Toast.makeText(
+                requireContext(),
+                "Чтение: ${if (isSuccessfull) "успешно!" else "ошибка!"}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     override fun onDestroyView() {

@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-parcelize'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -57,4 +58,7 @@ dependencies {
     api libs.kotlinStdLib
     api libs.livedataKtx
     api libs.logger
+    api libs.roomKtx
+    api libs.roomRuntime
+    kapt libs.roomCompile
 }

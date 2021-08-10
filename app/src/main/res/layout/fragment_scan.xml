@@ -120,17 +120,4 @@
                 tools:visibility="visible" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_write"
-        style="@style/AppButton"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/write_button_height"
-        android:layout_gravity="bottom"
-        android:layout_marginHorizontal="@dimen/margin_normal"
-        android:layout_marginBottom="@dimen/margin_normal"
-        android:text="@string/main_write_data"
-        android:visibility="gone"
-        app:icon="@drawable/ic_arrow_forward_16"
-        tools:visibility="visible" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

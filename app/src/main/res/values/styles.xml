@@ -42,6 +42,12 @@
         <item name="iconSize">16dp</item>
     </style>
 
+    <style name="AppButton.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerRadius">@dimen/default_radius</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconSize">16dp</item>
+    </style>
+
     <style name="AppCardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">@dimen/default_radius</item>
         <item name="cardElevation">0dp</item>

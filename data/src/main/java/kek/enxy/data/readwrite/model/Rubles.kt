@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Rubles(
-    private val raw: Int,
+    val raw: Int,
     val value: Int = raw / 100
 ) : Parcelable {
 

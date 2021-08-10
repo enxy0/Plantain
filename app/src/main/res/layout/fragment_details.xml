@@ -159,14 +159,55 @@
                 app:layout_constraintTop_toBottomOf="@id/textLastPaymentTitle" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSaveDump"
-            style="@style/AppButton"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/write_button_height"
-            android:layout_gravity="bottom"
-            android:layout_marginHorizontal="@dimen/margin_normal"
-            android:layout_marginBottom="@dimen/margin_normal"
-            android:text="@string/details_save_dump" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:dividerColor="?dividerColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaveDump"
+                style="@style/AppButton"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/write_button_height"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_smallest"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:text="@string/details_save_dump"
+                app:icon="@drawable/ic_write_24"
+                app:iconSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnWriteDump"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnWriteDump"
+                style="@style/AppButton"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/write_button_height"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="@dimen/margin_smallest"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:text="@string/details_write_dump"
+                app:icon="@drawable/ic_arrow_forward_16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btnSaveDump"
+                app:layout_constraintTop_toBottomOf="@id/divider" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </androidx.core.widget.NestedScrollView>

@@ -33,5 +33,13 @@
     <string name="details_last_use">Последнее использование</string>
     <string name="details_travel">Количество поездок</string>
     <string name="details_rub">%d ₽</string>
-    <string name="details_save_dump">Сохранить дамп</string>
+    <string name="details_save_dump">Сохранить</string>
+    <string name="details_write_dump">Записать</string>
+
+    <string name="dumps_title">Сохраненные дампы</string>
+    <string name="dump_balance">Баланс: %d₽</string>
+    <string name="dump_uid">UID: %s</string>
+    <string name="dump_last_use">Послед. исп: %s</string>
+    <string name="dump_underground">Метро: %s</string>
+    <string name="dump_ground">Наземка: %s</string>
 </resources>

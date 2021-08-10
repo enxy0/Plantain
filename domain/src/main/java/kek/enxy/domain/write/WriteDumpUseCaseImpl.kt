@@ -1,6 +1,5 @@
 package kek.enxy.domain.write
 
-import android.nfc.Tag
 import android.nfc.tech.MifareClassic
 import kek.enxy.data.mifare.MifareDataProvider
 import kek.enxy.data.mifare.MifareDataProviderImpl.Companion.KEY_4B
@@ -8,6 +7,7 @@ import kek.enxy.data.mifare.MifareDataProviderImpl.Companion.KEY_5B
 import kek.enxy.data.mifare.MifareDataProviderImpl.Companion.SECTOR_4
 import kek.enxy.data.mifare.MifareDataProviderImpl.Companion.SECTOR_5
 import kek.enxy.data.readwrite.ReadWriteDataSource
+import kek.enxy.domain.write.model.WriteDumpParams
 import kek.enxy.domain.write.model.WrongSectorKeyException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -19,14 +19,15 @@ class WriteDumpUseCaseImpl(
 
     override fun dispatcher() = Dispatchers.IO
 
-    override fun execute(parameters: Tag) = getWriteDataFlow(parameters).retry(retries = 15)
+    override fun execute(parameter: WriteDumpParams) = getWriteDataFlow(parameter).retry(retries = 15)
 
     @Suppress("BlockingMethodInNonBlockingContext") // doing IO operations on IO dispatcher, everything is OK
-    private fun getWriteDataFlow(parameters: Tag) = flow {
+    private fun getWriteDataFlow(parameter: WriteDumpParams) = flow {
+        val (tag, dump) = parameter
         val mifareTag: MifareClassic = try {
-            MifareClassic.get(parameters)
+            MifareClassic.get(tag)
         } catch (e: Exception) {
-            val patchedNfcTag = MifareClassicPatcher.patchTag(parameters)
+            val patchedNfcTag = MifareClassicPatcher.patchTag(tag)
             MifareClassic.get(patchedNfcTag)
         }
         mifareTag.connect()

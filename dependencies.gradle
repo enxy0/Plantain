@@ -26,6 +26,7 @@ ext.versions = [
         navArgs         : "2.3.5",
         navigation      : "2.3.5",
         scopeKtx        : "2.4.0-alpha01",
+        room            : "2.3.0",
 
         // Plugins
         dependencyUpdate: "0.39.0",
@@ -48,5 +49,8 @@ ext.libs = [
         navigationUiKtx      : "androidx.navigation:navigation-ui-ktx:$versions.navigation",
         navigationFragmentKtx: "androidx.navigation:navigation-fragment-ktx:$versions.navigation",
         viewModelKtx         : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.scopeKtx",
-        lifecycleKtx         : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.scopeKtx"
+        lifecycleKtx         : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.scopeKtx",
+        roomKtx              : "androidx.room:room-ktx:$versions.room",
+        roomRuntime          : "androidx.room:room-runtime:$versions.room",
+        roomCompile          : "androidx.room:room-compiler:$versions.room"
 ]

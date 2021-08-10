@@ -2,8 +2,7 @@ package kek.enxy.plantwriter.presentation.main
 
 import kek.enxy.data.readwrite.model.Dump
 
-interface MainRoute {
-    fun openDumpDetails(dump: Dump)
+interface DumpsContract {
     fun onReturn()
-    fun openDumps()
+    fun openDumpDetails(dump: Dump)
 }

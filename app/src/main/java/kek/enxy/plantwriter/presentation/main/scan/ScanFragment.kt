@@ -15,7 +15,6 @@ import androidx.lifecycle.lifecycleScope
 import com.orhanobut.logger.Logger
 import kek.enxy.plantwriter.databinding.FragmentScanBinding
 import kek.enxy.plantwriter.presentation.common.extensions.getParentAsListener
-import kek.enxy.plantwriter.presentation.main.MainRoute
 import kek.enxy.plantwriter.presentation.main.ScanContract
 import kek.enxy.plantwriter.presentation.main.model.DumpState
 import kek.enxy.plantwriter.presentation.settings.SettingsActivity
@@ -30,7 +29,6 @@ class ScanFragment : Fragment() {
 
     private val viewModel: ScanViewModel by viewModel()
     private val contract: ScanContract by lazy { getParentAsListener() }
-    private val router: MainRoute by lazy { getParentAsListener() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,7 +61,7 @@ class ScanFragment : Fragment() {
                 when (dumpState) {
                     is DumpState.Content -> {
                         showContentWithAnimation()
-                        binding.viewCurrentDump.setDetails(dumpState.tagId, dumpState.dump)
+                        binding.viewCurrentDump.setDetails(dumpState.dump)
                     }
                     is DumpState.Loading -> {
                         showContentWithAnimation()
@@ -86,16 +84,14 @@ class ScanFragment : Fragment() {
     }
 
     private fun showContentWithAnimation() = with(binding) {
-        if (textLog.isGone && btnWrite.isGone && viewCurrentDump.isGone) {
+        if (textLog.isGone && viewCurrentDump.isGone) {
             val logAnimator = ObjectAnimator.ofFloat(textLog, View.ALPHA, 0.0f, 1.0f)
-            val buttonAnimator = ObjectAnimator.ofFloat(btnWrite, View.ALPHA, 0.0f, 1.0f)
             val viewCurrentDumpAnimator = ObjectAnimator.ofFloat(viewCurrentDump, View.ALPHA, 0.0f, 1.0f)
             val animatorSet = AnimatorSet().apply {
                 duration = 300L
-                playTogether(logAnimator, buttonAnimator, viewCurrentDumpAnimator)
+                playTogether(logAnimator, viewCurrentDumpAnimator)
                 doOnStart {
                     textLog.isVisible = true
-                    btnWrite.isVisible = true
                     viewCurrentDump.isVisible = true
                 }
             }
@@ -109,14 +105,13 @@ class ScanFragment : Fragment() {
     }
 
     private fun initViews() = with(binding) {
-        btnWrite.setOnClickListener { viewModel.writeDumpData() }
         toolbar.onEndBtnClicked { SettingsActivity.start(requireContext()) }
         viewCurrentDump.setOnClickListener {
             val dump = viewModel.dump ?: return@setOnClickListener
-            router.openDumpDetails(dump)
+            contract.openCurrentDumpDetails(dump)
         }
         viewDumps.setOnClickListener {
-            router.openDumps()
+            contract.openDumps()
         }
     }
 }

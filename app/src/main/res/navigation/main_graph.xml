@@ -17,14 +17,34 @@
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
             app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_scan_to_dumps"
+            app:destination="@id/dumpsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="kek.enxy.plantwriter.presentation.main.details.DetailsFragment"
         android:label="DetailsFragment"
-        tools:layout="@layout/fragment_details" >
+        tools:layout="@layout/fragment_details">
         <argument
             android:name="dump"
             app:argType="kek.enxy.data.readwrite.model.Dump" />
+    </fragment>
+    <fragment
+        android:id="@+id/dumpsFragment"
+        android:name="kek.enxy.plantwriter.presentation.main.dumps.DumpsFragment"
+        android:label="DumpsFragment"
+        tools:layout="@layout/fragment_dumps" >
+        <action
+            android:id="@+id/action_dumps_to_details"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"
+            app:destination="@id/detailsFragment" />
     </fragment>
 </navigation>

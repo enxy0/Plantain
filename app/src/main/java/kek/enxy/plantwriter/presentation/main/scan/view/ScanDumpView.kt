@@ -34,14 +34,14 @@ class ScanDumpView @JvmOverloads constructor(
         ContextCompat.getColor(context, R.color.red_500)
     }
 
-    fun setDetails(tagUID: String, dump: Dump) = with(binding) {
+    fun setDetails(dump: Dump) = with(binding) {
         textError.fadeOut()
         textBalance.fadeIn()
         textBalance.fillWhenHasData(dump.balance) { balance ->
             text = resources.getString(R.string.main_tag_balance, balance.value)
         }
         textUID.fadeIn()
-        textUID.fillWhenHasData(tagUID) { uid ->
+        textUID.fillWhenHasData(dump.uid) { uid ->
             text = resources.getString(
                 R.string.main_tag_uid,
                 uid.toUpperCase(Locale.getDefault())
