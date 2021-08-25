@@ -61,7 +61,6 @@ dependencies {
     implementation libs.appcompat
     implementation libs.constraintlayout
     implementation libs.coroutines
-    implementation libs.threeTen
     implementation libs.ktxCore
     implementation libs.koinCore
     implementation libs.kotlinStdLib

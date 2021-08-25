@@ -3,9 +3,8 @@ package kek.enxy.data.readwrite.model
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import java.text.SimpleDateFormat
-import java.time.Duration
-import java.time.LocalDateTime
-import java.time.ZoneOffset
+import java.time.*
+import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.util.*
 
@@ -17,42 +16,39 @@ data class AppDate(
 
     companion object {
         private const val DATE_PATTERN = "dd.MM.yyyy HH:mm"
+        private val initialDateTime: LocalDateTime get() = LocalDateTime.of(2010, 1, 1, 0, 0)
 
-//        fun fromDate(date: String): AppDate {
-//            val newDate = Calendar.getInstance().also {
-//                it.time = SimpleDateFormat(DATE_PATTERN, Locale.getDefault()).parse(date)!!
-//                it.set(Calendar.MINUTE, it.get(Calendar.MINUTE) + 1)
-//            }
-//            val minutes = Duration.between(initialDate.toInstant(), newDate.toInstant()).toMinutes()
-//            return AppDate(minutes.toInt())
-//        }
-//
-//        fun fromDate(date: LocalDateTime): AppDate {
-//            val minutes = ChronoUnit.MINUTES.between(initialDate, date)
-//            val minutes = Duration.between(initialDate.toInstant(), date.toInstant(ZoneOffset.ofHours).toMinutes()
-//            return AppDate(minutes.toInt())
-//        }
-//
-//        fun now(): AppDate = fromDate(LocalDateTime.now())
-//
-//        fun yesterday(): AppDate {
-//            val now = LocalDateTime.now()
-//            return fromDate(now.minusDays(1L))
-//        }
-//
-//        fun weekAgo(): AppDate {
-//            val now = LocalDateTime.now()
-//            return fromDate(now.minusDays(7L))
-//        }
+        fun fromDate(date: String): AppDate {
+            val newDate = SimpleDateFormat(DATE_PATTERN, Locale.getDefault()).parse(date)!!
+            val zoneOffset = ZoneId.systemDefault().rules.getOffset(Instant.now())
+            val minutes = ChronoUnit.MINUTES.between(
+                initialDateTime.toInstant(zoneOffset),
+                newDate.toInstant()
+                )
+            return AppDate(minutes.toInt())
+        }
 
-        private val initialDate: Calendar
-            get() = Calendar.getInstance(TimeZone.getTimeZone("GMT+3")).apply {
-                this[2010, 0, 1, 0, 0] = 0
-            }
+        fun now(): AppDate = fromDate(LocalDateTime.now())
+
+        fun yesterday(): AppDate {
+            val now = LocalDateTime.now()
+            return fromDate(now.minusDays(1L))
+        }
+
+        fun weekAgo(): AppDate {
+            val now = LocalDateTime.now()
+            return fromDate(now.minusDays(7L))
+        }
+
+        private fun fromDate(date: LocalDateTime): AppDate {
+            val minutes = ChronoUnit.MINUTES.between(initialDateTime, date)
+            return AppDate(minutes.toInt())
+        }
 
         private fun formatDate(minutesSince2010: Int): String {
-            val calendar = initialDate.apply { add(Calendar.MINUTE, minutesSince2010) }
-            return SimpleDateFormat(DATE_PATTERN, Locale.getDefault()).format(calendar.time)
+            return initialDateTime
+                .plusMinutes(minutesSince2010.toLong())
+                .format(DateTimeFormatter.ofPattern(DATE_PATTERN))
         }
     }
 

@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowInsets
+import android.widget.Toast
 import androidx.core.view.postDelayed
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.orhanobut.logger.Logger
+import kek.enxy.data.readwrite.model.AppDate
 import kek.enxy.plantwriter.R
 import kek.enxy.plantwriter.databinding.BottomSheetEditDumpBinding
 import kek.enxy.plantwriter.presentation.common.KeyboardUtils
@@ -74,11 +76,11 @@ class EditDumpBottomSheet : BottomSheetDialogFragment() {
                 chip1.setText(R.string.edit_dump_date_initial)
                 chip1.setOnClickListener { editText.setText(R.string.edit_dump_date_initial_value) }
                 chip2.setText(R.string.edit_dump_date_today)
-//                chip2.setOnClickListener { editText.setText(AppDate.now().toString()) }
+                chip2.setOnClickListener { editText.setText(AppDate.now().toString()) }
                 chip3.setText(R.string.edit_dump_date_yesterday)
-//                chip2.setOnClickListener { editText.setText(AppDate.yesterday().toString()) }
+                chip3.setOnClickListener { editText.setText(AppDate.yesterday().toString()) }
                 chip4.setText(R.string.edit_dump_date_week_ago)
-//                chip2.setOnClickListener { editText.setText(AppDate.weekAgo().toString()) }
+                chip4.setOnClickListener { editText.setText(AppDate.weekAgo().toString()) }
             }
         }
     }
@@ -108,10 +110,6 @@ class EditDumpBottomSheet : BottomSheetDialogFragment() {
             editText.postDelayed(KEYBOARD_FOCUS_DELAY) { // TODO: workaround, should be replaced
                 KeyboardUtils.show(editText)
             }
-        }
-
-        editText.addTextChangedListener {
-            Logger.d("text = $it")
         }
     }
 }
