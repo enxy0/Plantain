@@ -19,7 +19,7 @@ ext.versions = [
         desugaring      : "1.1.5",
         ktxCore         : "1.7.0-alpha01",
         koin            : "3.1.2",
-        kotlin          : "1.4.32",
+        kotlin          : "1.5.30",
         livedataKtx     : "2.4.0-alpha02",
         logger          : "2.2.0",
         material        : "1.5.0-alpha01",
@@ -32,7 +32,7 @@ ext.versions = [
         // Plugins
         dependencyUpdate: "0.39.0",
         ktlint          : "10.1.0",
-        kotlinPlugin    : "1.4.32"
+        kotlinPlugin    : "1.5.30"
 ]
 
 ext.libs = [
