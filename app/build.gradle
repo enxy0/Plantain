@@ -17,7 +17,7 @@ android {
         targetSdkVersion versions.targetSdk
         versionCode versions.versionCode
         versionName versions.versionName
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,7 +38,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = "1.8"
         freeCompilerArgs += [
                 "-Xinline-classes",
                 "-Xallow-result-return-type",
@@ -55,11 +55,13 @@ android {
 }
 
 dependencies {
+    coreLibraryDesugaring libs.desugaring
     implementation project(path: ":domain")
     implementation project(path: ":data")
     implementation libs.appcompat
     implementation libs.constraintlayout
     implementation libs.coroutines
+    implementation libs.threeTen
     implementation libs.ktxCore
     implementation libs.koinCore
     implementation libs.kotlinStdLib
@@ -71,5 +73,4 @@ dependencies {
     implementation libs.navigationFragmentKtx
     implementation libs.viewModelKtx
     implementation libs.lifecycleKtx
-    coreLibraryDesugaring libs.desugaring
 }

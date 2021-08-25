@@ -12,7 +12,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.orhanobut.logger.Logger
 import kek.enxy.plantwriter.databinding.FragmentScanBinding
 import kek.enxy.plantwriter.presentation.common.extensions.getParentAsListener
 import kek.enxy.plantwriter.presentation.main.ScanContract
@@ -57,7 +56,6 @@ class ScanFragment : Fragment() {
         viewModel.dumpStateFlow
             .flowWithLifecycle(lifecycle)
             .onEach { dumpState ->
-                Logger.d("dumpState = ${dumpState.javaClass.simpleName}")
                 when (dumpState) {
                     is DumpState.Content -> {
                         showContentWithAnimation()

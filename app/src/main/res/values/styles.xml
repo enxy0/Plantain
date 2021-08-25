@@ -18,6 +18,12 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="Text.Title">
+        <item name="fontFamily">@font/open_sans_bold</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
     <style name="Text.Header">
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:textStyle">bold</item>
@@ -51,5 +57,29 @@
     <style name="AppCardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">@dimen/default_radius</item>
         <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="AppBottomSheetDialog" parent="Theme.MaterialComponents.DayNight.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppBottomSheetDialogModal</item>
+    </style>
+
+    <style name="AppBottomSheetDialogModal" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/AppShapeAppearanceBottomSheetDialog</item>
+    </style>
+
+    <style name="AppShapeAppearanceBottomSheetDialog">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <style name="AppBottomSheetDialog.ConstantCorners">
+        <item name="bottomSheetStyle">@style/AppBottomSheetDialogModal.ConstantCorners</item>
+    </style>
+
+    <style name="AppBottomSheetDialogModal.ConstantCorners" parent="">  <!-- Don't delete empty parent -->
+        <item name="android:background">@drawable/bg_bottom_sheet_constant_corners</item>
     </style>
 </resources>

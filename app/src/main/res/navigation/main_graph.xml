@@ -33,6 +33,9 @@
         <argument
             android:name="dump"
             app:argType="kek.enxy.data.readwrite.model.Dump" />
+        <action
+            android:id="@+id/action_details_to_editDump"
+            app:destination="@id/editDumpFragment" />
     </fragment>
     <fragment
         android:id="@+id/dumpsFragment"
@@ -47,4 +50,14 @@
             app:popExitAnim="@anim/exit_to_right"
             app:destination="@id/detailsFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/editDumpFragment"
+        tools:layout="@layout/bottom_sheet_edit_dump"
+        android:name="kek.enxy.plantwriter.presentation.main.details.edit.EditDumpBottomSheet"
+        android:label="EditDumpFragment" >
+
+        <argument
+            android:name="type"
+            app:argType="kek.enxy.plantwriter.presentation.main.details.edit.EditDumpType" />
+    </dialog>
 </navigation>

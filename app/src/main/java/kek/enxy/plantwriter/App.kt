@@ -1,6 +1,7 @@
 package kek.enxy.plantwriter
 
 import android.app.Application
+import com.jakewharton.threetenabp.AndroidThreeTen
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import kek.enxy.plantwriter.di.KoinModules
@@ -13,6 +14,7 @@ class App : Application() {
         super.onCreate()
         initKoin()
         initLogger()
+        initAndroidThreeTen()
     }
 
     private fun initKoin() {
@@ -25,5 +27,9 @@ class App : Application() {
 
     private fun initLogger() {
         Logger.addLogAdapter(AndroidLogAdapter())
+    }
+
+    private fun initAndroidThreeTen() {
+        AndroidThreeTen.init(this)
     }
 }

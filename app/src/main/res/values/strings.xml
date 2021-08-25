@@ -42,4 +42,27 @@
     <string name="dump_last_use">Послед. исп: %s</string>
     <string name="dump_underground">Метро: %s</string>
     <string name="dump_ground">Наземка: %s</string>
+
+    <string name="edit_dump_money_0">0 ₽</string>
+    <string name="edit_dump_money_100">100 ₽</string>
+    <string name="edit_dump_money_500">500 ₽</string>
+    <string name="edit_dump_money_1000">1000 ₽</string>
+
+    <string name="edit_dump_count_0">0</string>
+    <string name="edit_dump_count_10">10</string>
+    <string name="edit_dump_count_20">20</string>
+    <string name="edit_dump_count_50">50</string>
+
+    <string name="edit_dump_date_initial">Сброс</string>
+    <string name="edit_dump_date_initial_value">01.01.2010 00:00</string>
+    <string name="edit_dump_date_today">Сегодня</string>
+    <string name="edit_dump_date_yesterday">Вчера</string>
+    <string name="edit_dump_date_week_ago">Неделю назад</string>
+
+    <string name="edit_dump_placeholder_money">Введите значение в рублях</string>
+    <string name="edit_dump_placeholder_count">Введите числовое значение</string>
+    <string name="edit_dump_placeholder_date">Введите дату в формате: 01.01.2010 00:00</string>
+    <string name="edit_dump_title_money">Сумма</string>
+    <string name="edit_dump_title_count">Значение</string>
+    <string name="edit_dump_title_date">Дата</string>
 </resources>
