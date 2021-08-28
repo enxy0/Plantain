@@ -34,7 +34,12 @@
     <string name="details_travel">Количество поездок</string>
     <string name="details_rub">%d ₽</string>
     <string name="details_save_dump">Сохранить</string>
+    <string name="details_save_dump_write">Сохранить</string>
+    <string name="details_save_dump_ok">Дамп успешно сохранен!</string>
+    <string name="details_save_dump_error">При сохранении дампа произошла ошибка. Попробуйте еще раз!</string>
     <string name="details_write_dump">Записать</string>
+    <string name="details_write_dump_ok">Запись прошла успешно!</string>
+    <string name="details_write_dump_error">При записи дампа произошла ошибка. Попробуйте еще раз!</string>
 
     <string name="dumps_title">Сохраненные дампы</string>
     <string name="dump_balance">Баланс: %d₽</string>
@@ -44,9 +49,13 @@
     <string name="dump_ground">Наземка: %s</string>
 
     <string name="edit_dump_money_0">0 ₽</string>
+    <string name="edit_dump_money_0_value">0</string>
     <string name="edit_dump_money_100">100 ₽</string>
+    <string name="edit_dump_money_100_value">100</string>
     <string name="edit_dump_money_500">500 ₽</string>
+    <string name="edit_dump_money_500_value">500</string>
     <string name="edit_dump_money_1000">1000 ₽</string>
+    <string name="edit_dump_money_1000_value">1000</string>
 
     <string name="edit_dump_count_0">0</string>
     <string name="edit_dump_count_10">10</string>
@@ -65,4 +74,8 @@
     <string name="edit_dump_title_money">Сумма</string>
     <string name="edit_dump_title_count">Значение</string>
     <string name="edit_dump_title_date">Дата</string>
+
+    <string name="validator_date">Дата должна быть между 01.01.2010 и ???</string>
+    <string name="validator_count">Значение должно быть от 0 до 255</string>
+    <string name="validator_rubles">Сумма должна быть от 0 до 167 772 ₽</string>
 </resources>

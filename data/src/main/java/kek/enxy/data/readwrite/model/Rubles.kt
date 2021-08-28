@@ -9,5 +9,9 @@ data class Rubles(
     val value: Int = raw / 100
 ) : Parcelable {
 
+    companion object {
+        fun parse(text: String) = Rubles(text.trim().toInt() * 100)
+    }
+
     override fun toString() = value.toString()
 }

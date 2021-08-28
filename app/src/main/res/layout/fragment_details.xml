@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:layout_height="match_parent">
 
-    <FrameLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        app:elevation="0dp">
+
+        <kek.enxy.plantwriter.presentation.common.view.AppToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:at_startIcon="@drawable/ic_baseline_arrow_back_24"
+            app:at_title="@string/details_title" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingBottom="@dimen/default_btn_bottom_margin">
-
-            <kek.enxy.plantwriter.presentation.common.view.AppToolbar
-                android:id="@+id/toolbar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:at_startIcon="@drawable/ic_baseline_arrow_back_24"
-                app:at_title="@string/details_title"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textBalance"
@@ -37,13 +42,14 @@
                 android:textSize="32sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="1337 ₽" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textBalanceHint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
                 android:text="@string/details_balance"
                 app:layout_constraintStart_toStartOf="@id/textBalance"
                 app:layout_constraintTop_toBottomOf="@id/textBalance" />
@@ -158,56 +164,56 @@
                 app:layout_constraintStart_toEndOf="@id/viewLastPaymentAmount"
                 app:layout_constraintTop_toBottomOf="@id/textLastPaymentTitle" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom">
+            app:dividerColor="?dividerColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.divider.MaterialDivider
-                android:id="@+id/divider"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:dividerColor="?dividerColor"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveDump"
+            style="@style/AppButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/write_button_height"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_smallest"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:text="@string/details_save_dump"
+            app:icon="@drawable/ic_write_24"
+            app:iconSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnWriteDump"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSaveDump"
-                style="@style/AppButton"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/write_button_height"
-                android:layout_gravity="bottom"
-                android:layout_marginStart="@dimen/margin_normal"
-                android:layout_marginTop="@dimen/margin_smallest"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="@dimen/margin_normal"
-                android:text="@string/details_save_dump"
-                app:icon="@drawable/ic_write_24"
-                app:iconSize="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btnWriteDump"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnWriteDump"
-                style="@style/AppButton"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/write_button_height"
-                android:layout_gravity="bottom"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="@dimen/margin_smallest"
-                android:layout_marginEnd="@dimen/margin_normal"
-                android:layout_marginBottom="@dimen/margin_normal"
-                android:text="@string/details_write_dump"
-                app:icon="@drawable/ic_arrow_forward_16"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/btnSaveDump"
-                app:layout_constraintTop_toBottomOf="@id/divider" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </FrameLayout>
-</androidx.core.widget.NestedScrollView>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnWriteDump"
+            style="@style/AppButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/write_button_height"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="@dimen/margin_smallest"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:text="@string/details_write_dump"
+            app:icon="@drawable/ic_arrow_forward_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnSaveDump"
+            app:layout_constraintTop_toBottomOf="@id/divider" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
