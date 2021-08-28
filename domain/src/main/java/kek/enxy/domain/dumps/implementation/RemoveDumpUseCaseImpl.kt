@@ -11,5 +11,6 @@ class RemoveDumpUseCaseImpl(
 ) : RemoveDumpUseCase {
     override fun execute(parameter: Dump): Flow<Result<Unit>> = flow {
         dataSource.removeDump(parameter)
+        emit(Result.success(Unit))
     }
 }

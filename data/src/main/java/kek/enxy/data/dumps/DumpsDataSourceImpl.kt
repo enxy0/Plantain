@@ -1,5 +1,6 @@
 package kek.enxy.data.dumps
 
+import com.orhanobut.logger.Logger
 import kek.enxy.data.db.dumps.DumpsDao
 import kek.enxy.data.readwrite.model.Dump
 import kotlinx.coroutines.flow.Flow
@@ -17,6 +18,6 @@ class DumpsDataSourceImpl(
     }
 
     override fun removeDump(dump: Dump) {
-        dumpsDao.deleteDump(dump.toEntity())
+        dumpsDao.deleteDump(dump.id)
     }
 }

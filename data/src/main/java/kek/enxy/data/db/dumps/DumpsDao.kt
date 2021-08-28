@@ -13,6 +13,6 @@ interface DumpsDao {
     @Query("SELECT * FROM Dump")
     fun getDumpsFlow(): Flow<List<DumpEntity>>
 
-    @Delete
-    fun deleteDump(dump: DumpEntity)
+    @Query("DELETE FROM Dump WHERE id = :id")
+    fun deleteDump(id: Int)
 }

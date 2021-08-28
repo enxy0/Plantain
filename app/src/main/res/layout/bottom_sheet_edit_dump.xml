@@ -45,10 +45,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_normal"
-            tools:text="Баланс"
             app:layout_constraintEnd_toStartOf="@id/guideEnd"
             app:layout_constraintStart_toEndOf="@id/guideStart"
-            app:layout_constraintTop_toBottomOf="@id/imgSlide" />
+            app:layout_constraintTop_toBottomOf="@id/imgSlide"
+            tools:text="Баланс" />
 
         <FrameLayout
             android:id="@+id/frameInput"
@@ -113,10 +113,10 @@
                 android:paddingBottom="64dp"
                 app:endIconDrawable="@drawable/ic_baseline_close_24"
                 app:endIconMode="clear_text"
+                app:helperText="Введите значение в диапазоне"
+                app:helperTextEnabled="true"
                 app:hintAnimationEnabled="false"
                 app:hintEnabled="false"
-                app:helperTextEnabled="true"
-                app:helperText="Введите значение в диапазоне"
                 app:layout_constraintEnd_toStartOf="@id/guideEnd"
                 app:layout_constraintStart_toEndOf="@id/guideStart"
                 app:layout_constraintTop_toBottomOf="@id/textDescription"
@@ -128,8 +128,8 @@
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
                     android:inputType="text"
-                    android:maxLines="1"
                     android:lines="1"
+                    android:maxLines="1"
                     android:padding="@dimen/margin_normal">
 
                     <requestFocus />

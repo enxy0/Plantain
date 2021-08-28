@@ -37,7 +37,8 @@ class DumpAdapter(
 
         fun bind(dump: Dump) = with(binding) {
             val resources = itemView.resources
-            root.setOnClickListener { listener.onDumpClicked(dump) }
+            root.setOnClickListener { listener.onDumpDetailsClicked(dump) }
+            imgRemove.setOnClickListener { listener.onDumpRemoveClicked(dump) }
             textName.text = dump.name
             chipBalance.text = resources.getString(
                 R.string.dump_balance,
@@ -54,7 +55,8 @@ class DumpAdapter(
         }
     }
 
-    fun interface DumpListener {
-        fun onDumpClicked(dump: Dump)
+    interface DumpListener {
+        fun onDumpDetailsClicked(dump: Dump)
+        fun onDumpRemoveClicked(dump: Dump)
     }
 }

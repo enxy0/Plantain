@@ -9,6 +9,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
+import kek.enxy.data.readwrite.model.Dump
 import kek.enxy.plantwriter.databinding.FragmentDumpsBinding
 import kek.enxy.plantwriter.presentation.common.extensions.getParentAsListener
 import kek.enxy.plantwriter.presentation.main.DumpsContract
@@ -34,7 +35,15 @@ class DumpsFragment : Fragment() {
     }
 
     private val dumpListener by lazy {
-        DumpAdapter.DumpListener { dump -> contract.openDumpDetails(dump) }
+        object : DumpAdapter.DumpListener {
+            override fun onDumpDetailsClicked(dump: Dump) {
+                contract.openDumpDetails(dump)
+            }
+
+            override fun onDumpRemoveClicked(dump: Dump) {
+                viewModel.removeDump(dump)
+            }
+        }
     }
 
     override fun onCreateView(
