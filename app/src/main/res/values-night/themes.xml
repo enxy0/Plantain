@@ -19,5 +19,6 @@
         <item name="colorSurface">@color/colorSurfaceDark</item>
         <item name="dividerColor">@color/gray_900</item>
         <item name="android:windowBackground">@color/black</item>
+        <item name="colorControlNormal">@color/gray_300</item>
     </style>
 </resources>

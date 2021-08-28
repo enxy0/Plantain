@@ -17,11 +17,10 @@
             android:id="@+id/imgWrite"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_write_24"
+            android:src="@drawable/ic_baseline_save_alt_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="?android:attr/textColorSecondary"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -55,7 +54,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="?android:attr/textColorSecondary"
             tools:ignore="ContentDescription" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </merge>

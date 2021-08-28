@@ -28,7 +28,7 @@ class ScanDumpView @JvmOverloads constructor(
 
     private val binding = ViewTagDetailsBinding.inflate(LayoutInflater.from(context), this)
     private val grayColor by lazy {
-        context.getColorFromAttr(android.R.attr.textColorSecondary)
+        context.getColorFromAttr(R.attr.colorControlNormal)
     }
     private val redColor by lazy {
         ContextCompat.getColor(context, R.color.red_500)
@@ -44,7 +44,7 @@ class ScanDumpView @JvmOverloads constructor(
         textUID.fillWhenHasData(dump.uid) { uid ->
             text = resources.getString(
                 R.string.main_tag_uid,
-                uid.toUpperCase(Locale.getDefault())
+                uid.uppercase(Locale.ENGLISH)
             )
         }
         imgInfo.fadeIn()
