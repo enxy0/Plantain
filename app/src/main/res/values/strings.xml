@@ -78,4 +78,7 @@
     <string name="validator_date">Дата должна быть между 01.01.2010 и ???</string>
     <string name="validator_count">Значение должно быть от 0 до 255</string>
     <string name="validator_rubles">Сумма должна быть от 0 до 167 772 ₽</string>
+
+    <string name="dumps_create_dump">Создать новый дамп</string>
+    <string name="dumps_create_dump_plus">+</string>
 </resources>

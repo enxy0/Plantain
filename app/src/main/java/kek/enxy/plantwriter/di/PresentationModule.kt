@@ -47,7 +47,7 @@ internal val detailsModule = module {
 }
 
 internal val dumpsModule = module {
-    viewModel { DumpsViewModel() }
+    viewModel { DumpsViewModel(get(), get()) }
 }
 
 internal val validatorsModule = module {

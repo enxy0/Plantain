@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import kek.enxy.plantwriter.databinding.FragmentDumpsBinding
 import kek.enxy.plantwriter.presentation.common.extensions.getParentAsListener
 import kek.enxy.plantwriter.presentation.main.DumpsContract
@@ -21,7 +23,15 @@ class DumpsFragment : Fragment() {
 
     private val viewModel: DumpsViewModel by viewModel()
     private val contract: DumpsContract by lazy { getParentAsListener() }
-    private val adapter by lazy { DumpAdapter(dumpListener) }
+    private val createDumpAdapter by lazy { CreateDumpAdapter(createDumpListener) }
+    private val dumpsAdapter by lazy { DumpAdapter(dumpListener) }
+    private val adapter by lazy { ConcatAdapter(dumpsAdapter, createDumpAdapter) }
+
+    private val createDumpListener by lazy {
+        CreateDumpAdapter.CreateDumpListener {
+            contract.openDumpDetails(viewModel.getEmptyDump())
+        }
+    }
 
     private val dumpListener by lazy {
         DumpAdapter.DumpListener { dump -> contract.openDumpDetails(dump) }
@@ -42,15 +52,19 @@ class DumpsFragment : Fragment() {
     }
 
     private fun setObservers() = with(viewModel) {
-        dumpSharedFlow
+        dumpsStateFlow
             .flowWithLifecycle(lifecycle)
-            .onEach { dumps ->
-                adapter.submitList(dumps)
-            }
+            .onEach { dumps -> dumpsAdapter.submitList(dumps) }
+            .launchIn(lifecycleScope)
+
+        createDumpStateFlow
+            .flowWithLifecycle(lifecycle)
+            .onEach { list -> createDumpAdapter.submitList(list) }
             .launchIn(lifecycleScope)
     }
 
     private fun initViews() = with(binding) {
         recyclerDumps.adapter = adapter
+        toolbar.onStartBtnClicked { findNavController().navigateUp() }
     }
 }

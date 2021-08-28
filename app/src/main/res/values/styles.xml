@@ -75,6 +75,22 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
+    <style name="DumpPlantainImage">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">6dp</item>
+    </style>
+
+    <style name="ChipDump" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="checkedIconVisible">false</item>
+        <item name="closeIconVisible">false</item>
+        <item name="android:textAppearance">@style/Text.Secondary.Bold</item>
+        <item name="rippleColor">@null</item>
+        <item name="minTouchTargetSize">0dp</item>
+        <item name="android:clickable">false</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="ensureMinTouchTargetSize">false</item>
+    </style>
+
     <style name="AppBottomSheetDialog.ConstantCorners">
         <item name="bottomSheetStyle">@style/AppBottomSheetDialogModal.ConstantCorners</item>
     </style>

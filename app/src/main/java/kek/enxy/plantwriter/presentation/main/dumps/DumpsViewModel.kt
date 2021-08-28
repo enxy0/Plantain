@@ -1,99 +1,42 @@
 package kek.enxy.plantwriter.presentation.main.dumps
 
 import androidx.lifecycle.ViewModel
-import kek.enxy.data.readwrite.model.AppDate
-import kek.enxy.data.readwrite.model.Count
+import androidx.lifecycle.viewModelScope
+import com.orhanobut.logger.Logger
 import kek.enxy.data.readwrite.model.Dump
-import kek.enxy.data.readwrite.model.Rubles
-import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
+import kek.enxy.domain.dumps.GetDumpsUseCase
+import kek.enxy.domain.dumps.RemoveDumpUseCase
+import kotlinx.coroutines.flow.*
 
-class DumpsViewModel : ViewModel() {
+class DumpsViewModel(
+    private val getDumpsUseCase: GetDumpsUseCase,
+    private val removeDumpUseCase: RemoveDumpUseCase
+) : ViewModel() {
 
-    private val _dumpsSharedFlow = MutableSharedFlow<List<Dump>>(
-        replay = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST
-    )
-    val dumpSharedFlow: SharedFlow<List<Dump>> = _dumpsSharedFlow.asSharedFlow()
+    private val _dumpsStateFlow = MutableStateFlow<List<Dump>>(emptyList())
+    val dumpsStateFlow: StateFlow<List<Dump>> = _dumpsStateFlow.asStateFlow()
+
+    private val _createDumpStateFlow = MutableStateFlow(emptyList<Unit>())
+    val createDumpStateFlow = _createDumpStateFlow.asStateFlow()
 
     init {
-        _dumpsSharedFlow.tryEmit(
-            listOf(
-                Dump(
-                    id = 0,
-                    "041E62DAE36480",
-                    "Подорожник с 500 руб.",
-                    Rubles(50000),
-                    Rubles(0),
-                    AppDate(237894238),
-                    Rubles(0),
-                    AppDate(237894238),
-                    Count(0),
-                    Count(0)
-                ),
-                Dump(
-                    id = 0,
-                    "041E62DAE36480",
-                    "Подорожник с 500 руб.",
-                    Rubles(50000),
-                    Rubles(0),
-                    AppDate(237894238),
-                    Rubles(0),
-                    AppDate(237894238),
-                    Count(0),
-                    Count(0)
-                ),
-                Dump(
-                    id = 0,
-                    "041E62DAE36480",
-                    "Подорожник с 500 руб.",
-                    Rubles(50000),
-                    Rubles(0),
-                    AppDate(237894238),
-                    Rubles(0),
-                    AppDate(237894238),
-                    Count(0),
-                    Count(0)
-                ),
-                Dump(
-                    id = 0,
-                    "041E62DAE36480",
-                    "Подорожник с 500 руб.",
-                    Rubles(50000),
-                    Rubles(0),
-                    AppDate(237894238),
-                    Rubles(0),
-                    AppDate(237894238),
-                    Count(0),
-                    Count(0)
-                ),
-                Dump(
-                    id = 0,
-                    "041E62DAE36480",
-                    "Подорожник с 500 руб.",
-                    Rubles(50000),
-                    Rubles(0),
-                    AppDate(237894238),
-                    Rubles(0),
-                    AppDate(237894238),
-                    Count(0),
-                    Count(0)
-                ),
-                Dump(
-                    id = 0,
-                    "041E62DAE36480",
-                    "Подорожник с 500 руб.",
-                    Rubles(50000),
-                    Rubles(0),
-                    AppDate(237894238),
-                    Rubles(0),
-                    AppDate(237894238),
-                    Count(0),
-                    Count(0)
-                )
-            )
-        )
+        collectDumps()
+    }
+
+    fun getEmptyDump(): Dump = Dump.empty()
+
+    private fun collectDumps() {
+        getDumpsUseCase(Unit)
+            .onEach { result ->
+                result
+                    .onSuccess { dumps ->
+                        _dumpsStateFlow.value = dumps
+                        _createDumpStateFlow.value = listOf(Unit)
+                    }
+                    .onFailure {
+                        Logger.e(it, it.message.orEmpty())
+                    }
+            }
+            .launchIn(viewModelScope)
     }
 }

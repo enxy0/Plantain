@@ -72,4 +72,5 @@ dependencies {
     implementation libs.navigationFragmentKtx
     implementation libs.viewModelKtx
     implementation libs.lifecycleKtx
+    implementation libs.recyclerView
 }

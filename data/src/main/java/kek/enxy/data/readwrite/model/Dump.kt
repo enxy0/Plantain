@@ -15,4 +15,18 @@ data class Dump(
     val lastPaymentDate: AppDate, // Дата последнего пополнения
     val groundTravelTotal: Count, // Количество поездок на наземном транспорте
     val undergroundTravelTotal: Count // Количество поездок в метро
-) : Parcelable
+) : Parcelable {
+
+    companion object {
+        fun empty() = Dump(
+            uid = "",
+            balance = Rubles(0),
+            lastUseAmount = Rubles(0),
+            lastUseDate = AppDate(0),
+            lastPaymentAmount = Rubles(0),
+            lastPaymentDate = AppDate(0),
+            groundTravelTotal = Count(0),
+            undergroundTravelTotal = Count(0),
+        )
+    }
+}

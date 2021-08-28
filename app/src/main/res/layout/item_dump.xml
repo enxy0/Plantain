@@ -13,57 +13,69 @@
         android:layout_height="match_parent"
         android:padding="@dimen/margin_normal">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgPlantain"
+            android:layout_width="63dp"
+            android:layout_height="40dp"
+            android:src="@drawable/plantain_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/DumpPlantainImage"
+            tools:ignore="ContentDescription" />
+
         <TextView
             android:id="@+id/textName"
             style="@style/Text.Header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_smallest"
+            android:maxLines="2"
+            app:layout_constraintBottom_toBottomOf="@id/imgPlantain"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgPlantain"
+            app:layout_constraintTop_toTopOf="@id/imgPlantain"
             tools:text="Название дампа" />
 
-        <TextView
-            android:id="@+id/textUID"
-            style="@style/Text.Mono.Small"
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textName"
-            app:layout_constraintVertical_chainStyle="spread"
-            tools:text="UID: 123456789" />
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="imgPlantain, textName" />
 
-        <TextView
-            android:id="@+id/textBalance"
-            style="@style/Text.Mono.Small"
-            android:layout_width="wrap_content"
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textUID"
-            app:layout_constraintVertical_chainStyle="spread"
-            tools:text="Баланс: 315₽" />
-
-        <TextView
-            android:id="@+id/textUnderground"
-            style="@style/Text.Mono.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:clickable="false"
+            android:focusable="false"
+            app:chipSpacingHorizontal="4dp"
+            app:chipSpacingVertical="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textUID"
-            app:layout_constraintVertical_chainStyle="spread"
-            tools:text="Метро: 69" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barrier">
 
-        <TextView
-            android:id="@+id/textGround"
-            style="@style/Text.Mono.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textName"
-            app:layout_constraintVertical_chainStyle="spread"
-            tools:text="Наземка: 69" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipBalance"
+                style="@style/ChipDump"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/chip_small_size"
+                tools:text="Баланс: 315₽" />
 
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipGround"
+                style="@style/ChipDump"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/chip_small_size"
+                tools:text="Наземка: 10" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipUnderground"
+                style="@style/ChipDump"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/chip_small_size"
+                tools:text="Метро: 2" />
+        </com.google.android.material.chip.ChipGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
