@@ -1,16 +1,13 @@
 package kek.enxy.plantwriter.presentation.main.details.edit
 
 import android.content.DialogInterface
-import android.os.Build
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowInsets
 import android.view.inputmethod.EditorInfo
 import androidx.core.os.bundleOf
-import androidx.core.view.postDelayed
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.flowWithLifecycle
@@ -32,7 +29,6 @@ class EditDumpBottomSheet : BottomSheetDialogFragment() {
     companion object {
         const val KEY_REQUEST = "edit_dump_request"
         const val KEY_EDIT_TYPE = "edit_type"
-        private const val KEYBOARD_FOCUS_DELAY = 300L
     }
 
     private var _binding: BottomSheetEditDumpBinding? = null
@@ -64,18 +60,6 @@ class EditDumpBottomSheet : BottomSheetDialogFragment() {
                 inputLayout.error = error
             }
             .launchIn(lifecycleScope)
-
-        editText.doAfterTextChanged { text ->
-            viewModel.handleUserInput(text?.toString().orEmpty())
-        }
-        editText.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                dismiss()
-                true
-            } else {
-                false
-            }
-        }
     }
 
     private fun setDetailType() = with(binding) {
@@ -169,26 +153,29 @@ class EditDumpBottomSheet : BottomSheetDialogFragment() {
         }
     }
 
-    private fun setResult(type: EditDumpType) {
-        setFragmentResult(KEY_REQUEST, bundleOf(KEY_EDIT_TYPE to type))
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    override fun getTheme(): Int = R.style.AppBottomSheetDialog_ConstantCorners
-
     private fun initViews() = with(binding) {
         inputLayout.placeholderText = viewModel.type.value
         editText.requestFocus()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            binding.editText.windowInsetsController?.show(WindowInsets.Type.ime())
-        } else {
-            editText.postDelayed(KEYBOARD_FOCUS_DELAY) { // TODO: workaround, should be replaced
-                KeyboardUtils.show(editText)
+        editText.doAfterTextChanged { text ->
+            viewModel.handleUserInput(text?.toString().orEmpty())
+        }
+        editText.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                dismiss()
+                true
+            } else {
+                false
             }
         }
+        KeyboardUtils.show(editText)
+    }
+
+    private fun setResult(type: EditDumpType) {
+        setFragmentResult(KEY_REQUEST, bundleOf(KEY_EDIT_TYPE to type))
     }
 }

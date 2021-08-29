@@ -15,4 +15,7 @@ interface DumpsDao {
 
     @Query("DELETE FROM Dump WHERE id = :id")
     fun deleteDump(id: Int)
+
+    @Query("SELECT id from DUMP ORDER BY id DESC LIMIT 1")
+    fun getLastDumpId(): Int?
 }

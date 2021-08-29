@@ -81,4 +81,8 @@
 
     <string name="dumps_create_dump">Создать новый дамп</string>
     <string name="dumps_create_dump_plus">+</string>
+
+    <string name="name_dump_title">Название дампа</string>
+    <string name="name_dump_placeholder">Подорожник #%d</string>
+    <string name="name_dump_helper_text">Название будет отображено в списке дампов</string>
 </resources>

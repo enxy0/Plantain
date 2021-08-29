@@ -20,5 +20,6 @@
         <item name="colorSurface">@color/colorSurfaceLight</item>
         <item name="dividerColor">@color/gray_300</item>
         <item name="colorControlNormal">@color/gray_900</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialog.ConstantCorners</item>
     </style>
 </resources>

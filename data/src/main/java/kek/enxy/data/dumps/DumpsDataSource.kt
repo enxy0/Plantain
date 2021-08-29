@@ -7,4 +7,5 @@ interface DumpsDataSource {
     fun getDumpsFlow(): Flow<List<Dump>>
     fun saveDump(dump: Dump)
     fun removeDump(dump: Dump)
+    fun getLastDumpId(): Int
 }

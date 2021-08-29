@@ -1,23 +1,24 @@
 package kek.enxy.plantwriter.presentation.main.details
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.app.Application
+import androidx.lifecycle.*
+import com.orhanobut.logger.Logger
 import kek.enxy.data.readwrite.model.Dump
+import kek.enxy.domain.dumps.GetLastDumpNumberUseCase
 import kek.enxy.domain.dumps.SaveDumpUseCase
 import kek.enxy.domain.write.WriteDumpUseCase
+import kek.enxy.plantwriter.R
+import kek.enxy.plantwriter.presentation.common.extensions.context
 import kek.enxy.plantwriter.presentation.main.details.edit.EditDumpType
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.*
 
 class DetailsViewModel(
+    application: Application,
     private val initialDump: Dump,
     private val saveDumpUseCase: SaveDumpUseCase,
-    private val writeDumpUseCase: WriteDumpUseCase
-) : ViewModel() {
+    private val writeDumpUseCase: WriteDumpUseCase,
+    private val getLastDumpNumberUseCase: GetLastDumpNumberUseCase
+) : AndroidViewModel(application) {
 
     private val _dumpStateFlow = MutableStateFlow(initialDump)
     val dumpStateFlow = _dumpStateFlow.asStateFlow()
@@ -31,9 +32,19 @@ class DetailsViewModel(
     val dump: Dump
         get() = _dumpStateFlow.value
 
-    fun save() {
-        saveDumpUseCase(_dumpStateFlow.value)
+    var generatedDumpName: String = ""
+        private set
+
+    init {
+        collectLastDumpNumber()
+    }
+
+    fun saveDump(name: String = dump.name) {
+        val dump = _dumpStateFlow.value.copy(name = name)
+        Logger.d("name = $name, dump = $dump")
+        saveDumpUseCase(dump)
             .onEach { result -> _saveResultLiveData.value = result.isSuccess }
+            .onCompletion { _dumpStateFlow.value = dump }
             .launchIn(viewModelScope)
     }
 
@@ -54,5 +65,19 @@ class DetailsViewModel(
             is EditDumpType.LastUseDate -> dump.copy(lastUseDate = type.date)
             is EditDumpType.UndergroundTravelTotal -> dump.copy(undergroundTravelTotal = type.count)
         }
+    }
+
+    private fun collectLastDumpNumber() {
+        getLastDumpNumberUseCase(Unit)
+            .onEach { result ->
+                result
+                    .onSuccess { number ->
+                        generatedDumpName = context.getString(R.string.name_dump_placeholder, number + 1)
+                    }
+                    .onFailure {
+                        Logger.e(it, it.message.orEmpty())
+                    }
+            }
+            .launchIn(viewModelScope)
     }
 }

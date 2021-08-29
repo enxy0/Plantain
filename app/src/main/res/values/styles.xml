@@ -91,7 +91,7 @@
         <item name="ensureMinTouchTargetSize">false</item>
     </style>
 
-    <style name="AppBottomSheetDialog.ConstantCorners">
+    <style name="AppBottomSheetDialog.ConstantCorners" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/AppBottomSheetDialogModal.ConstantCorners</item>
     </style>
 

@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_details_to_editDump"
             app:destination="@id/editDumpFragment" />
+        <action
+            android:id="@+id/action_details_to_nameDump"
+            app:destination="@id/nameDumpFragment" />
     </fragment>
     <fragment
         android:id="@+id/dumpsFragment"
@@ -59,5 +62,15 @@
         <argument
             android:name="type"
             app:argType="kek.enxy.plantwriter.presentation.main.details.edit.EditDumpType" />
+    </dialog>
+
+    <dialog
+        android:id="@+id/nameDumpFragment"
+        tools:layout="@layout/bottom_sheet_name_dump"
+        android:name="kek.enxy.plantwriter.presentation.main.details.name.NameDumpBottomSheet"
+        android:label="NameDumpFragment" >
+        <argument
+            android:name="placeholderText"
+            app:argType="string" />
     </dialog>
 </navigation>

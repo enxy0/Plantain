@@ -113,14 +113,14 @@
                 android:paddingBottom="64dp"
                 app:endIconDrawable="@drawable/ic_baseline_close_24"
                 app:endIconMode="clear_text"
-                app:helperText="Введите значение в диапазоне"
                 app:helperTextEnabled="true"
                 app:hintAnimationEnabled="false"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toStartOf="@id/guideEnd"
                 app:layout_constraintStart_toEndOf="@id/guideStart"
                 app:layout_constraintTop_toBottomOf="@id/textDescription"
-                app:placeholderText="500">
+                tools:helperText="Введите значение в диапазоне"
+                tools:placeholderText="500">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editText"

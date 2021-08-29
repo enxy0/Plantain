@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/margin_normal"
-    android:layout_marginVertical="@dimen/margin_smallest"
-    app:contentPadding="@dimen/margin_normal">
+    android:layout_marginVertical="@dimen/margin_smallest">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/margin_normal"
+        android:paddingVertical="@dimen/margin_smallest">
 
         <TextView
             android:id="@+id/textAdd"

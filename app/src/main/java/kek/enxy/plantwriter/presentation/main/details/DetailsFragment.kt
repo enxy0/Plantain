@@ -17,6 +17,7 @@ import kek.enxy.plantwriter.presentation.common.extensions.toast
 import kek.enxy.plantwriter.presentation.main.DetailsContract
 import kek.enxy.plantwriter.presentation.main.details.edit.EditDumpBottomSheet
 import kek.enxy.plantwriter.presentation.main.details.edit.EditDumpType
+import kek.enxy.plantwriter.presentation.main.details.name.NameDumpBottomSheet
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -45,17 +46,24 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         setObservers()
-        setFragmentResultListener(EditDumpBottomSheet.KEY_REQUEST) { _, bundle ->
-            val type: EditDumpType? = bundle.getParcelable(EditDumpBottomSheet.KEY_EDIT_TYPE)
-            if (type != null) {
-                viewModel.handleDumpUpdate(type)
-            }
-        }
+        setFragmentListeners()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun initViews() = with(binding) {
         toolbar.onStartBtnClicked { contract.onReturn() }
-        btnSaveDump.setOnClickListener { viewModel.save() }
+        btnSaveDump.setOnClickListener {
+            if (viewModel.dump.name.isBlank()) {
+                val action = DetailsFragmentDirections.actionDetailsToNameDump(viewModel.generatedDumpName)
+                findNavController().navigate(action)
+            } else {
+                viewModel.saveDump()
+            }
+        }
     }
 
     private fun setObservers() = with(binding) {
@@ -141,8 +149,16 @@ class DetailsFragment : Fragment() {
             .launchIn(lifecycleScope)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun setFragmentListeners() {
+        setFragmentResultListener(EditDumpBottomSheet.KEY_REQUEST) { _, bundle ->
+            val type: EditDumpType? = bundle.getParcelable(EditDumpBottomSheet.KEY_EDIT_TYPE)
+            if (type != null) {
+                viewModel.handleDumpUpdate(type)
+            }
+        }
+        setFragmentResultListener(NameDumpBottomSheet.KEY_REQUEST) { _, bundle ->
+            val name = bundle.getString(NameDumpBottomSheet.KEY_DUMP_NAME).orEmpty()
+            viewModel.saveDump(name)
+        }
     }
 }
