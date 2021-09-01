@@ -27,4 +27,9 @@
             <enum name="underground_count" value="3" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="SettingsView">
+        <attr name="sv_title" format="string" />
+        <attr name="sv_description" format="string" />
+    </declare-styleable>
 </resources>

@@ -11,33 +11,31 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
 import kek.enxy.data.readwrite.model.Dump
 import kek.enxy.plantwriter.databinding.FragmentDumpsBinding
-import kek.enxy.plantwriter.presentation.common.extensions.getParentAsListener
-import kek.enxy.plantwriter.presentation.main.DumpsContract
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DumpsFragment : Fragment() {
-
     private var _binding: FragmentDumpsBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: DumpsViewModel by viewModel()
-    private val contract: DumpsContract by lazy { getParentAsListener() }
     private val createDumpAdapter by lazy { CreateDumpAdapter(createDumpListener) }
     private val dumpsAdapter by lazy { DumpAdapter(dumpListener) }
     private val adapter by lazy { ConcatAdapter(dumpsAdapter, createDumpAdapter) }
 
     private val createDumpListener by lazy {
         CreateDumpAdapter.CreateDumpListener {
-            contract.openDumpDetails(viewModel.getEmptyDump())
+            val action = DumpsFragmentDirections.actionDumpsToDetails(viewModel.getEmptyDump())
+            findNavController().navigate(action)
         }
     }
 
     private val dumpListener by lazy {
         object : DumpAdapter.DumpListener {
             override fun onDumpDetailsClicked(dump: Dump) {
-                contract.openDumpDetails(dump)
+                val action = DumpsFragmentDirections.actionDumpsToDetails(dump)
+                findNavController().navigate(action)
             }
 
             override fun onDumpRemoveClicked(dump: Dump) {

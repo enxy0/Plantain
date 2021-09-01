@@ -12,11 +12,11 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import kek.enxy.plantwriter.databinding.FragmentScanBinding
 import kek.enxy.plantwriter.presentation.common.extensions.getParentAsListener
 import kek.enxy.plantwriter.presentation.main.ScanContract
 import kek.enxy.plantwriter.presentation.main.model.DumpState
-import kek.enxy.plantwriter.presentation.settings.SettingsActivity
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -103,13 +103,15 @@ class ScanFragment : Fragment() {
     }
 
     private fun initViews() = with(binding) {
-        toolbar.onEndBtnClicked { SettingsActivity.start(requireContext()) }
+        toolbar.onEndBtnClicked {
+            findNavController().navigate(ScanFragmentDirections.actionScanToSettings())
+        }
         viewCurrentDump.setOnClickListener {
             val dump = viewModel.dump ?: return@setOnClickListener
-            contract.openCurrentDumpDetails(dump)
+            findNavController().navigate(ScanFragmentDirections.actionScanToDetails(dump))
         }
         viewDumps.setOnClickListener {
-            contract.openDumps()
+            findNavController().navigate(ScanFragmentDirections.actionScanToDumps())
         }
     }
 }

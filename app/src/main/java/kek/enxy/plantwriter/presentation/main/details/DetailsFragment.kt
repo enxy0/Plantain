@@ -12,9 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import kek.enxy.plantwriter.R
 import kek.enxy.plantwriter.databinding.FragmentDetailsBinding
-import kek.enxy.plantwriter.presentation.common.extensions.getParentAsListener
 import kek.enxy.plantwriter.presentation.common.extensions.toast
-import kek.enxy.plantwriter.presentation.main.DetailsContract
 import kek.enxy.plantwriter.presentation.main.details.edit.EditDumpBottomSheet
 import kek.enxy.plantwriter.presentation.main.details.edit.EditDumpType
 import kek.enxy.plantwriter.presentation.main.details.name.NameDumpBottomSheet
@@ -28,7 +26,6 @@ class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
 
-    private val contract: DetailsContract by lazy { getParentAsListener() }
     private val navArgs: DetailsFragmentArgs by navArgs()
     private val viewModel: DetailsViewModel by viewModel {
         parametersOf(navArgs.dump)
@@ -55,7 +52,7 @@ class DetailsFragment : Fragment() {
     }
 
     private fun initViews() = with(binding) {
-        toolbar.onStartBtnClicked { contract.onReturn() }
+        toolbar.onStartBtnClicked { findNavController().navigateUp() }
         btnSaveDump.setOnClickListener {
             if (viewModel.dump.name.isBlank()) {
                 val action = DetailsFragmentDirections.actionDetailsToNameDump(viewModel.generatedDumpName)

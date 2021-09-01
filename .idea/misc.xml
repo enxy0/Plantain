@@ -36,18 +36,24 @@
         <entry key="..\:/Users/enxy/AndroidStudioProjects/Plantain/app/src/main/res/layout/view_details_item.xml" value="0.21467391304347827" />
         <entry key="..\:/Users/enxy/AndroidStudioProjects/Plantain/app/src/main/res/layout/view_tag_details.xml" value="0.28940217391304346" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/bg_bottom_sheet_constant_corners.xml" value="0.30427350427350425" />
+        <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/bg_circle.xml" value="0.30427350427350425" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/bg_create_dump.xml" value="0.30427350427350425" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/bg_detail.xml" value="0.30427350427350425" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/ic_arrow_forward_16.xml" value="0.30427350427350425" />
+        <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/ic_leaf.xml" value="0.30427350427350425" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/ic_outline_info_24.xml" value="0.30427350427350425" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/ic_write_24.xml" value="0.30427350427350425" />
+        <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/activity_settings.xml" value="0.33" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/bottom_sheet_edit_dump.xml" value="0.1" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/bottom_sheet_name_dump.xml" value="0.33" />
+        <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/fragment_about.xml" value="0.33" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/fragment_details.xml" value="0.25" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/fragment_scan.xml" value="0.33" />
+        <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/fragment_settings.xml" value="0.33" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/item_create_dump.xml" value="0.5" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/item_dump.xml" value="0.33" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/view_dumps.xml" value="0.29102564102564105" />
+        <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/view_settings.xml" value="0.33" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/view_tag_details.xml" value="0.29102564102564105" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/view_toolbar.xml" value="0.16196581196581197" />
       </map>

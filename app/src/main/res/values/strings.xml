@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Plantain</string>
-    <string name="app_description">Приложение позволяет записать дамп с балансом в 828₽ на БСК «Подорожник».</string>
-    <string name="app_author">by enxy0</string>
     <string name="main_tag_found">Карта «Подорожник» обнаружена</string>
     <string name="main_write_data">Записать данные</string>
     <string name="main_scan_tag_title">Отсканируйте «Подорожник»</string>
@@ -11,8 +9,8 @@
     <string name="main_write_failure">Запись: ошибка</string>
     <string name="main_read_success">Чтение: успешно</string>
     <string name="main_read_failure">Чтение: ошибка</string>
-    <string name="settings_title">Настройки</string>
-    <string name="settings_version">Сборка %s-%d</string>
+    <string name="settings_theme">Темная тема</string>
+    <string name="settings_theme_description">Переключите, чтобы </string>
     <string name="main_tag_balance">Баланс: %d₽</string>
     <string name="main_tag_uid">UID: %s</string>
     <string name="main_tag_error">Произошла ошибка чтения: %s</string>
@@ -85,4 +83,11 @@
     <string name="name_dump_title">Название дампа</string>
     <string name="name_dump_placeholder">Подорожник #%d</string>
     <string name="name_dump_helper_text">Название будет отображено в списке дампов</string>
+
+    <string name="settings_about">О приложении</string>
+
+    <string name="about_title">О приложении</string>
+    <string name="about_version">Сборка %s-%d</string>
+    <string name="about_app_description">Приложение позволяет читать и записывать информацию на «Подорожник». Используется 4 и 5 сектор носителя для получения и записи основной информации - баланс, поездки и т.д.</string>
+    <string name="about_app_author">by enxy0</string>
 </resources>

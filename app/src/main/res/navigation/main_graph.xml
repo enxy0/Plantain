@@ -24,6 +24,13 @@
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
             app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_scan_to_settings"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -44,20 +51,20 @@
         android:id="@+id/dumpsFragment"
         android:name="kek.enxy.plantwriter.presentation.main.dumps.DumpsFragment"
         android:label="DumpsFragment"
-        tools:layout="@layout/fragment_dumps" >
+        tools:layout="@layout/fragment_dumps">
         <action
             android:id="@+id/action_dumps_to_details"
+            app:destination="@id/detailsFragment"
             app:enterAnim="@anim/enter_from_right"
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right"
-            app:destination="@id/detailsFragment" />
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
     <dialog
         android:id="@+id/editDumpFragment"
-        tools:layout="@layout/bottom_sheet_edit_dump"
         android:name="kek.enxy.plantwriter.presentation.main.details.edit.EditDumpBottomSheet"
-        android:label="EditDumpFragment" >
+        android:label="EditDumpFragment"
+        tools:layout="@layout/bottom_sheet_edit_dump">
 
         <argument
             android:name="type"
@@ -66,11 +73,29 @@
 
     <dialog
         android:id="@+id/nameDumpFragment"
-        tools:layout="@layout/bottom_sheet_name_dump"
         android:name="kek.enxy.plantwriter.presentation.main.details.name.NameDumpBottomSheet"
-        android:label="NameDumpFragment" >
+        android:label="NameDumpFragment"
+        tools:layout="@layout/bottom_sheet_name_dump">
         <argument
             android:name="placeholderText"
             app:argType="string" />
     </dialog>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="kek.enxy.plantwriter.presentation.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settings_to_about"
+            app:destination="@id/aboutAppFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="kek.enxy.plantwriter.presentation.settings.about.AboutAppFragment"
+        android:label="AboutAppFragment"
+        tools:layout="@layout/fragment_about" />
 </navigation>

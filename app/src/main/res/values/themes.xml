@@ -21,5 +21,6 @@
         <item name="dividerColor">@color/gray_300</item>
         <item name="colorControlNormal">@color/gray_900</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialog.ConstantCorners</item>
+        <item name="colorAccent">@color/green_500</item>
     </style>
 </resources>

@@ -10,34 +10,25 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:at_startIcon="@drawable/ic_baseline_arrow_back_24"
-        app:at_title="@string/settings_title"
+        app:at_title="@string/about_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardApp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="50dp"
-        app:cardElevation="0dp"
+    <ImageView
+        android:id="@+id/imgApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_circle"
+        android:padding="@dimen/margin_bigger"
+        android:src="@drawable/ic_leaf"
         app:layout_constraintBottom_toTopOf="@id/textAppName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        app:strokeColor="?dividerColor"
-        app:strokeWidth="1dp">
-
-        <ImageView
-            android:id="@+id/imgApp"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_launcher_foreground"
-            tools:ignore="ContentDescription" />
-    </com.google.android.material.card.MaterialCardView>
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textAppName"
@@ -49,7 +40,7 @@
         app:layout_constraintBottom_toTopOf="@id/textAppVersion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardApp" />
+        app:layout_constraintTop_toBottomOf="@id/imgApp" />
 
     <TextView
         android:id="@+id/textAppVersion"
@@ -69,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_normal"
         android:layout_marginTop="@dimen/margin_normal"
-        android:text="@string/app_description"
+        android:text="@string/about_app_description"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_normal"
-        android:text="@string/app_author"
+        android:text="@string/about_app_author"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
