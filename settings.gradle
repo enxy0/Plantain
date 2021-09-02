@@ -3,6 +3,7 @@ pluginManagement {
         apply from: "dependencies.gradle"
         id "com.github.ben-manes.versions" version "${versions.dependencyUpdate}"
         id "org.jlleitschuh.gradle.ktlint" version "${versions.ktlint}"
+        id 'org.jetbrains.kotlin.plugin.serialization' version "${versions.serializationPlugin}"
     }
 }
 dependencyResolutionManagement {

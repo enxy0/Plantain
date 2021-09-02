@@ -22,14 +22,14 @@ class ReadDumpUseCaseImpl(
 
     @Suppress("BlockingMethodInNonBlockingContext") // doing IO operations on IO dispatcher, everything is OK
     private fun getReadDataFlow(parameters: ReadTagParams) = flow {
-        val mifareTag: MifareClassic = try {
+        val mifare: MifareClassic = try {
             MifareClassic.get(parameters.tag)
         } catch (e: Exception) {
             val patchedNfcTag = MifareClassicPatcher.patchTag(parameters.tag)
             MifareClassic.get(patchedNfcTag)
         }
-        mifareTag.connect()
-        mifareTag.use { tag ->
+        mifare.connect()
+        mifare.use { tag ->
             val sector4 = if (tag.authenticateSectorWithKeyA(SECTOR_4, KEY_4A)) {
                 readWriteDataSource.getSector(tag, SECTOR_4)
             } else {

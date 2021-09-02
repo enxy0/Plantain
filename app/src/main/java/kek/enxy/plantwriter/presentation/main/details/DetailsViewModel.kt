@@ -10,7 +10,9 @@ import kek.enxy.domain.write.WriteDumpUseCase
 import kek.enxy.plantwriter.R
 import kek.enxy.plantwriter.presentation.common.extensions.context
 import kek.enxy.plantwriter.presentation.main.details.edit.EditDumpType
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 
 class DetailsViewModel(
     application: Application,
@@ -21,7 +23,7 @@ class DetailsViewModel(
 ) : AndroidViewModel(application) {
 
     private val _dumpStateFlow = MutableStateFlow(initialDump)
-    val dumpStateFlow = _dumpStateFlow.asStateFlow()
+    val dumpStateFlow get() = _dumpStateFlow.asStateFlow()
 
     private val _saveResultLiveData = MutableLiveData<Boolean>()
     val saveResultLiveData: LiveData<Boolean> get() = _saveResultLiveData
@@ -55,15 +57,18 @@ class DetailsViewModel(
     }
 
     fun handleDumpUpdate(type: EditDumpType) {
-        val dump = _dumpStateFlow.value
-        _dumpStateFlow.value = when (type) {
-            is EditDumpType.Balance -> dump.copy(balance = type.rubles)
-            is EditDumpType.GroundTravelTotal -> dump.copy(groundTravelTotal = type.count)
-            is EditDumpType.LastPaymentAmount -> dump.copy(lastPaymentAmount = type.rubles)
-            is EditDumpType.LastPaymentDate -> dump.copy(lastPaymentDate = type.date)
-            is EditDumpType.LastUseAmount -> dump.copy(lastUseAmount = type.rubles)
-            is EditDumpType.LastUseDate -> dump.copy(lastUseDate = type.date)
-            is EditDumpType.UndergroundTravelTotal -> dump.copy(undergroundTravelTotal = type.count)
+        viewModelScope.launch(Dispatchers.Default) {
+            val dump = _dumpStateFlow.value.copy()
+            when (type) {
+                is EditDumpType.Balance -> dump.balance = type.rubles
+                is EditDumpType.GroundTravelTotal -> dump.groundTravelTotal = type.count
+                is EditDumpType.LastPaymentAmount -> dump.lastPaymentAmount = type.rubles
+                is EditDumpType.LastPaymentDate -> dump.lastPaymentDate = type.date
+                is EditDumpType.LastUseAmount -> dump.lastUseAmount = type.rubles
+                is EditDumpType.LastUseDate -> dump.lastUseDate = type.date
+                is EditDumpType.UndergroundTravelTotal -> dump.undergroundTravelTotal = type.count
+            }
+            _dumpStateFlow.emit(dump)
         }
     }
 

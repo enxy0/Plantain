@@ -23,22 +23,21 @@ class WriteDumpUseCaseImpl(
 
     @Suppress("BlockingMethodInNonBlockingContext") // doing IO operations on IO dispatcher, everything is OK
     private fun getWriteDataFlow(parameter: WriteDumpParams) = flow {
-        val (tag, dump) = parameter
-        val mifareTag: MifareClassic = try {
-            MifareClassic.get(tag)
+        val mifare: MifareClassic = try {
+            MifareClassic.get(parameter.tag)
         } catch (e: Exception) {
-            val patchedNfcTag = MifareClassicPatcher.patchTag(tag)
+            val patchedNfcTag = MifareClassicPatcher.patchTag(parameter.tag)
             MifareClassic.get(patchedNfcTag)
         }
-        mifareTag.connect()
-        mifareTag.use { tag ->
+        mifare.connect()
+        mifare.use { tag ->
             if (tag.authenticateSectorWithKeyB(SECTOR_4, KEY_4B)) {
-                readWriteDataSource.writeSector(tag, mifareDataProvider.getSector4())
+                readWriteDataSource.writeSector(tag, parameter.dump.sector4)
             } else {
                 throw WrongSectorKeyException("KEY_4B")
             }
             if (tag.authenticateSectorWithKeyB(SECTOR_5, KEY_5B)) {
-                readWriteDataSource.writeSector(tag, mifareDataProvider.getSector5())
+                readWriteDataSource.writeSector(tag, parameter.dump.sector5)
             } else {
                 throw WrongSectorKeyException("KEY_5B")
             }

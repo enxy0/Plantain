@@ -10,6 +10,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.orhanobut.logger.Logger
 import kek.enxy.plantwriter.R
 import kek.enxy.plantwriter.databinding.FragmentDetailsBinding
 import kek.enxy.plantwriter.presentation.common.extensions.toast
@@ -73,6 +74,7 @@ class DetailsFragment : Fragment() {
         viewModel.dumpStateFlow
             .flowWithLifecycle(lifecycle)
             .onEach { dump ->
+                Logger.d("setObservers: dump = $dump")
                 with(textBalance) {
                     text = getString(R.string.details_rub, dump.balance.value)
                     setOnClickListener {

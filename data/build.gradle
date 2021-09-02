@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
+    id 'org.jetbrains.kotlin.plugin.serialization'
 }
 
 android {
@@ -62,5 +63,6 @@ dependencies {
     api libs.logger
     api libs.roomKtx
     api libs.roomRuntime
+    api libs.serialization
     kapt libs.roomCompile
 }
