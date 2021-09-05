@@ -57,10 +57,13 @@ android {
 
 dependencies {
     coreLibraryDesugaring libs.desugaring
+    api libs.appcompat
     api libs.coroutines
     api libs.kotlinStdLib
     api libs.livedataKtx
     api libs.logger
+    api libs.kotpref
+    api libs.kotprefEnum
     api libs.roomKtx
     api libs.roomRuntime
     api libs.serialization

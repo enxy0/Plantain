@@ -64,6 +64,8 @@ dependencies {
     implementation libs.ktxCore
     implementation libs.koinCore
     implementation libs.kotlinStdLib
+    implementation libs.kotpref
+    implementation libs.kotprefEnum
     implementation libs.livedataKtx
     implementation libs.logger
     implementation libs.material

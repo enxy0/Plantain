@@ -10,6 +10,8 @@ import kek.enxy.domain.dumps.implementation.RemoveDumpUseCaseImpl
 import kek.enxy.domain.dumps.implementation.SaveDumpUseCaseImpl
 import kek.enxy.domain.read.ReadDumpUseCase
 import kek.enxy.domain.read.ReadDumpUseCaseImpl
+import kek.enxy.domain.settings.AppSettings
+import kek.enxy.domain.settings.AppSettingsImpl
 import kek.enxy.domain.write.WriteDumpUseCase
 import kek.enxy.domain.write.WriteDumpUseCaseImpl
 import org.koin.dsl.module
@@ -23,4 +25,8 @@ internal val useCaseModule = module {
     factory<GetLastDumpNumberUseCase> { GetLastDumpNumberUseCaseImpl(get()) }
 }
 
-internal val domainModules = listOf(useCaseModule)
+internal val interactorModules = module {
+    factory<AppSettings> { AppSettingsImpl(get()) }
+}
+
+internal val domainModules = listOf(useCaseModule, interactorModules)

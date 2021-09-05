@@ -13,6 +13,7 @@ import kek.enxy.plantwriter.presentation.main.details.edit.EditDumpViewModel
 import kek.enxy.plantwriter.presentation.main.details.name.NameDumpViewModel
 import kek.enxy.plantwriter.presentation.main.dumps.DumpsViewModel
 import kek.enxy.plantwriter.presentation.main.scan.ScanViewModel
+import kek.enxy.plantwriter.presentation.settings.SettingsViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -52,6 +53,10 @@ internal val dumpsModule = module {
     viewModel { DumpsViewModel(get(), get()) }
 }
 
+internal val settingsModule = module {
+    viewModel { SettingsViewModel(get()) }
+}
+
 internal val validatorsModule = module {
     factory(named(VALIDATOR_COUNT)) {
         ValidatorWrapper(
@@ -79,4 +84,5 @@ internal val presentationModules = listOf(
     scanModule,
     detailsModule,
     dumpsModule,
+    settingsModule
 )

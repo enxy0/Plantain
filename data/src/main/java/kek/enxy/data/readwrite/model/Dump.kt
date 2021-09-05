@@ -1,10 +1,9 @@
 package kek.enxy.data.readwrite.model
 
 import android.os.Parcelable
-import com.orhanobut.logger.Logger
-import kek.enxy.data.extensions.toAppDate
-import kek.enxy.data.extensions.toCount
-import kek.enxy.data.extensions.toRubles
+import kek.enxy.data.common.extensions.toAppDate
+import kek.enxy.data.common.extensions.toCount
+import kek.enxy.data.common.extensions.toRubles
 import kek.enxy.data.model.Sector
 import kotlinx.parcelize.Parcelize
 import java.nio.ByteBuffer

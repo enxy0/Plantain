@@ -10,7 +10,7 @@
     <string name="main_read_success">Чтение: успешно</string>
     <string name="main_read_failure">Чтение: ошибка</string>
     <string name="settings_theme">Темная тема</string>
-    <string name="settings_theme_description">Переключите, чтобы </string>
+    <string name="settings_theme_description">Переключите, чтобы использовать темную тему приложения</string>
     <string name="main_tag_balance">Баланс: %d₽</string>
     <string name="main_tag_uid">UID: %s</string>
     <string name="main_tag_error">Произошла ошибка чтения: %s</string>

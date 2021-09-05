@@ -1,4 +1,4 @@
-package kek.enxy.data.extensions
+package kek.enxy.data.common.extensions
 
 import kek.enxy.data.readwrite.model.AppDate
 import kek.enxy.data.readwrite.model.Count
