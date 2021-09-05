@@ -15,7 +15,7 @@ import kek.enxy.domain.write.WriteDumpUseCaseImpl
 import org.koin.dsl.module
 
 internal val useCaseModule = module {
-    factory<WriteDumpUseCase> { WriteDumpUseCaseImpl(get(), get()) }
+    factory<WriteDumpUseCase> { WriteDumpUseCaseImpl(get()) }
     factory<ReadDumpUseCase> { ReadDumpUseCaseImpl(get()) }
     factory<SaveDumpUseCase> { SaveDumpUseCaseImpl(get()) }
     factory<RemoveDumpUseCase> { RemoveDumpUseCaseImpl(get()) }

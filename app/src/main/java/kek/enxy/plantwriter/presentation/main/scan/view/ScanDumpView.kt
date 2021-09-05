@@ -9,11 +9,11 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.google.android.material.card.MaterialCardView
 import kek.enxy.data.readwrite.model.Dump
-import kek.enxy.domain.write.model.WrongSectorKeyException
 import kek.enxy.plantwriter.R
 import kek.enxy.plantwriter.databinding.ViewTagDetailsBinding
 import kek.enxy.plantwriter.presentation.common.extensions.fillWhenHasData
 import kek.enxy.plantwriter.presentation.common.extensions.getColorFromAttr
+import kek.enxy.plantwriter.presentation.common.getTextForUser
 import java.util.Locale
 
 class ScanDumpView @JvmOverloads constructor(
@@ -55,13 +55,7 @@ class ScanDumpView @JvmOverloads constructor(
 
     fun setError(throwable: Throwable) = with(binding) {
         with(textError) {
-            val message = when (throwable.cause) {
-                is WrongSectorKeyException ->
-                    resources.getString(R.string.main_tag_error_auth, throwable.cause?.message)
-                else ->
-                    resources.getString(R.string.main_tag_error_connection_lost)
-            }
-            text = resources.getString(R.string.main_tag_error, message)
+            text = throwable.getTextForUser(context)
             fadeIn()
         }
         textBalance.fadeOut()

@@ -25,8 +25,6 @@ class ScanViewModel(
     private val readDumpUseCase: ReadDumpUseCase
 ) : AndroidViewModel(application) {
 
-    private var nfcIntent: Intent? = null
-
     private val _dumpStateFlow = MutableStateFlow<DumpState>(DumpState.Initial)
     val dumpStateFlow: StateFlow<DumpState> = _dumpStateFlow.asStateFlow()
 
@@ -38,7 +36,6 @@ class ScanViewModel(
     private var job: Job? = null
 
     fun setNfcIntent(intent: Intent) {
-        nfcIntent = intent
         val tagId = intent.nfcTagId
         val tag = intent.nfcTag
         if (tagId != null && tag != null) {

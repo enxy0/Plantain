@@ -1,7 +1,6 @@
 package kek.enxy.domain.write
 
 import android.nfc.tech.MifareClassic
-import kek.enxy.data.mifare.MifareDataProvider
 import kek.enxy.data.mifare.MifareDataProviderImpl.Companion.KEY_4B
 import kek.enxy.data.mifare.MifareDataProviderImpl.Companion.KEY_5B
 import kek.enxy.data.mifare.MifareDataProviderImpl.Companion.SECTOR_4
@@ -13,7 +12,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 
 class WriteDumpUseCaseImpl(
-    private val mifareDataProvider: MifareDataProvider,
     private val readWriteDataSource: ReadWriteDataSource
 ) : WriteDumpUseCase {
 

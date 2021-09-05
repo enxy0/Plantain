@@ -10,10 +10,11 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.orhanobut.logger.Logger
 import kek.enxy.plantwriter.R
 import kek.enxy.plantwriter.databinding.FragmentDetailsBinding
+import kek.enxy.plantwriter.presentation.common.extensions.getParentAsListener
 import kek.enxy.plantwriter.presentation.common.extensions.toast
+import kek.enxy.plantwriter.presentation.main.ScanContract
 import kek.enxy.plantwriter.presentation.main.details.edit.EditDumpBottomSheet
 import kek.enxy.plantwriter.presentation.main.details.edit.EditDumpType
 import kek.enxy.plantwriter.presentation.main.details.name.NameDumpBottomSheet
@@ -28,9 +29,8 @@ class DetailsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val navArgs: DetailsFragmentArgs by navArgs()
-    private val viewModel: DetailsViewModel by viewModel {
-        parametersOf(navArgs.dump)
-    }
+    private val viewModel: DetailsViewModel by viewModel { parametersOf(navArgs.dump) }
+    private val contract: ScanContract by lazy { getParentAsListener() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,22 +59,20 @@ class DetailsFragment : Fragment() {
                 val action = DetailsFragmentDirections.actionDetailsToNameDump(viewModel.generatedDumpName)
                 findNavController().navigate(action)
             } else {
-                viewModel.saveDump()
+                viewModel.save()
             }
+        }
+        btnWriteDump.setOnClickListener {
+            viewModel.write(contract.resolveIntentFlow)
         }
     }
 
     private fun setObservers() = with(binding) {
-        viewModel.saveResultLiveData.observe(viewLifecycleOwner) { isSuccessful ->
-            toast(if (isSuccessful) R.string.details_save_dump_ok else R.string.details_save_dump_error)
-        }
-        viewModel.writeResultLiveData.observe(viewLifecycleOwner) { isSuccessful ->
-            toast(if (isSuccessful) R.string.details_write_dump_ok else R.string.details_write_dump_error)
-        }
+        viewModel.saveResultLiveData.observe(viewLifecycleOwner) { message -> toast(message) }
+        viewModel.writeResultLiveData.observe(viewLifecycleOwner) { message -> toast(message) }
         viewModel.dumpStateFlow
             .flowWithLifecycle(lifecycle)
             .onEach { dump ->
-                Logger.d("setObservers: dump = $dump")
                 with(textBalance) {
                     text = getString(R.string.details_rub, dump.balance.value)
                     setOnClickListener {
@@ -157,7 +155,7 @@ class DetailsFragment : Fragment() {
         }
         setFragmentResultListener(NameDumpBottomSheet.KEY_REQUEST) { _, bundle ->
             val name = bundle.getString(NameDumpBottomSheet.KEY_DUMP_NAME).orEmpty()
-            viewModel.saveDump(name)
+            viewModel.save(name)
         }
     }
 }
