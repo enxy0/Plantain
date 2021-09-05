@@ -72,24 +72,15 @@ class ScanFragment : Fragment() {
                 }
             }
             .launchIn(lifecycleScope)
-
-        viewModel.logStateFlow
-            .flowWithLifecycle(lifecycle)
-            .onEach { log ->
-                binding.textLog.text = log
-            }
-            .launchIn(lifecycleScope)
     }
 
     private fun showContentWithAnimation() = with(binding) {
-        if (textLog.isGone && viewCurrentDump.isGone) {
-            val logAnimator = ObjectAnimator.ofFloat(textLog, View.ALPHA, 0.0f, 1.0f)
+        if (viewCurrentDump.isGone) {
             val viewCurrentDumpAnimator = ObjectAnimator.ofFloat(viewCurrentDump, View.ALPHA, 0.0f, 1.0f)
             val animatorSet = AnimatorSet().apply {
                 duration = 300L
-                playTogether(logAnimator, viewCurrentDumpAnimator)
+                playTogether(viewCurrentDumpAnimator)
                 doOnStart {
-                    textLog.isVisible = true
                     viewCurrentDump.isVisible = true
                 }
             }

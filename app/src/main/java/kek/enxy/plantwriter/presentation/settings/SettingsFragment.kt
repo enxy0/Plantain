@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.orhanobut.logger.Logger
 import kek.enxy.data.settings.model.AppTheme
 import kek.enxy.plantwriter.databinding.FragmentSettingsBinding
 import kotlinx.coroutines.flow.launchIn

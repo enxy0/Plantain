@@ -103,21 +103,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/viewDumps"
                 tools:visibility="visible" />
-
-            <TextView
-                android:id="@+id/textLog"
-                style="@style/Text.Mono.Small"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_normal"
-                android:background="@drawable/bg_log"
-                android:padding="@dimen/margin_normal"
-                android:text="@string/main_log_hint"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/viewCurrentDump"
-                tools:visibility="visible" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
