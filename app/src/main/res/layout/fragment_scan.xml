@@ -23,86 +23,14 @@
             app:layout_constraintTop_toTopOf="parent" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:overScrollMode="never"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingHorizontal="@dimen/margin_normal"
-            android:paddingBottom="@dimen/default_btn_bottom_margin">
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardPlantain"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                app:cardCornerRadius="@dimen/default_radius"
-                app:cardElevation="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="?dividerColor"
-                app:strokeWidth="1dp">
-
-                <ImageView
-                    android:id="@+id/imagePlantain"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:scaleType="center"
-                    app:srcCompat="@drawable/plantain_card"
-                    tools:ignore="ContentDescription" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <TextView
-                android:id="@+id/textTitle"
-                style="@style/Text.Header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/main_scan_tag_title"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardPlantain" />
-
-            <TextView
-                android:id="@+id/textDescription"
-                style="@style/Text.Secondary"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="@string/main_scan_tag_description"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textTitle" />
-
-            <kek.enxy.plantwriter.presentation.main.scan.view.DumpsView
-                android:id="@+id/viewDumps"
-                style="@style/AppCardView"
-                android:layout_width="0dp"
-                android:layout_height="64dp"
-                android:layout_marginTop="@dimen/margin_big"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textDescription" />
-
-            <kek.enxy.plantwriter.presentation.main.scan.view.ScanDumpView
-                android:id="@+id/viewCurrentDump"
-                style="@style/AppCardView"
-                android:layout_width="0dp"
-                android:layout_height="64dp"
-                android:layout_marginTop="@dimen/margin_normal"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/viewDumps"
-                tools:visibility="visible" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        tools:itemCount="1"
+        tools:listitem="@layout/item_plantain" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -51,7 +51,10 @@
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/fragment_scan.xml" value="0.33" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/fragment_settings.xml" value="0.33" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/item_create_dump.xml" value="0.5" />
+        <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/item_current_dump.xml" value="0.29102564102564105" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/item_dump.xml" value="0.33" />
+        <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/item_dumps.xml" value="0.29102564102564105" />
+        <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/item_plantain.xml" value="0.33" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/view_dumps.xml" value="0.29102564102564105" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/view_settings.xml" value="0.33" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/view_tag_details.xml" value="0.29102564102564105" />

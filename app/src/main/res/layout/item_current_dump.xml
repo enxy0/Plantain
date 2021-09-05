@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kek.enxy.plantwriter.presentation.main.scan.view.ScanDumpView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/viewCurrentDump"
+    style="@style/AppCardView"
+    android:layout_width="match_parent"
+    android:layout_height="64dp" />

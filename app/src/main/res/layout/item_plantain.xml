@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardPlantain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:cardCornerRadius="@dimen/default_radius"
+        app:cardElevation="0dp"
+        app:strokeColor="?dividerColor"
+        app:strokeWidth="1dp">
+
+        <ImageView
+            android:id="@+id/imagePlantain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:scaleType="center"
+            app:srcCompat="@drawable/plantain_card"
+            tools:ignore="ContentDescription" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/textTitle"
+        style="@style/Text.Header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:text="@string/main_scan_tag_title" />
+
+    <TextView
+        android:id="@+id/textDescription"
+        style="@style/Text.Secondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="2dp"
+        android:text="@string/main_scan_tag_description"
+        android:textAlignment="center" />
+</LinearLayout>

@@ -1,33 +1,40 @@
 package kek.enxy.plantwriter.presentation.main.scan
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.animation.doOnStart
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.SimpleItemAnimator
 import kek.enxy.plantwriter.databinding.FragmentScanBinding
 import kek.enxy.plantwriter.presentation.common.extensions.getParentAsListener
 import kek.enxy.plantwriter.presentation.main.ScanContract
-import kek.enxy.plantwriter.presentation.main.model.DumpState
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ScanFragment : Fragment() {
-
     private var _binding: FragmentScanBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: ScanViewModel by viewModel()
-    private val contract: ScanContract by lazy { getParentAsListener() }
+    private val viewModel by viewModel<ScanViewModel>()
+    private val contract by lazy<ScanContract> { getParentAsListener() }
+    private val plantainAdapter by lazy { PlantainAdapter() }
+    private val dumpsAdapter by lazy {
+        DumpsAdapter { findNavController().navigate(ScanFragmentDirections.actionScanToDumps()) }
+    }
+    private val currentDumpAdapter by lazy {
+        CurrentDumpAdapter { dump ->
+            findNavController().navigate(ScanFragmentDirections.actionScanToDetails(dump))
+        }
+    }
+    private val concatAdapter: ConcatAdapter by lazy {
+        ConcatAdapter(plantainAdapter, dumpsAdapter, currentDumpAdapter)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,36 +63,9 @@ class ScanFragment : Fragment() {
         viewModel.dumpStateFlow
             .flowWithLifecycle(lifecycle)
             .onEach { dumpState ->
-                when (dumpState) {
-                    is DumpState.Content -> {
-                        showContentWithAnimation()
-                        binding.viewCurrentDump.setDetails(dumpState.dump)
-                    }
-                    is DumpState.Loading -> {
-                        showContentWithAnimation()
-                        binding.viewCurrentDump.setLoading()
-                    }
-                    is DumpState.Error -> {
-                        binding.viewCurrentDump.setError(dumpState.exception)
-                    }
-                    else -> Unit
-                }
+                currentDumpAdapter.submitList(listOf(dumpState))
             }
             .launchIn(lifecycleScope)
-    }
-
-    private fun showContentWithAnimation() = with(binding) {
-        if (viewCurrentDump.isGone) {
-            val viewCurrentDumpAnimator = ObjectAnimator.ofFloat(viewCurrentDump, View.ALPHA, 0.0f, 1.0f)
-            val animatorSet = AnimatorSet().apply {
-                duration = 300L
-                playTogether(viewCurrentDumpAnimator)
-                doOnStart {
-                    viewCurrentDump.isVisible = true
-                }
-            }
-            animatorSet.start()
-        }
     }
 
     override fun onDestroyView() {
@@ -97,12 +77,12 @@ class ScanFragment : Fragment() {
         toolbar.onEndBtnClicked {
             findNavController().navigate(ScanFragmentDirections.actionScanToSettings())
         }
-        viewCurrentDump.setOnClickListener {
-            val dump = viewModel.dump ?: return@setOnClickListener
-            findNavController().navigate(ScanFragmentDirections.actionScanToDetails(dump))
-        }
-        viewDumps.setOnClickListener {
-            findNavController().navigate(ScanFragmentDirections.actionScanToDumps())
+        plantainAdapter.submitList(listOf(Unit))
+        dumpsAdapter.submitList(listOf(Unit))
+        with(recyclerMain) {
+            adapter = concatAdapter
+            (itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
+            addItemDecoration(ScanDecoration())
         }
     }
 }
