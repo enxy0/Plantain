@@ -32,6 +32,7 @@ ext.versions = [
         room               : "2.3.0",
 
         // Plugins
+        androidGradlePlugin: "7.0.2",
         dependencyUpdate   : "0.39.0",
         ktlint             : "10.1.0",
         kotlinPlugin       : "1.5.30",
