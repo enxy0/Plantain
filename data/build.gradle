@@ -16,6 +16,12 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
@@ -64,8 +70,8 @@ dependencies {
     api libs.logger
     api libs.kotpref
     api libs.kotprefEnum
+    api libs.serialization
     api libs.roomKtx
     api libs.roomRuntime
-    api libs.serialization
     kapt libs.roomCompile
 }

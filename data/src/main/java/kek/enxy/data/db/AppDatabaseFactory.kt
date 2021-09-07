@@ -8,6 +8,7 @@ object AppDatabaseFactory {
 
     fun create(context: Context) =
         Room.databaseBuilder(context, AppDatabase::class.java, dbName)
+            .createFromAsset("database/$dbName.db")
             .fallbackToDestructiveMigrationOnDowngrade()
             .build()
 }
