@@ -1,14 +1,18 @@
 package kek.enxy.data.readwrite.model
 
 import android.os.Parcelable
+import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 import java.text.SimpleDateFormat
 import java.time.*
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.util.*
 
+@Keep
 @Parcelize
+@Serializable
 data class AppDate(
     val raw: Int,
     val value: String = formatDate(raw)
@@ -45,13 +49,14 @@ data class AppDate(
             return AppDate(minutes.toInt())
         }
 
-        private fun formatDate(minutesSince2010: Int): String {
+        private fun formatDate(minutesSince2010: Int, pattern: String = DATE_PATTERN): String {
             return initialDateTime
                 .plusMinutes(minutesSince2010.toLong())
-                .format(DateTimeFormatter.ofPattern(DATE_PATTERN))
+                .format(DateTimeFormatter.ofPattern(pattern))
         }
-
     }
+
+    fun getFormattedDate(pattern: String): String = formatDate(raw, pattern)
 
     operator fun compareTo(other: AppDate) = raw.compareTo(other.raw)
 

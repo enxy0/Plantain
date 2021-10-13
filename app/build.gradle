@@ -24,6 +24,7 @@ android {
 
     buildTypes {
         release {
+            shrinkResources true
             minifyEnabled true
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
@@ -60,6 +61,7 @@ dependencies {
     implementation project(path: ":domain")
     implementation project(path: ":data")
     implementation libs.appcompat
+    implementation libs.coil
     implementation libs.constraintlayout
     implementation libs.coroutines
     implementation libs.ktxCore

@@ -19,8 +19,6 @@ class ReadDumpUseCaseImpl(
     private val historyDataSource: HistoryDataSource
 ) : ReadDumpUseCase {
 
-    override fun dispatcher() = Dispatchers.IO
-
     override fun execute(parameter: ReadTagParams) = getReadDataFlow(parameter).retry(retries = 15)
 
     @Suppress("BlockingMethodInNonBlockingContext") // doing IO operations on IO dispatcher, everything is OK
@@ -44,7 +42,7 @@ class ReadDumpUseCaseImpl(
                 throw WrongSectorKeyException("KEY_5A")
             }
             val dump = readWriteDataSource.getDumpFromSectors(parameters.uid, sector4, sector5)
-            historyDataSource.logRead(AppDate.now(), dump)
+//            historyDataSource.logRead(AppDate.now(), dump)
             emit(Result.success(dump))
         }
     }

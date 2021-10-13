@@ -1,6 +1,7 @@
 package kek.enxy.data.readwrite.model
 
 import android.os.Parcelable
+import androidx.annotation.Keep
 import kek.enxy.data.common.extensions.toAppDate
 import kek.enxy.data.common.extensions.toCount
 import kek.enxy.data.common.extensions.toRubles
@@ -9,6 +10,7 @@ import kotlinx.parcelize.Parcelize
 import java.nio.ByteBuffer
 import kotlin.experimental.inv
 
+@Keep
 @Parcelize
 data class Dump(
     val uid: String,

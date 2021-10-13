@@ -18,5 +18,5 @@ interface FlowUseCase<in P, R> {
 
     fun execute(parameter: P): Flow<Result<R>>
 
-    fun dispatcher(): CoroutineDispatcher = Dispatchers.Default
+    fun dispatcher(): CoroutineDispatcher = Dispatchers.IO
 }

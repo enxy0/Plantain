@@ -17,7 +17,7 @@ class DumpsViewModel(
     private val _dumpsStateFlow = MutableStateFlow<List<Dump>>(emptyList())
     val dumpsStateFlow: StateFlow<List<Dump>> = _dumpsStateFlow.asStateFlow()
 
-    private val _createDumpStateFlow = MutableStateFlow(listOf(Unit))
+    private val _createDumpStateFlow = MutableStateFlow<List<Unit>>(emptyList())
     val createDumpStateFlow = _createDumpStateFlow.asStateFlow()
 
     private var removeJob: Job? = null
@@ -34,6 +34,7 @@ class DumpsViewModel(
                 result
                     .onSuccess { dumps -> _dumpsStateFlow.value = dumps }
                     .onFailure { error -> Logger.e(error, error.message.orEmpty()) }
+                sendCreateDumpData()
             }
             .launchIn(viewModelScope)
     }
@@ -41,5 +42,9 @@ class DumpsViewModel(
     fun removeDump(dump: Dump) {
         removeJob?.cancel()
         removeJob = removeDumpUseCase(dump).launchIn(viewModelScope)
+    }
+
+    private fun sendCreateDumpData() {
+        _createDumpStateFlow.value = listOf(Unit)
     }
 }

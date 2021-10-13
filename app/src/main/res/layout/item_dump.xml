@@ -1,96 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/AppCardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/margin_normal"
-    android:layout_marginVertical="@dimen/margin_smallest">
+    android:layout_marginVertical="@dimen/margin_smallest"
+    android:background="@drawable/bg_dump">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgPlantain"
+        android:layout_width="53dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/DumpPlantainImage"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/plantain_card" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imgPlantain"
-            android:layout_width="63dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:src="@drawable/plantain_card"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/DumpPlantainImage"
-            tools:ignore="ContentDescription" />
+    <ImageView
+        android:id="@+id/imgRemove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ripple_circle"
+        android:padding="@dimen/margin_small"
+        android:src="@drawable/ic_baseline_close_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
-        <ImageView
-            android:id="@+id/imgRemove"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ripple_circle"
-            android:padding="@dimen/margin_small"
-            android:src="@drawable/ic_baseline_close_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textName"
+        style="@style/Text.Header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_smallest"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:maxLines="2"
+        app:layout_constraintBottom_toBottomOf="@id/imgPlantain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgPlantain"
+        app:layout_constraintTop_toTopOf="@id/imgPlantain"
+        tools:text="Название дампа" />
 
-        <TextView
-            android:id="@+id/textName"
-            style="@style/Text.Header"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_smallest"
-            android:layout_marginEnd="@dimen/margin_normal"
-            android:maxLines="2"
-            app:layout_constraintBottom_toBottomOf="@id/imgPlantain"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imgPlantain"
-            app:layout_constraintTop_toTopOf="@id/imgPlantain"
-            tools:text="Название дампа" />
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="imgPlantain, textName" />
 
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="bottom"
-            app:constraint_referenced_ids="imgPlantain, textName" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textBalance"
+        style="@style/Text.Secondary.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:background="@drawable/bg_dump_chip"
+        android:maxLines="1"
+        android:paddingHorizontal="@dimen/margin_small"
+        android:paddingVertical="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier"
+        tools:text="Баланс: 315₽" />
 
-        <com.google.android.material.chip.ChipGroup
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_normal"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginBottom="@dimen/margin_normal"
-            android:clickable="false"
-            android:focusable="false"
-            app:chipSpacingHorizontal="4dp"
-            app:chipSpacingVertical="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/barrier">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipBalance"
-                style="@style/ChipDump"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/chip_small_size"
-                tools:text="Баланс: 315₽" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipGround"
-                style="@style/ChipDump"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/chip_small_size"
-                tools:text="Наземка: 10" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipUnderground"
-                style="@style/ChipDump"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/chip_small_size"
-                tools:text="Метро: 2" />
-        </com.google.android.material.chip.ChipGroup>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textLastUseDate"
+        style="@style/Text.Secondary.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="@dimen/margin_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:background="@drawable/bg_dump_chip"
+        android:ellipsize="end"
+        android:paddingHorizontal="@dimen/margin_small"
+        android:paddingVertical="4dp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textBalance"
+        app:layout_constraintTop_toBottomOf="@id/barrier"
+        android:lines="1"
+        tools:text="Использовался: 01.01.2010" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,13 +1,11 @@
 package kek.enxy.plantwriter.presentation.main.details
 
 import android.app.Application
-import android.content.Intent
 import androidx.lifecycle.*
 import com.orhanobut.logger.Logger
 import kek.enxy.data.readwrite.model.Dump
 import kek.enxy.domain.dumps.GetLastDumpNumberUseCase
 import kek.enxy.domain.dumps.SaveDumpUseCase
-import kek.enxy.domain.model.Event
 import kek.enxy.domain.write.WriteDumpUseCase
 import kek.enxy.domain.write.model.WriteDumpParams
 import kek.enxy.plantwriter.R
@@ -16,6 +14,7 @@ import kek.enxy.plantwriter.presentation.common.extensions.getString
 import kek.enxy.plantwriter.presentation.common.extensions.nfcTag
 import kek.enxy.plantwriter.presentation.common.extensions.nfcTagId
 import kek.enxy.plantwriter.presentation.common.getTextForUser
+import kek.enxy.plantwriter.presentation.main.CardState
 import kek.enxy.plantwriter.presentation.main.details.edit.EditDumpType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -48,24 +47,35 @@ class DetailsViewModel(
         collectLastDumpNumber()
     }
 
-    fun write(resolveIntentFlow: Flow<Event<Intent>>) {
-        viewModelScope.launch {
-            resolveIntentFlow.firstOrNull()?.peekContent()?.let { intent ->
-                val tagId = intent.nfcTagId
-                val tag = intent.nfcTag
-                if (tagId != null && tag != null) {
-                    writeDumpUseCase(WriteDumpParams(tagId, tag, dump)).collect { result ->
-                        result
-                            .onSuccess {
-                                _writeResultLiveData.value = getString(R.string.details_write_dump_ok)
+    fun write(resolveIntentFlow: StateFlow<CardState>) {
+        resolveIntentFlow
+            .take(1)
+            .onEach { cardState ->
+                when (cardState) {
+                    CardState.Empty -> {
+                        _writeResultLiveData.value = getString(R.string.details_write_dump_no_card)
+                    }
+                    is CardState.Connected -> {
+                        val intent = cardState.event.peekContent()
+                        val tagId = intent.nfcTagId
+                        val tag = intent.nfcTag
+                        if (tagId != null && tag != null) {
+                            writeDumpUseCase(WriteDumpParams(tagId, tag, dump)).collect { result ->
+                                result
+                                    .onSuccess {
+                                        _writeResultLiveData.value = getString(R.string.details_write_dump_ok)
+                                    }
+                                    .onFailure { error ->
+                                        _writeResultLiveData.value = error.getTextForUser(context)
+                                    }
                             }
-                            .onFailure { error ->
-                                _writeResultLiveData.value = error.getTextForUser(context)
-                            }
+                        } else {
+                            _writeResultLiveData.value = getString(R.string.details_write_dump_no_card)
+                        }
                     }
                 }
             }
-        }
+            .launchIn(viewModelScope)
     }
 
     fun save(name: String = dump.name) {

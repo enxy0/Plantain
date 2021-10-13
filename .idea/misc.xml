@@ -39,6 +39,10 @@
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/bg_circle.xml" value="0.30427350427350425" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/bg_create_dump.xml" value="0.30427350427350425" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/bg_detail.xml" value="0.30427350427350425" />
+        <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/bg_dump.xml" value="0.2537037037037037" />
+        <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/bg_dump_chip.xml" value="0.2970464135021097" />
+        <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/bg_fade.xml" value="0.2970464135021097" />
+        <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/fg_dump.xml" value="0.2970464135021097" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/ic_arrow_forward_16.xml" value="0.30427350427350425" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/ic_leaf.xml" value="0.30427350427350425" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/drawable/ic_outline_info_24.xml" value="0.30427350427350425" />
@@ -65,7 +69,7 @@
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/view_history.xml" value="0.25" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/view_settings.xml" value="0.33" />
         <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/view_tag_details.xml" value="0.29102564102564105" />
-        <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/view_toolbar.xml" value="0.16196581196581197" />
+        <entry key="..\:/Users/enxy/StudioProjects/Plantain/app/src/main/res/layout/view_toolbar.xml" value="0.25" />
       </map>
     </option>
   </component>

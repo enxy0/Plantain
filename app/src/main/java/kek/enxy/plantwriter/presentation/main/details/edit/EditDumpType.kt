@@ -1,11 +1,13 @@
 package kek.enxy.plantwriter.presentation.main.details.edit
 
 import android.os.Parcelable
+import androidx.annotation.Keep
 import kek.enxy.data.readwrite.model.AppDate
 import kek.enxy.data.readwrite.model.Count
 import kek.enxy.data.readwrite.model.Rubles
 import kotlinx.parcelize.Parcelize
 
+@Keep
 sealed class EditDumpType(
     val value: String
 ) : Parcelable {

@@ -10,10 +10,10 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import kek.enxy.plantwriter.R
 import kek.enxy.plantwriter.databinding.FragmentDetailsBinding
 import kek.enxy.plantwriter.presentation.common.extensions.getParentAsListener
-import kek.enxy.plantwriter.presentation.common.extensions.toast
 import kek.enxy.plantwriter.presentation.main.ScanContract
 import kek.enxy.plantwriter.presentation.main.details.edit.EditDumpBottomSheet
 import kek.enxy.plantwriter.presentation.main.details.edit.EditDumpType
@@ -68,8 +68,8 @@ class DetailsFragment : Fragment() {
     }
 
     private fun setObservers() = with(binding) {
-        viewModel.saveResultLiveData.observe(viewLifecycleOwner) { message -> toast(message) }
-        viewModel.writeResultLiveData.observe(viewLifecycleOwner) { message -> toast(message) }
+        viewModel.saveResultLiveData.observe(viewLifecycleOwner) { message -> snackbar(message) }
+        viewModel.writeResultLiveData.observe(viewLifecycleOwner) { message -> snackbar(message) }
         viewModel.dumpStateFlow
             .flowWithLifecycle(lifecycle)
             .onEach { dump ->
@@ -157,5 +157,11 @@ class DetailsFragment : Fragment() {
             val name = bundle.getString(NameDumpBottomSheet.KEY_DUMP_NAME).orEmpty()
             viewModel.save(name)
         }
+    }
+
+    private fun snackbar(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG)
+            .setAnchorView(binding.layoutActions)
+            .show()
     }
 }

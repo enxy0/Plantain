@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.SimpleItemAnimator
 import kek.enxy.plantwriter.databinding.FragmentScanBinding
 import kek.enxy.plantwriter.presentation.common.extensions.getParentAsListener
+import kek.enxy.plantwriter.presentation.main.CardState
 import kek.enxy.plantwriter.presentation.main.ScanContract
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -27,16 +28,13 @@ class ScanFragment : Fragment() {
     private val dumpsAdapter by lazy {
         DumpsAdapter { findNavController().navigate(ScanFragmentDirections.actionScanToDumps()) }
     }
-    private val historiesAdapter by lazy {
-        HistoriesAdapter {  }
-    }
     private val currentDumpAdapter by lazy {
         CurrentDumpAdapter { dump ->
             findNavController().navigate(ScanFragmentDirections.actionScanToDetails(dump))
         }
     }
     private val concatAdapter: ConcatAdapter by lazy {
-        ConcatAdapter(plantainAdapter, dumpsAdapter, historiesAdapter, currentDumpAdapter)
+        ConcatAdapter(plantainAdapter, dumpsAdapter, currentDumpAdapter)
     }
 
     override fun onCreateView(
@@ -56,17 +54,27 @@ class ScanFragment : Fragment() {
     private fun setObservers() {
         contract.resolveIntentFlow
             .flowWithLifecycle(lifecycle)
-            .onEach { event ->
-                event.getContentIfNotHandled()?.let { intent ->
-                    viewModel.setNfcIntent(intent)
-                }
-            }
+            .onEach(::handleCardState)
             .launchIn(lifecycleScope)
 
         viewModel.dumpStateFlow
             .flowWithLifecycle(lifecycle)
             .onEach { dumpState ->
                 currentDumpAdapter.submitList(listOf(dumpState))
+            }
+            .launchIn(lifecycleScope)
+
+        viewModel.plantainStateFlow
+            .flowWithLifecycle(lifecycle)
+            .onEach { list ->
+                plantainAdapter.submitList(list)
+            }
+            .launchIn(lifecycleScope)
+
+        viewModel.dumpsStateFlow
+            .flowWithLifecycle(lifecycle)
+            .onEach { list ->
+                dumpsAdapter.submitList(list)
             }
             .launchIn(lifecycleScope)
     }
@@ -80,13 +88,21 @@ class ScanFragment : Fragment() {
         toolbar.onEndBtnClicked {
             findNavController().navigate(ScanFragmentDirections.actionScanToSettings())
         }
-        plantainAdapter.submitList(listOf(Unit))
-        dumpsAdapter.submitList(listOf(Unit))
-        historiesAdapter.submitList(listOf(Unit))
         with(recyclerMain) {
             adapter = concatAdapter
             (itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
             addItemDecoration(ScanDecoration())
+        }
+    }
+
+    private fun handleCardState(cardState: CardState) {
+        when (cardState) {
+            is CardState.Connected -> {
+                cardState.event.getContentIfNotHandled()?.let { intent ->
+                    viewModel.setNfcIntent(intent)
+                }
+            }
+            CardState.Empty -> Unit
         }
     }
 }

@@ -9,7 +9,6 @@ import android.view.WindowInsets
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.core.view.postDelayed
-import kek.enxy.plantwriter.presentation.main.details.edit.EditDumpBottomSheet
 
 object KeyboardUtils {
     private const val KEYBOARD_FOCUS_DELAY = 300L

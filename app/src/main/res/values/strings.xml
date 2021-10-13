@@ -40,13 +40,13 @@
     <string name="details_write_dump">Записать</string>
     <string name="details_write_dump_ok">Запись прошла успешно!</string>
     <string name="details_write_dump_error">При записи дампа произошла ошибка. Попробуйте еще раз!</string>
+    <string name="details_write_dump_no_card">Приложите карту «Подорожник» с задней стороны телефона и попробуйте еще раз!</string>
 
     <string name="dumps_title">Сохраненные дампы</string>
     <string name="dump_balance">Баланс: %d₽</string>
     <string name="dump_uid">UID: %s</string>
-    <string name="dump_last_use">Послед. исп: %s</string>
-    <string name="dump_underground">Метро: %s</string>
-    <string name="dump_ground">Наземка: %s</string>
+    <string name="dump_last_use">Использовался: %s</string>
+    <string name="dump_last_use_no">нет</string>
 
     <string name="edit_dump_money_0">0 ₽</string>
     <string name="edit_dump_money_0_value">0</string>
@@ -75,7 +75,7 @@
     <string name="edit_dump_title_count">Значение</string>
     <string name="edit_dump_title_date">Дата</string>
 
-    <string name="validator_date">Дата должна быть между 01.01.2010 и ???</string>
+    <string name="validator_date">Дата должна быть между 01.01.2010 и 31.12.2041</string>
     <string name="validator_count">Значение должно быть от 0 до 255</string>
     <string name="validator_rubles">Сумма должна быть от 0 до 167 772 ₽</string>
 
@@ -87,6 +87,7 @@
     <string name="name_dump_helper_text">Название будет отображено в списке дампов</string>
 
     <string name="settings_about">О приложении</string>
+    <string name="settings_title">Настройки</string>
 
     <string name="about_title">О приложении</string>
     <string name="about_version">Сборка %s-%d</string>

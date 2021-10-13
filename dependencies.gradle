@@ -5,30 +5,31 @@ ext.constants = [
 
 ext.versions = [
         // Project setup
-        compileSdk         : 30,
+        compileSdk         : 31,
         buildTools         : "30.0.2",
         minSdk             : 21,
-        targetSdk          : 30,
-        versionCode        : 64,
-        versionName        : "2.2",
+        targetSdk          : 31,
+        versionCode        : 92,
+        versionName        : "2.3",
 
         // Dependencies
-        appcompat          : "1.4.0-alpha03",
-        constraintlayout   : "2.1.0-beta02",
-        coroutines         : "1.4.3",
+        appcompat          : "1.4.0-beta01",
+        coil               : "1.4.0",
+        constraintlayout   : "2.1.1",
+        coroutines         : "1.5.2",
         desugaring         : "1.1.5",
-        ktxCore            : "1.7.0-alpha01",
+        ktxCore            : "1.7.0-rc01",
         koin               : "3.1.2",
         kotlin             : "1.5.30",
         kotpref            : "2.13.1",
         livedataKtx        : "2.4.0-alpha02",
         logger             : "2.2.0",
-        material           : "1.5.0-alpha02",
+        material           : "1.5.0-alpha04",
         navArgs            : "2.3.5",
         navigation         : "2.3.5",
-        scopeKtx           : "2.4.0-alpha01",
+        scopeKtx           : "2.4.0-rc01",
         serialization      : "1.2.2",
-        recyclerView       : "1.2.1",
+        recyclerView       : "1.3.0-alpha01",
         room               : "2.3.0",
 
         // Plugins
@@ -41,6 +42,7 @@ ext.versions = [
 
 ext.libs = [
         appcompat            : "androidx.appcompat:appcompat:$versions.appcompat",
+        coil                 : "io.coil-kt:coil:$versions.coil",
         constraintlayout     : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
         coroutines           : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
         desugaring           : "com.android.tools:desugar_jdk_libs:$versions.desugaring",

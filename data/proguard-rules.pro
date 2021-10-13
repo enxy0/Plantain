@@ -20,3 +20,5 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 -keep class * extends com.chibatching.kotpref.KotprefModel
+-keepattributes LineNumberTable,SourceFile
+-renamesourcefileattribute SourceFile

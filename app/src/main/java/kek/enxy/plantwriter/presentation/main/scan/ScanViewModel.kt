@@ -20,6 +20,12 @@ class ScanViewModel(
     private val readDumpUseCase: ReadDumpUseCase
 ) : AndroidViewModel(application) {
 
+    private val _plantainStateFlow = MutableStateFlow(listOf(Unit))
+    val plantainStateFlow: StateFlow<List<Unit>> = _plantainStateFlow.asStateFlow()
+
+    private val _dumpsStateFlow = MutableStateFlow(listOf(Unit))
+    val dumpsStateFlow: StateFlow<List<Unit>> = _dumpsStateFlow.asStateFlow()
+
     private val _dumpStateFlow = MutableStateFlow<DumpState>(DumpState.Initial)
     val dumpStateFlow: StateFlow<DumpState> = _dumpStateFlow.asStateFlow()
 

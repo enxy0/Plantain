@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import kek.enxy.plantwriter.BuildConfig
 import kek.enxy.plantwriter.R
 import kek.enxy.plantwriter.databinding.FragmentAboutBinding
@@ -42,5 +43,6 @@ class AboutAppFragment : Fragment() {
         textAuthor.setOnClickListener {
             IntentUtils.openLink(requireContext(), Constants.GITHUB_AUTHOR_URL)
         }
+        toolbar.onStartBtnClicked { findNavController().navigateUp() }
     }
 }

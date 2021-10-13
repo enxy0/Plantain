@@ -8,7 +8,7 @@
 
     <dimen name="write_button_height">56dp</dimen>
     <dimen name="toolbar_height">56dp</dimen>
-    <dimen name="default_radius">12dp</dimen>
+    <dimen name="default_radius">16dp</dimen>
     <dimen name="default_btn_bottom_margin">94dp</dimen>
     <dimen name="chip_small_size">24dp</dimen>
 </resources>

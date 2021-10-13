@@ -15,6 +15,7 @@
     </style>
 
     <style name="Text.Secondary.Bold">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:textStyle">bold</item>
     </style>
 

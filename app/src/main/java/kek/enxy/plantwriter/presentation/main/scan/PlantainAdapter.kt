@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import kek.enxy.plantwriter.R
 import kek.enxy.plantwriter.databinding.ItemPlantainBinding
 
 class PlantainAdapter : ListAdapter<Unit, PlantainAdapter.ViewHolder>(
@@ -20,7 +22,14 @@ class PlantainAdapter : ListAdapter<Unit, PlantainAdapter.ViewHolder>(
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = Unit
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind()
+    }
 
-    class ViewHolder(binding: ItemPlantainBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(private val binding: ItemPlantainBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind() = with(binding) {
+            imagePlantain.load(R.drawable.plantain_card)
+        }
+    }
 }

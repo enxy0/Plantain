@@ -9,7 +9,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:at_startIcon="@drawable/ic_baseline_arrow_back_24"
-        app:at_title="@string/about_title"
+        app:at_title="@string/settings_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

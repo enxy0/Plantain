@@ -1,9 +1,7 @@
 package kek.enxy.plantwriter.presentation.main
 
-import android.content.Intent
-import kek.enxy.domain.model.Event
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 
 interface ScanContract {
-    val resolveIntentFlow: Flow<Event<Intent>>
+    val resolveIntentFlow: StateFlow<CardState>
 }

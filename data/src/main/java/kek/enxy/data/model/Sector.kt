@@ -2,11 +2,13 @@ package kek.enxy.data.model
 
 import android.nfc.tech.MifareClassic
 import android.os.Parcelable
+import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
 
-@Parcelize
+@Keep
 @Serializable
+@Parcelize
 data class Sector(val index: Int, val data: Array<ByteArray>) : Parcelable {
     companion object {
         private const val SECTOR_SIZE = 4

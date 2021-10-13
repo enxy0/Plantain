@@ -18,8 +18,6 @@ class WriteDumpUseCaseImpl(
     private val historyDataSource: HistoryDataSource
 ) : WriteDumpUseCase {
 
-    override fun dispatcher() = Dispatchers.IO
-
     override fun execute(parameter: WriteDumpParams) = getWriteDataFlow(parameter).retry(retries = 15)
 
     @Suppress("BlockingMethodInNonBlockingContext") // doing IO operations on IO dispatcher, everything is OK
@@ -42,7 +40,7 @@ class WriteDumpUseCaseImpl(
             } else {
                 throw WrongSectorKeyException("KEY_5B")
             }
-            historyDataSource.logWrite(AppDate.now(), parameter.dump.copy(uid = parameter.tagId))
+//            historyDataSource.logWrite(AppDate.now(), parameter.dump.copy(uid = parameter.tagId))
             emit(Result.success(Unit))
         }
     }
