@@ -1,18 +1,21 @@
 package kek.enxy.domain.write
 
 import android.nfc.tech.MifareClassic
+import kek.enxy.data.history.HistoryDataSource
 import kek.enxy.data.mifare.MifareDataProviderImpl.Companion.KEY_4B
 import kek.enxy.data.mifare.MifareDataProviderImpl.Companion.KEY_5B
 import kek.enxy.data.mifare.MifareDataProviderImpl.Companion.SECTOR_4
 import kek.enxy.data.mifare.MifareDataProviderImpl.Companion.SECTOR_5
 import kek.enxy.data.readwrite.ReadWriteDataSource
+import kek.enxy.data.readwrite.model.AppDate
 import kek.enxy.domain.write.model.WriteDumpParams
 import kek.enxy.domain.write.model.WrongSectorKeyException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 
 class WriteDumpUseCaseImpl(
-    private val readWriteDataSource: ReadWriteDataSource
+    private val readWriteDataSource: ReadWriteDataSource,
+    private val historyDataSource: HistoryDataSource
 ) : WriteDumpUseCase {
 
     override fun dispatcher() = Dispatchers.IO
@@ -39,6 +42,7 @@ class WriteDumpUseCaseImpl(
             } else {
                 throw WrongSectorKeyException("KEY_5B")
             }
+            historyDataSource.logWrite(AppDate.now(), parameter.dump.copy(uid = parameter.tagId))
             emit(Result.success(Unit))
         }
     }

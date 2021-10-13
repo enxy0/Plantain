@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "16c11eb93eae42f6b644d1d8c325ef38",
+    "identityHash": "2472ee84a33ec74cfb07b17c2f6623b6",
     "entities": [
       {
         "tableName": "Dump",
@@ -56,12 +56,74 @@
           }
         ],
         "foreignKeys": []
+      },
+      {
+        "tableName": "History",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `timestamp` INTEGER NOT NULL, `action` TEXT NOT NULL, `dump_id` INTEGER NOT NULL, `dump_uid` TEXT NOT NULL, `dump_name` TEXT NOT NULL, `dump_sector4` TEXT NOT NULL, `dump_sector5` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "action",
+            "columnName": "action",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dump.id",
+            "columnName": "dump_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dump.uid",
+            "columnName": "dump_uid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dump.name",
+            "columnName": "dump_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dump.sector4",
+            "columnName": "dump_sector4",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dump.sector5",
+            "columnName": "dump_sector5",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '16c11eb93eae42f6b644d1d8c325ef38')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2472ee84a33ec74cfb07b17c2f6623b6')"
     ]
   }
 }

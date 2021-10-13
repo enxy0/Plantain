@@ -4,6 +4,8 @@ import kek.enxy.data.db.AppDatabase
 import kek.enxy.data.db.AppDatabaseFactory
 import kek.enxy.data.dumps.DumpsDataSource
 import kek.enxy.data.dumps.DumpsDataSourceImpl
+import kek.enxy.data.history.HistoryDataSource
+import kek.enxy.data.history.HistoryDataSourceImpl
 import kek.enxy.data.mifare.MifareDataProvider
 import kek.enxy.data.mifare.MifareDataProviderImpl
 import kek.enxy.data.readwrite.ReadWriteDataSource
@@ -16,6 +18,7 @@ import org.koin.dsl.module
 internal val databaseModule = module {
     single { AppDatabaseFactory.create(androidContext()) }
     single { get<AppDatabase>().dumpsDao() }
+    single { get<AppDatabase>().historyDao() }
 }
 
 internal val dataModule = module {
@@ -23,6 +26,7 @@ internal val dataModule = module {
     factory<ReadWriteDataSource> { ReadWriteDataSourceImpl() }
     factory<DumpsDataSource> { DumpsDataSourceImpl(get()) }
     factory<AppSettingsDataSource> { AppSettingsDataSourceImpl() }
+    factory<HistoryDataSource> { HistoryDataSourceImpl(get()) }
 }
 
 val dataModules = listOf(databaseModule, dataModule)

@@ -18,6 +18,8 @@
     <string name="main_tag_error_auth">Не удалось аутентифицировать сектор ключом %s</string>
     <string name="main_tag_dumps">Сохраненные дампы</string>
     <string name="main_tag_dumps_hint">Дампы можно записывать на карту</string>
+    <string name="main_tag_history">История</string>
+    <string name="main_tag_history_hint">Информация о действиях с картами</string>
 
     <string name="detail_balance">Сумма:</string>
     <string name="detail_count">Количество:</string>
@@ -90,4 +92,6 @@
     <string name="about_version">Сборка %s-%d</string>
     <string name="about_app_description">Приложение позволяет читать и записывать информацию на «Подорожник». Используется 4 и 5 сектор носителя для получения и записи основной информации - баланс, поездки и т.д.</string>
     <string name="about_app_author">by enxy0</string>
+
+    <string name="history_title">История</string>
 </resources>

@@ -54,7 +54,7 @@ class DetailsViewModel(
                 val tagId = intent.nfcTagId
                 val tag = intent.nfcTag
                 if (tagId != null && tag != null) {
-                    writeDumpUseCase(WriteDumpParams(tag, dump)).collect { result ->
+                    writeDumpUseCase(WriteDumpParams(tagId, tag, dump)).collect { result ->
                         result
                             .onSuccess {
                                 _writeResultLiveData.value = getString(R.string.details_write_dump_ok)

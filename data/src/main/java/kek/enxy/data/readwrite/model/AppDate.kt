@@ -50,7 +50,10 @@ data class AppDate(
                 .plusMinutes(minutesSince2010.toLong())
                 .format(DateTimeFormatter.ofPattern(DATE_PATTERN))
         }
+
     }
+
+    operator fun compareTo(other: AppDate) = raw.compareTo(other.raw)
 
     override fun toString(): String = value
 }

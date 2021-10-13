@@ -27,13 +27,16 @@ class ScanFragment : Fragment() {
     private val dumpsAdapter by lazy {
         DumpsAdapter { findNavController().navigate(ScanFragmentDirections.actionScanToDumps()) }
     }
+    private val historiesAdapter by lazy {
+        HistoriesAdapter {  }
+    }
     private val currentDumpAdapter by lazy {
         CurrentDumpAdapter { dump ->
             findNavController().navigate(ScanFragmentDirections.actionScanToDetails(dump))
         }
     }
     private val concatAdapter: ConcatAdapter by lazy {
-        ConcatAdapter(plantainAdapter, dumpsAdapter, currentDumpAdapter)
+        ConcatAdapter(plantainAdapter, dumpsAdapter, historiesAdapter, currentDumpAdapter)
     }
 
     override fun onCreateView(
@@ -79,6 +82,7 @@ class ScanFragment : Fragment() {
         }
         plantainAdapter.submitList(listOf(Unit))
         dumpsAdapter.submitList(listOf(Unit))
+        historiesAdapter.submitList(listOf(Unit))
         with(recyclerMain) {
             adapter = concatAdapter
             (itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
