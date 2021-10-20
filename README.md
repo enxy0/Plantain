@@ -15,9 +15,8 @@ Plantain - это Android приложение для чтения и запис
 :arrow_down: Скачать: [Plantain v2.3](https://github.com/enxy0/Plantain/releases/tag/v2.3). Другие версии доступны во вкладке [Releases](https://github.com/enxy0/Plantain/releases).
 
 ## Скриншоты
-| Home | Read/Write | Dumps |
+| <img src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/home.jpg"/> | <img src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/read-write.jpg"/> | <img src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/dumps.jpg"/> |
 | ---- | ---------- | -------- |
-| <img  src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/home.jpg"/> | <img src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/read-write.jpg"/> | <img src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/dumps.jpg"/> |
 
 ## Библиотеки
 - [Android KTX](https://developer.android.com/kotlin/ktx) - a set of Kotlin extensions that are included with Android Jetpack and other Android libraries.
