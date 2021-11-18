@@ -32,5 +32,5 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         tools:itemCount="1"
-        tools:listitem="@layout/item_plantain" />
+        tools:listitem="@layout/item_dumps" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

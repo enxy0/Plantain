@@ -36,6 +36,7 @@ class ScanDumpView @JvmOverloads constructor(
 
     fun setDetails(dump: Dump) = with(binding) {
         textError.fadeOut()
+        textErrorTitle.fadeOut()
         textBalance.fadeIn()
         textBalance.fillWhenHasData(dump.balance) { balance ->
             text = resources.getString(R.string.main_tag_balance, balance.value)
@@ -58,6 +59,7 @@ class ScanDumpView @JvmOverloads constructor(
             text = throwable.getTextForUser(context)
             fadeIn()
         }
+        textErrorTitle.fadeIn()
         textBalance.fadeOut()
         textUID.fadeOut()
         imgInfo.fadeIn()
@@ -70,6 +72,7 @@ class ScanDumpView @JvmOverloads constructor(
         textBalance.fadeOut()
         textUID.fadeOut()
         textError.fadeOut()
+        textErrorTitle.fadeOut()
         imgInfo.fadeOut()
         imgNext.fadeOut()
         progress.fadeIn()

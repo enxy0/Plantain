@@ -20,6 +20,9 @@ data class Dump(
     val name: String = ""
 ) : Parcelable {
 
+    val isActualCard: Boolean
+        get() = uid.isNotBlank() && id == 0
+
     companion object {
         fun empty() = Dump(
             uid = "",

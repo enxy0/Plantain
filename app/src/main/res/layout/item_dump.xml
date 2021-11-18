@@ -10,15 +10,15 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imgPlantain"
-        android:layout_width="53dp"
-        android:layout_height="33dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_marginStart="@dimen/margin_normal"
         android:layout_marginTop="@dimen/margin_normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearance="@style/DumpPlantainImage"
-        tools:ignore="ContentDescription"
-        tools:src="@drawable/plantain_card" />
+        app:srcCompat="@drawable/ic_nfc_card"
+        app:tint="?android:attr/textColorPrimary"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/imgRemove"
@@ -77,17 +77,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="@dimen/margin_small"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
         android:layout_marginBottom="@dimen/margin_normal"
         android:background="@drawable/bg_dump_chip"
         android:ellipsize="end"
+        android:lines="1"
         android:paddingHorizontal="@dimen/margin_small"
         android:paddingVertical="4dp"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@id/textBalance"
         app:layout_constraintTop_toBottomOf="@id/barrier"
-        android:lines="1"
         tools:text="Использовался: 01.01.2010" />
 </androidx.constraintlayout.widget.ConstraintLayout>

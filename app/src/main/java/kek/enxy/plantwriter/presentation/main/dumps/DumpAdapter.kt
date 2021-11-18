@@ -7,7 +7,6 @@ import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import kek.enxy.data.readwrite.model.Dump
 import kek.enxy.plantwriter.R
 import kek.enxy.plantwriter.databinding.ItemDumpBinding
@@ -40,7 +39,6 @@ class DumpAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(dump: Dump) = with(binding) {
-            imgPlantain.load(R.drawable.plantain_card)
             root.setOnClickListener { listener.onDumpDetailsClicked(dump) }
             imgRemove.setOnClickListener { listener.onDumpRemoveClicked(dump) }
             textName.setTextFuture(

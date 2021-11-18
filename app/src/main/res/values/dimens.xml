@@ -11,4 +11,7 @@
     <dimen name="default_radius">16dp</dimen>
     <dimen name="default_btn_bottom_margin">94dp</dimen>
     <dimen name="chip_small_size">24dp</dimen>
+    <dimen name="card_size">86dp</dimen>
+    <dimen name="icon_action_size">20dp</dimen>
+    <dimen name="icon_description_size">28dp</dimen>
 </resources>

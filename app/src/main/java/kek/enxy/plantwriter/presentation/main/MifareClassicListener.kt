@@ -1,15 +1,14 @@
 package kek.enxy.plantwriter.presentation.main
 
-import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.IntentFilter
 import android.nfc.NfcAdapter
 import android.nfc.tech.MifareClassic
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 
 class MifareClassicListener private constructor(activity: AppCompatActivity) {
 
@@ -26,9 +25,9 @@ class MifareClassicListener private constructor(activity: AppCompatActivity) {
     init {
         val nfcAdapter: NfcAdapter? = NfcAdapter.getDefaultAdapter(activity)
         activity.lifecycle.addObserver(
-            object : LifecycleObserver {
-                @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-                fun enableForegroundDispatch() {
+            object : DefaultLifecycleObserver {
+                override fun onResume(owner: LifecycleOwner) {
+                    super.onResume(owner)
                     nfcAdapter?.enableForegroundDispatch(
                         activity,
                         createPendingIntent(activity),
@@ -37,21 +36,22 @@ class MifareClassicListener private constructor(activity: AppCompatActivity) {
                     )
                 }
 
-                @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-                fun disableForegroundDispatch() {
+                override fun onPause(owner: LifecycleOwner) {
+                    super.onPause(owner)
                     nfcAdapter?.disableForegroundDispatch(activity)
                 }
             }
         )
     }
 
-    // WTF Android SDK?? There should be a mutable flag (by official docs), but there isn't...
-    // So ignoring it until it appears
-    @SuppressLint("UnspecifiedImmutableFlag")
     private fun createPendingIntent(activity: AppCompatActivity): PendingIntent {
         val intent = Intent(activity, activity::class.java)
             .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-        val pendingIntentFlags = PendingIntent.FLAG_UPDATE_CURRENT
+        val pendingIntentFlags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+        } else {
+            PendingIntent.FLAG_UPDATE_CURRENT
+        }
         return PendingIntent.getActivity(activity, 0, intent, pendingIntentFlags)
     }
 }

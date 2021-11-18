@@ -2,8 +2,8 @@
     <string name="app_name">Plantain</string>
     <string name="main_tag_found">Карта «Подорожник» обнаружена</string>
     <string name="main_write_data">Записать данные</string>
-    <string name="main_scan_tag_title">Отсканируйте «Подорожник»</string>
-    <string name="main_scan_tag_description">Приложите бесконтактную карту «Подорожник» с задней стороны телефона.</string>
+    <string name="main_scan_tag_title">Отсканируйте карту</string>
+    <string name="main_scan_tag_description">Приложите бесконтактную карту с задней стороны телефона, чтобы приложение могло считать данные</string>
     <string name="main_log_hint">Лог:</string>
     <string name="main_write_success">Запись: успешно</string>
     <string name="main_write_failure">Запись: ошибка</string>
@@ -11,9 +11,9 @@
     <string name="main_read_failure">Чтение: ошибка</string>
     <string name="settings_theme">Темная тема</string>
     <string name="settings_theme_description">Переключите, чтобы использовать темную тему приложения</string>
-    <string name="main_tag_balance">Баланс: %d₽</string>
+    <string name="main_tag_balance">Баланс: %d ₽</string>
     <string name="main_tag_uid">UID: %s</string>
-    <string name="main_tag_error">Произошла ошибка чтения: %s</string>
+    <string name="main_tag_error_read">Произошла ошибка чтения</string>
     <string name="main_tag_error_connection_lost">Соединение с картой потеряно</string>
     <string name="main_tag_error_auth">Не удалось аутентифицировать сектор ключом %s</string>
     <string name="main_tag_dumps">Сохраненные дампы</string>
@@ -32,6 +32,9 @@
     <string name="details_last_payment">Последнее пополнение</string>
     <string name="details_last_use">Последнее использование</string>
     <string name="details_travel">Количество поездок</string>
+    <string name="details_uid">Уникальный идентификатор (UID)</string>
+    <string name="details_uid_increment">+</string>
+    <string name="details_uid_decrement">−</string>
     <string name="details_rub">%d ₽</string>
     <string name="details_save_dump">Сохранить</string>
     <string name="details_save_dump_write">Сохранить</string>
@@ -91,7 +94,10 @@
 
     <string name="about_title">О приложении</string>
     <string name="about_version">Сборка %s-%d</string>
-    <string name="about_app_description">Приложение позволяет читать и записывать информацию на «Подорожник». Используется 4 и 5 сектор носителя для получения и записи основной информации - баланс, поездки и т.д.</string>
+    <string name="about_app_description">
+        Plantain - это Android приложение для чтения и записи информации с электронных карт Mifare Classic. Использует алгоритмы и наработки из PlantainReader и MifareClassicTool.
+        \n\nРаботает с секторами 4 и 5, оттуда извлекает информацию и перезаписывает. Ключи на чтение/запись (KEY A, KEY, B) и Access Conditions не меняет.
+    </string>
     <string name="about_app_author">by enxy0</string>
 
     <string name="history_title">История</string>

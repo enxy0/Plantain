@@ -7,7 +7,6 @@ import kek.enxy.plantwriter.presentation.common.extensions.dp
 
 class ScanDecoration : RecyclerView.ItemDecoration() {
 
-    private val marginDouble by lazy { 32.dp.toInt() }
     private val margin by lazy { 16.dp.toInt() }
 
     override fun getItemOffsets(
@@ -19,13 +18,6 @@ class ScanDecoration : RecyclerView.ItemDecoration() {
         val itemCount = parent.adapter?.itemCount ?: 0
         parent.getChildAdapterPosition(view)
             .takeIf { position -> position in 0 until itemCount }
-            ?.let { position ->
-                outRect.set(
-                    margin,
-                    if (position == 0) marginDouble else margin,
-                    margin,
-                    0
-                )
-            }
+            ?.let { outRect.set(margin, margin, margin, 0) }
     }
 }

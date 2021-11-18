@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.flowWithLifecycle
@@ -81,6 +82,12 @@ class DetailsFragment : Fragment() {
                         )
                         findNavController().navigate(action)
                     }
+                }
+                textUidHint.isVisible = dump.isActualCard
+                with(textUid) {
+                    isVisible = dump.isActualCard
+                    text = dump.uid.uppercase()
+                    setOnClickListener(null)
                 }
                 with(viewLastUseAmount) {
                     setDetails(getString(R.string.details_rub, dump.lastUseAmount.value))

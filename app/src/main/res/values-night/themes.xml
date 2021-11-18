@@ -22,5 +22,6 @@
         <item name="colorControlNormal">@color/gray_300</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialog.ConstantCorners</item>
         <item name="colorAccent">@color/green_700</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 </resources>

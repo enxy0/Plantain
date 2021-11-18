@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "kek.enxy.plantwriter",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 93,
+      "versionName": "2.4",
+      "outputFile": "plantain-2.4-93.apk"
+    }
+  ],
+  "elementType": "File"
+}

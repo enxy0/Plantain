@@ -12,16 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.imageview.ShapeableImageView
+        <ImageView
             android:id="@+id/imgPlantain"
-            android:layout_width="63dp"
-            android:layout_height="40dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_marginStart="@dimen/margin_normal"
             android:layout_marginTop="@dimen/margin_normal"
-            android:src="@drawable/plantain_card"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/DumpPlantainImage"
+            app:srcCompat="@drawable/ic_nfc_card"
+            app:tint="?android:attr/textColorPrimary"
             tools:ignore="ContentDescription" />
 
         <ImageView

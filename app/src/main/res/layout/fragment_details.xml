@@ -31,28 +31,58 @@
             android:paddingBottom="@dimen/default_btn_bottom_margin">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textBalance"
+                android:id="@+id/textBalanceHint"
+                style="@style/Text.Header"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_normal"
                 android:layout_marginTop="@dimen/margin_bigger"
+                android:text="@string/details_balance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textBalance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_smallest"
                 android:background="@drawable/bg_detail"
                 android:padding="@dimen/margin_normal"
                 android:textAppearance="@style/Text.Primary"
                 android:textSize="32sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textBalanceHint"
                 tools:text="1337 ₽" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textBalanceHint"
-                android:layout_width="wrap_content"
+                android:id="@+id/textUidHint"
+                style="@style/Text.Header"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_normal"
-                android:text="@string/details_balance"
-                app:layout_constraintStart_toStartOf="@id/textBalance"
+                android:layout_marginTop="@dimen/margin_bigger"
+                android:text="@string/details_uid"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textBalance" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textUid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_smallest"
+                android:background="@drawable/bg_detail"
+                android:padding="@dimen/margin_normal"
+                android:textAppearance="@style/Text.Primary"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textUidHint"
+                tools:text="051F621DE31420" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textLastUseTitle"
@@ -64,7 +94,7 @@
                 android:text="@string/details_last_use"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textBalanceHint" />
+                app:layout_constraintTop_toBottomOf="@id/textUid" />
 
             <kek.enxy.plantwriter.presentation.main.details.view.DetailView
                 android:id="@+id/viewLastUseAmount"

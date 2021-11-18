@@ -1,47 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardPlantain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    app:cardCornerRadius="@dimen/default_radius"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="?android:attr/windowBackground"
+    app:strokeColor="?dividerColor"
+    app:strokeWidth="1dp"
+    tools:layout_margin="@dimen/margin_normal">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardPlantain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:cardCornerRadius="@dimen/default_radius"
-        app:cardElevation="0dp"
-        app:strokeColor="?dividerColor"
-        app:strokeWidth="1dp">
-
-        <ImageView
-            android:id="@+id/imagePlantain"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:scaleType="center"
-            tools:srcCompat="@drawable/plantain_card"
-            tools:ignore="ContentDescription" />
-    </com.google.android.material.card.MaterialCardView>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTitle"
-        style="@style/Text.Header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:text="@string/main_scan_tag_title" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textDescription"
-        style="@style/Text.Secondary"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingTop="2dp"
-        android:text="@string/main_scan_tag_description"
-        android:textAlignment="center" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:paddingVertical="40dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitle"
+            style="@style/Text.Header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawablePadding="@dimen/margin_smallest"
+            android:text="@string/main_scan_tag_title"
+            app:drawableTint="?android:attr/textColorPrimary"
+            app:drawableTopCompat="@drawable/ic_nfc_card" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textDescription"
+            style="@style/Text.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="2dp"
+            android:text="@string/main_scan_tag_description"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

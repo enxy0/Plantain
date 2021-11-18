@@ -12,7 +12,7 @@ Plantain - это Android приложение для чтения и запис
 Если пользоваться только маршрутками, то блокировки можно избежать до окончания баланса на карте (или отсрочить до 1-2 недель, а может и больше).
 Если использовать карту в метро, то блокировка наступает мгновенно (даже не пытайтесь).
 
-:arrow_down: Скачать: [Plantain v2.3](https://github.com/enxy0/Plantain/releases/tag/v2.3). Другие версии доступны во вкладке [Releases](https://github.com/enxy0/Plantain/releases).
+:arrow_down: Скачать: [Plantain v2.4](https://github.com/enxy0/Plantain/releases/tag/v2.4). Другие версии доступны во вкладке [Releases](https://github.com/enxy0/Plantain/releases).
 
 ## Скриншоты
 | <img src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/home.jpg"/> | <img src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/read-write.jpg"/> | <img src="https://raw.githubusercontent.com/enxy0/Plantain/master/.github/dumps.jpg"/> |
