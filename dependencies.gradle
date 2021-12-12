@@ -62,6 +62,6 @@ ext.libs = [
         recyclerView         : "androidx.recyclerview:recyclerview:$versions.recyclerView",
         roomKtx              : "androidx.room:room-ktx:$versions.room",
         roomRuntime          : "androidx.room:room-runtime:$versions.room",
-        roomCompile          : "androidx.room:room-compiler:$versions.room",
+        roomCompiler          : "androidx.room:room-compiler:$versions.room",
         serialization        : "org.jetbrains.kotlinx:kotlinx-serialization-json:$versions.serialization"
 ]
