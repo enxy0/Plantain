@@ -14,6 +14,7 @@ import kek.enxy.plantwriter.databinding.BottomSheetNameDumpBinding
 import kek.enxy.plantwriter.presentation.common.KeyboardUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import kotlin.time.Duration.Companion.milliseconds
 
 class NameDumpBottomSheet : BottomSheetDialogFragment() {
 
@@ -53,7 +54,7 @@ class NameDumpBottomSheet : BottomSheetDialogFragment() {
                 false
             }
         }
-        KeyboardUtils.show(editText)
+        KeyboardUtils.show(editText, 300.milliseconds)
     }
 
     override fun onDismiss(dialog: DialogInterface) {

@@ -23,6 +23,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import kotlin.time.Duration.Companion.milliseconds
 
 class EditDumpBottomSheet : BottomSheetDialogFragment() {
 
@@ -67,7 +68,8 @@ class EditDumpBottomSheet : BottomSheetDialogFragment() {
             is EditDumpType.Balance,
             is EditDumpType.LastPaymentAmount,
             is EditDumpType.LastUseAmount -> {
-                editText.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_VARIATION_NORMAL
+                editText.inputType =
+                    InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_VARIATION_NORMAL
                 textTitle.setText(R.string.edit_dump_title_money)
                 inputLayout.helperText = getString(R.string.edit_dump_placeholder_money)
                 chip1.setText(R.string.edit_dump_money_0)
@@ -93,7 +95,8 @@ class EditDumpBottomSheet : BottomSheetDialogFragment() {
             }
             is EditDumpType.UndergroundTravelTotal,
             is EditDumpType.GroundTravelTotal -> {
-                editText.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_VARIATION_NORMAL
+                editText.inputType =
+                    InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_VARIATION_NORMAL
                 textTitle.setText(R.string.edit_dump_title_count)
                 inputLayout.helperText = getString(R.string.edit_dump_placeholder_count)
                 chip1.setText(R.string.edit_dump_count_0)
@@ -172,7 +175,7 @@ class EditDumpBottomSheet : BottomSheetDialogFragment() {
                 false
             }
         }
-        KeyboardUtils.show(editText)
+        KeyboardUtils.show(editText, 300.milliseconds)
     }
 
     private fun setResult(type: EditDumpType) {

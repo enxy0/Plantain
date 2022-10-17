@@ -5,7 +5,7 @@ import android.nfc.NfcAdapter
 import android.nfc.Tag
 
 val Intent.nfcTag: Tag?
-    get() = this.getParcelableExtra(NfcAdapter.EXTRA_TAG)
+    get() = this.extras?.getParcelableCompat(NfcAdapter.EXTRA_TAG)
 
 val Intent.nfcTagId: String?
     get() = this.getByteArrayExtra(NfcAdapter.EXTRA_ID)?.toHexString()

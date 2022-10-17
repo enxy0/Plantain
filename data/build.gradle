@@ -73,5 +73,5 @@ dependencies {
     api libs.serialization
     api libs.roomKtx
     api libs.roomRuntime
-    annotationProcessor libs.roomCompiler
+    kapt libs.roomCompiler
 }

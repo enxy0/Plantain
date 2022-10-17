@@ -14,7 +14,9 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import kek.enxy.plantwriter.R
 import kek.enxy.plantwriter.databinding.FragmentDetailsBinding
+import kek.enxy.plantwriter.presentation.common.extensions.getParcelableCompat
 import kek.enxy.plantwriter.presentation.common.extensions.getParentAsListener
+import kek.enxy.plantwriter.presentation.common.extensions.safeNavigate
 import kek.enxy.plantwriter.presentation.main.ScanContract
 import kek.enxy.plantwriter.presentation.main.details.edit.EditDumpBottomSheet
 import kek.enxy.plantwriter.presentation.main.details.edit.EditDumpType
@@ -58,7 +60,7 @@ class DetailsFragment : Fragment() {
         btnSaveDump.setOnClickListener {
             if (viewModel.dump.name.isBlank()) {
                 val action = DetailsFragmentDirections.actionDetailsToNameDump(viewModel.generatedDumpName)
-                findNavController().navigate(action)
+                findNavController().safeNavigate(action)
             } else {
                 viewModel.save()
             }
@@ -80,7 +82,7 @@ class DetailsFragment : Fragment() {
                         val action = DetailsFragmentDirections.actionDetailsToEditDump(
                             EditDumpType.Balance(dump.balance)
                         )
-                        findNavController().navigate(action)
+                        findNavController().safeNavigate(action)
                     }
                 }
                 textUidHint.isVisible = dump.isActualCard
@@ -95,7 +97,7 @@ class DetailsFragment : Fragment() {
                         val action = DetailsFragmentDirections.actionDetailsToEditDump(
                             EditDumpType.LastUseAmount(dump.lastUseAmount)
                         )
-                        findNavController().navigate(action)
+                        findNavController().safeNavigate(action)
                     }
                 }
                 with(viewLastUseDate) {
@@ -104,7 +106,7 @@ class DetailsFragment : Fragment() {
                         val action = DetailsFragmentDirections.actionDetailsToEditDump(
                             EditDumpType.LastUseDate(dump.lastUseDate)
                         )
-                        findNavController().navigate(action)
+                        findNavController().safeNavigate(action)
                     }
                 }
                 with(viewGroundTravel) {
@@ -116,7 +118,7 @@ class DetailsFragment : Fragment() {
                         val action = DetailsFragmentDirections.actionDetailsToEditDump(
                             EditDumpType.GroundTravelTotal(dump.groundTravelTotal)
                         )
-                        findNavController().navigate(action)
+                        findNavController().safeNavigate(action)
                     }
                 }
                 with(viewUndergroundTravel) {
@@ -128,7 +130,7 @@ class DetailsFragment : Fragment() {
                         val action = DetailsFragmentDirections.actionDetailsToEditDump(
                             EditDumpType.UndergroundTravelTotal(dump.undergroundTravelTotal)
                         )
-                        findNavController().navigate(action)
+                        findNavController().safeNavigate(action)
                     }
                 }
                 with(viewLastPaymentAmount) {
@@ -137,7 +139,7 @@ class DetailsFragment : Fragment() {
                         val action = DetailsFragmentDirections.actionDetailsToEditDump(
                             EditDumpType.LastPaymentAmount(dump.lastPaymentAmount)
                         )
-                        findNavController().navigate(action)
+                        findNavController().safeNavigate(action)
                     }
                 }
                 with(viewLastPaymentDate) {
@@ -146,7 +148,7 @@ class DetailsFragment : Fragment() {
                         val action = DetailsFragmentDirections.actionDetailsToEditDump(
                             EditDumpType.LastPaymentDate(dump.lastPaymentDate)
                         )
-                        findNavController().navigate(action)
+                        findNavController().safeNavigate(action)
                     }
                 }
             }
@@ -155,7 +157,7 @@ class DetailsFragment : Fragment() {
 
     private fun setFragmentListeners() {
         setFragmentResultListener(EditDumpBottomSheet.KEY_REQUEST) { _, bundle ->
-            val type: EditDumpType? = bundle.getParcelable(EditDumpBottomSheet.KEY_EDIT_TYPE)
+            val type: EditDumpType? = bundle.getParcelableCompat(EditDumpBottomSheet.KEY_EDIT_TYPE)
             if (type != null) {
                 viewModel.handleDumpUpdate(type)
             }

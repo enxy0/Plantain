@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.SimpleItemAnimator
 import kek.enxy.plantwriter.databinding.FragmentScanBinding
 import kek.enxy.plantwriter.presentation.common.extensions.getParentAsListener
+import kek.enxy.plantwriter.presentation.common.extensions.safeNavigate
 import kek.enxy.plantwriter.presentation.main.CardState
 import kek.enxy.plantwriter.presentation.main.ScanContract
 import kotlinx.coroutines.flow.launchIn
@@ -26,11 +27,11 @@ class ScanFragment : Fragment() {
     private val contract by lazy<ScanContract> { getParentAsListener() }
     private val plantainAdapter by lazy { PlantainAdapter() }
     private val dumpsAdapter by lazy {
-        DumpsAdapter { findNavController().navigate(ScanFragmentDirections.actionScanToDumps()) }
+        DumpsAdapter { findNavController().safeNavigate(ScanFragmentDirections.actionScanToDumps()) }
     }
     private val currentDumpAdapter by lazy {
         CurrentDumpAdapter { dump ->
-            findNavController().navigate(ScanFragmentDirections.actionScanToDetails(dump))
+            findNavController().safeNavigate(ScanFragmentDirections.actionScanToDetails(dump))
         }
     }
     private val concatAdapter: ConcatAdapter by lazy {
